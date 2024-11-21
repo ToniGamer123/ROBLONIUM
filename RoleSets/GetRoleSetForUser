@@ -1,0 +1,11 @@
+<?php
+header('Content-Type: application/json');
+if ($_GET["userId"] == "1") {
+	$rank = 255;
+}elseif ((int)$_GET["userId"] > 0) {
+	$rank = 128;
+}else {
+	$rank = 0;
+}
+echo(json_encode(["Rank" => $rank]));
+?>

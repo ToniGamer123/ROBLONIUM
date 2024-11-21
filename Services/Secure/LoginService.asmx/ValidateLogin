@@ -1,0 +1,7 @@
+<?php
+/*$post = file_get_contents('php://input');
+$data = file_get_contents($_SERVER["DOCUMENT_ROOT"]."/Error/Services/Temp.log") . "\n" . $post;
+file_put_contents($_SERVER["DOCUMENT_ROOT"]."/Error/Services/Temp.log", $data);*/
+//bruh
+//file_put_contents($_SERVER["DOCUMENT_ROOT"]."/Services/Temp.log", print_r($_POST, true));
+?>

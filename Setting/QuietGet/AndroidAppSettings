@@ -1,0 +1,9 @@
+<?php
+header('Content-Type:application/json');
+echo('{}');
+
+/*
+June, 2014
+{"DFFlagUseKeyframeHumanoidAnimations": "True", "FFlagPhysics60HZ": "True", "FFlagHeartbeatAt60Hz": "True", "FFlagPlayerHumanoidStep60Hz": "True", "FFlagRenderBlobShadows": "True", "DFFlagLoggingConsoleEnabled": "True","DFFlagUserHttpAPIEnabled": "True","DFFlagPointsServiceEnabledForEveryone": "True", "FFlagUseNewSoundEngine": "True", "DFFlagAllowModuleLoadingFromAssetId": "True", "FFlagToggleDevConsoleThroughChatCommandEnabled": "True", "DFFlagUseYPCallInsteadOfPCallEnabled": "True", "FFlagFastStartup": "True", "DFFlagLogServiceEnabled": "True", "FFlagTweenServiceUsesRenderStep ": "True", "FFlagNewLoadingScreen": "True", "FFlagUseCameraOffset": "True", "DFFlagUseImprovedLadderClimb": "True", "DFFlagAllowHumanoidDecalTransparency": "True", "DFFlagEnableNPCServerAnimation": "True", "DFFlagCreateHumanoidRootNode": "True", "FFlagPlayPauseFix": "True", "DFFlagWaitForChildWithRenameEnabled": "True", "SFFlagLocalHumanoidSoundsEnabled": "True", "DFFlagNotificationServiceEnabledForEveryone": "True"}
+*/
+?>
