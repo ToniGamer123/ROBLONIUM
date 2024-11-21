@@ -1,0 +1,17 @@
+<?php
+header("content-type:text/plain");
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/private/player.php';
+
+$GLOBALS['Id'] = $_GET['userId'];
+$user = new UserInf();
+$userout = array (
+	'Robux' => $user->Robux,
+	'Tickets' => $user->Tickets
+);
+$out = json_encode($userout);
+if ($userout['Robux'] !== null and $userout['Tickets'] !== null and $out !== false) {
+	die($out);
+}else {
+	die('{"success":false}');
+}
+?>

@@ -1,0 +1,954 @@
+<?php
+session_start();
+include_once $_SERVER["DOCUMENT_ROOT"] . '/global.php';
+?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<!-- MachineID: WEB49 -->
+<head id="ctl00_Head1"><script src="//archive.org/includes/analytics.js?v=cf34f82" type="text/javascript"></script>
+<script type="text/javascript">window.addEventListener('DOMContentLoaded',function(){var v=archive_analytics.values;v.service='wb';v.server_name='wwwb-app22.us.archive.org';v.server_ms=301;archive_analytics.send_pageview({});});</script>
+<script type="text/javascript" src="/static/js/ait-client-rewrite.js?v=1544499711.0" charset="utf-8"></script>
+<script type="text/javascript">
+</script>
+<script type="text/javascript" src="/static/js/wbhack.js?v=1544499711.0" charset="utf-8"></script>
+<script type="text/javascript">
+</script>
+<link rel="stylesheet" type="text/css" href="/static/css/banner-styles.css?v=1544499711.0" />
+<link rel="stylesheet" type="text/css" href="/static/css/iconochive.css?v=1544499711.0" />
+<!-- End Wayback Rewrite JS Include -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true"/><title>
+	ROBLOX Forum
+</title>
+<link rel="stylesheet" href="/roblonium.css"/>
+
+<link rel="stylesheet" href="/roblonium1.css"/> <link rel="stylesheet" href="/CSS/Themes/Holiday2013/Holiday2013.css"/>
+<link rel="icon" type="image/vnd.microsoft.icon" href="/favicon.ico"/><title>ROBLOX Forum</title>
+    <link rel="stylesheet" href="/Forum/skins/default/style/default.css" type="text/css"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta http-equiv="Content-Language" content="en-us"/><meta name="author" content="ROBLONIUM"/><meta id="ctl00_metadescription" name="description" content="User-generated MMO gaming site for kids, teens, and adults. Players architect their own worlds. Builders create free online games that simulate the real world. Create and play amazing 3D games. An online gaming cloud and distributed physics engine."/><meta id="ctl00_metakeywords" name="keywords" content="free games, online games, building games, virtual worlds, free mmo, gaming cloud, physics engine"/>	<script type="text/javascript">
+
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-11419793-1']);
+		_gaq.push(['_setCampSourceKey', 'rbx_source']);
+		_gaq.push(['_setCampMediumKey', 'rbx_medium']);
+		_gaq.push(['_setCampContentKey', 'rbx_campaign']);
+		_gaq.push(['_setDomainName', 'roblox.com']);
+
+		_gaq.push(['b._setAccount', 'UA-486632-1']);
+		_gaq.push(['b._setCampSourceKey', 'rbx_source']);
+		_gaq.push(['b._setCampMediumKey', 'rbx_medium']);
+		_gaq.push(['b._setCampContentKey', 'rbx_campaign']);
+		_gaq.push(['b._setDomainName', 'roblox.com']);
+		_gaq.push(['c._setAccount', 'UA-26810151-2']);
+		_gaq.push(['c._setDomainName', 'roblox.com']);
+
+		(function() {
+			var ga = document.createElement('script');
+			ga.type = 'text/javascript';
+			ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl/' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(ga, s);
+		})();
+
+	</script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.2.min.js"></script>
+<script type="text/javascript">window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-1.7.2.min.js'><\/script>")</script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js"></script>
+<script type="text/javascript">window.Sys || document.write("<script type='text/javascript' src='/js/Microsoft/MicrosoftAjax.js'><\/script>")</script>
+
+<script type="text/javascript" src="http://js.rbxcdn.com/d017022a31a650699f61d8c412593da7.js"></script>
+<script type="text/javascript">Roblox.config.externalResources = ['/js/jquery/jquery-1.7.2.min.js','/js/json2.min.js'];Roblox.config.paths['jQuery'] = 'http://js.rbxcdn.com/29cf397a226a92ca602cb139e9aae7d7.js';Roblox.config.paths['Pagelets.BestFriends'] = 'http://js.rbxcdn.com/c8acaba4214074ed4ad6f8b4a9647038.js';Roblox.config.paths['Pages.Catalog'] = 'http://js.rbxcdn.com/c8f61a230e6ad34193b40758f1499a3d.js';Roblox.config.paths['Pages.Messages'] = 'http://js.rbxcdn.com/34e0d4ef92076cd06d46b61bd94bc8a2.js';Roblox.config.paths['Resources.Messages'] = 'http://js.rbxcdn.com/fb9cb43a34372a004b06425a1c69c9c4.js';Roblox.config.paths['Widgets.AvatarImage'] = 'http://js.rbxcdn.com/a404577733d1b68e3056a8cd3f31614c.js';Roblox.config.paths['Widgets.DropdownMenu'] = 'http://js.rbxcdn.com/d83d02dd89808934b125fa21c362bcb9.js';Roblox.config.paths['Widgets.GroupImage'] = 'http://js.rbxcdn.com/3e692c7b60e1e28ce639184f793fdda9.js';Roblox.config.paths['Widgets.HierarchicalDropdown'] = 'http://js.rbxcdn.com/e8b579b8e31f8e7722a5d10900191fe7.js';Roblox.config.paths['Widgets.ItemImage'] = 'http://js.rbxcdn.com/6d374381f268432a466e8b8583414b49.js';Roblox.config.paths['Widgets.PlaceImage'] = 'http://js.rbxcdn.com/08e1942c5b0ef78773b03f02bffec494.js';Roblox.config.paths['Widgets.Suggestions'] = 'http://js.rbxcdn.com/a63d457706dfbc230cf66a9674a1ca8b.js';Roblox.config.paths['Widgets.SurveyModal'] = 'http://js.rbxcdn.com/d6e979598c460090eafb6d38231159f6.js';</script><script type="text/javascript">
+    $(function () {
+        Roblox.JSErrorTracker.initialize({'internalEventListenerPixelEnabled': true});
+    });
+</script>
+<script type="text/javascript" src="http://js.rbxcdn.com/f2c58922dfb15320db0781e7c9ddac31.js"></script>
+    <script type="text/javascript">
+function Roblox_Forums_Middle_728x90_RTP(estimate){rtp['/1015347/Roblox_Forums_Middle_728x90'] = rp_valuation.estimate;}
+var rtp = rtp || {};
+oz_api="valuation";oz_site="9874/18868";oz_zone="58960";oz_ad_slot_size="728x90";oz_callback=Roblox_Forums_Middle_728x90_RTP;
+</script><script type="text/javascript" src="http://tap-cdn.rubiconproject.com/partner/scripts/rubicon/dorothy.js?pc=9874/18868"></script><script>
+
+function Roblox_Forums_Right_160x600_RTP(estimate){rtp['/1015347/Roblox_Forums_Right_160x600'] = rp_valuation.estimate;}
+var rtp = rtp || {};
+oz_api="valuation";oz_site="9874/18868";oz_zone="58960";oz_ad_slot_size="160x600";oz_callback=Roblox_Forums_Right_160x600_RTP;
+</script><script type="text/javascript" src="http://tap-cdn.rubiconproject.com/partner/scripts/rubicon/dorothy.js?pc=9874/18868"></script><script>
+
+        googletag.cmd.push(function() {
+            Roblox = Roblox || {};
+            Roblox.AdsHelper = Roblox.AdsHelper || {};
+            Roblox.AdsHelper.slots = [];
+            Roblox.AdsHelper.slots = Roblox.AdsHelper.slots || []; Roblox.AdsHelper.slots.push({slot:googletag.defineSlot("/1015347/Roblox_Forums_Middle_728x90", [728, 90], "3136383738313531").addService(googletag.pubads()), id: "3136383738313531", path: "/1015347/Roblox_Forums_Middle_728x90"});
+Roblox.AdsHelper.slots = Roblox.AdsHelper.slots || []; Roblox.AdsHelper.slots.push({slot:googletag.defineSlot("/1015347/Roblox_Forums_Right_160x600", [160, 600], "3436373534393438").addService(googletag.pubads()), id: "3436373534393438", path: "/1015347/Roblox_Forums_Right_160x600"});
+ 
+            for (var key in Roblox.AdsHelper.slots) {
+                var slot = Roblox.AdsHelper.slots[key].slot;
+                var id = Roblox.AdsHelper.slots[key].id;
+                var path = Roblox.AdsHelper.slots[key].path;
+                
+                     slot.setTargeting('pos', path);
+                     slot.setTargeting('tier', rtp[path].tier);
+                if (slot.renderEnded != "undefined") {
+                    (function(slot, id)
+                    {
+                        slot.renderEndedOld = slot.renderEnded;
+                        slot.renderEnded = function() {
+                            slot.renderEndedOld();
+                            if ($('#' + id + '.gutter').css('display') == "none") {
+                                $(document).trigger("GuttersHidden");
+                            }
+                            if ($('#' + id + '.filmstrip').css('display') == "none") {
+                                $(document).trigger("FilmStripHidden");
+                            }
+                        };    
+                    }(slot, id));
+                }
+            }
+
+            googletag.pubads().setTargeting("Age", "Unknown");	
+            googletag.pubads().setTargeting("Env",  "Production");
+            googletag.pubads().enableSingleRequest();
+            googletag.pubads().collapseEmptyDivs();
+            googletag.enableServices();
+        });
+    </script>  
+</head>
+<body class="">
+
+    <script type="text/javascript">Roblox.XsrfToken.setToken('');</script>
+ 
+    <script type="text/javascript">
+        if (top.location != self.location) {
+            top.location = self.location.href;
+        }
+    </script>
+  
+<style type="text/css">
+    
+</style>
+<form name="aspnetForm" method="post" action="/Forum/index.html" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJMTU1MzUyNTM2D2QWAmYPZBYCAgEQFgIeBmFjdGlvbgUTL0ZvcnVtL0RlZmF1bHQuYXNweGQWCAICDw8WAh4HVmlzaWJsZWhkFgJmD2QWCAIBDxBkZBYAZAICDxBkZBYBZmQCAw8QZGQWAWZkAgQPEGRkFgFmZAIDDw8WAh8BaGRkAgkPDxYCHwFoZGQCDw8PFgIfAWhkZBgFBSNjdGwwMCRMZWZ0R3V0dGVyQWQkQXN5bmNBZE11bHRpVmlldw8PZAIDZAUjY3RsMDAkcmJ4R29vZ2xlQW5hbHl0aWNzJE11bHRpVmlldzEPD2RmZAUvY3RsMDAkY3BoQmFubmVyQWQkRm9ydW1zQmFubmVyJEFzeW5jQWRNdWx0aVZpZXcPD2QCA2QFJGN0bDAwJFJpZ2h0R3V0dGVyQWQkQXN5bmNBZE11bHRpVmlldw8PZAIDZAUxY3RsMDAkY3BoUm9ibG94JEZvcnVtc1NreXNjcmFwZXIkQXN5bmNBZE11bHRpVmlldw8PZAIDZPoVWfjsCBs6WacNGhB5vTh0wMTh"/>
+</div>
+
+
+<script src="/ScriptResource.axd?d=_4hVf4tjplqNTx20LDNb2xsQVtJFOznY04HxIi0lLXVfhy6VmEbdu914PXTDf98YC2XbHVPUHvq5RhiuelQv9QTHdNgsuTorkQwW8HJXWX7mIOZPjxVbsRA72BepfJIfH0rS9S-xprzlpa3hWOym1OEDsaX4QC4F2SzKG5cay9KLLqR2LwX2q-U-vcezvaqu8Hh1DAQTYwTV3FBdfSLclGagq-y13UpaNxP0wRQKw67yaq7i0cbgXOXirOnXmYcZRaEJVys5JWV4LcyaGq2f6dkHDre-jPWvTVD-GSSl3K5-YUHYzwU7GBHP-Q3diCMibEcns5meLWTOGut4TVwjnNzGCA1KfzdcpnL8asMkPSQ1Gl2KLn7KFNF5oewoOegSLHC15WicQnGLkWt6YVI5dM7NiBNFaYsMRuEPlNQ4CwIWpWyixS8yCQBLfbCEMj2NA5oZ5Q2" type="text/javascript"></script>
+<div>
+
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEWAwL10ZfrAwKhvZDLCwK9hOilCm17ISXP17jP3aog0DSWsq9XoWxI"/>
+</div>
+    <div id="fb-root">
+    </div>
+    
+    
+         
+    
+    
+    
+        <div class=""><div class="">
+    <div id="MasterContainer">
+           
+                   
+
+
+<script type="text/javascript">
+$(function(){
+    function trackReturns() {
+	    function dayDiff(d1, d2) {
+		    return Math.floor((d1-d2)/86400000);
+	    }
+
+	    var cookieName = 'RBXReturn';
+	    var cookieOptions = {expires:9001};
+        var cookie = $.getJSONCookie(cookieName);
+
+	    if (typeof cookie.ts === "undefined" || isNaN(new Date(cookie.ts))) {
+	        $.setJSONCookie(cookieName, { ts: new Date().toDateString() }, cookieOptions);
+		    return;
+	    }
+
+	    var daysSinceFirstVisit = dayDiff(new Date(), new Date(cookie.ts));
+	    if (daysSinceFirstVisit == 1 && typeof cookie.odr === "undefined") {
+		    RobloxEventManager.triggerEvent('rbx_evt_odr', {});
+		    cookie.odr = 1;
+	    }
+	    if (daysSinceFirstVisit >= 1 && daysSinceFirstVisit <= 7 && typeof cookie.sdr === "undefined") {
+		    RobloxEventManager.triggerEvent('rbx_evt_sdr', {});
+		    cookie.sdr = 1;
+	    }
+	
+	    $.setJSONCookie(cookieName, cookie, cookieOptions);
+    }
+
+    
+        RobloxListener.restUrl = window.location.protocol + "//" + "roblox.com/Game/EventTracker.ashx";
+        RobloxListener.init();
+    
+    
+        GoogleListener.init();
+    
+    
+    
+    
+        RobloxEventManager.initialize(true);
+        RobloxEventManager.triggerEvent('rbx_evt_pageview');
+        trackReturns();
+    
+    
+    
+        RobloxEventManager._idleInterval = 450000;
+        RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_start');
+        RobloxEventManager.registerCookieStoreEvent('rbx_evt_ftp');
+        RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_success');
+        RobloxEventManager.registerCookieStoreEvent('rbx_evt_fmp');
+        RobloxEventManager.startMonitor();
+    
+
+});
+
+</script>
+
+
+        
+
+        <script type="text/javascript">Roblox.FixedUI.gutterAdsEnabled=false;</script>
+        
+
+<?php include $_SERVER["DOCUMENT_ROOT"] . '/Banner' ;?> 
+<script type="text/javascript">
+    $(function () {
+        $('.more-list-item').bind('showDropDown', function () {
+            var maxWidth = $('#navigation-menu .dropdownnavcontainer').width();
+            $('a.dropdownoption span').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.outerWidth() > maxWidth) {
+                    maxWidth = elem.outerWidth();
+                }
+            });
+            maxWidth = maxWidth + 5;
+            $('#navigation-menu .dropdownoption').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.width() < maxWidth) {
+                    elem.width(maxWidth);
+                }
+            });
+        });
+    });
+    
+    
+</script>
+
+        </div>
+
+        
+            
+
+
+
+        <noscript><div class="SystemAlert"><div class="SystemAlertText">Please enable Javascript to use all the features on this site.</div></div></noscript><div id="ctl00_Announcement">
+	
+            <div id="ctl00_SystemAlertDiv" class="SystemAlert" style="background-color:blue;">
+                <div id="ctl00_SystemAlertTextColor" class="SystemAlertText"><div id="ctl00_LabelAnnouncement"> Don&#39;t miss today&#39;s <a href="http://www.youtube.com/watch?v=zrdDcZCgkHE">BLOXcast</a> -- we&#39;re live from ROBLOX HQ at 10 am Pacific!</div></div>
+            </div>
+        
+</div>
+        <div id="BodyWrapper">
+            <div id="RepositionBody">
+                <div id="Body" style="width:970px;">
+                    
+
+	<table width="100%" height="100%" cellspacing="0" cellpadding="0" border="0">
+		<tr valign="top">
+			
+            <!-- left column -->
+			<td class="LeftColumn">&nbsp;&nbsp;&nbsp;</td>
+			
+            <!-- center column -->
+			<td id="ctl00_cphRoblox_CenterColumn" width="95%" class="CenterColumn">
+				<br>
+            	<span id="ctl00_cphRoblox_NavigationMenu2">
+
+<div id="forum-nav" style="text-align: right">
+	<a id="ctl00_cphRoblox_NavigationMenu2_ctl00_HomeMenu" class="menuTextLink first" href="/Forum/index.html">Home</a>
+	<a id="ctl00_cphRoblox_NavigationMenu2_ctl00_SearchMenu" class="menuTextLink" href="/Forum/Search/default.aspx">Search</a>
+	
+	
+	
+	
+	
+	
+	
+</div>
+</span>
+				<br>
+				<table cellpadding="0" cellspacing="2" width="100%">
+					<tr>
+						<td align="left">
+							<span class="normalTextSmallBold">Current time: </span><span class="normalTextSmall">Dec 7, 11:40 AM</span>
+						</td>
+						<td align="right">
+						    <span id="ctl00_cphRoblox_SearchRedirect">
+
+<span>
+    <span class="normalTextSmallBold">Search Roblox Forums:</span>
+    <input name="ctl00$cphRoblox$SearchRedirect$ctl00$SearchText" type="text" maxlength="50" id="ctl00_cphRoblox_SearchRedirect_ctl00_SearchText" class="notranslate" size="20"/>
+    <input type="submit" name="ctl00$cphRoblox$SearchRedirect$ctl00$SearchButton" value="Go" id="ctl00_cphRoblox_SearchRedirect_ctl00_SearchButton" class="translate btn-control btn-control-medium forum-btn-control-medium"/>
+</span></span>
+							
+						</td>
+					</tr>
+				</table>
+                <div style="height:7px;"></div>
+				<table cellpadding="2" cellspacing="1" border="0" width="100%" class="table"><tr class="table-header forum-table-header">
+	<th class="first" colspan="2"><a id="ctl00_cphRoblox_ForumGroupRepeater1_ctl01_GroupTitle" class="forumTitle" href="/Forum/ShowForumGroup.aspx?ForumGroupID=1">ROBLOX</a></th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Threads&nbsp;&nbsp;</th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Posts&nbsp;&nbsp;</th><th style="width:135px;white-space:nowrap;">&nbsp;Last Post&nbsp;</th>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=48"><div class="forumTitle">
+		BLOXcast December 7, 2013
+	</div><div>
+		Discuss the BLOXcast and post questions for the Q &amp; A session on Saturday, December 7th. Watch the BLOXcast at youtube.com/roblox!
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">854</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">3,201</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119706855#119707490"><span class="normalTextSmaller"><div>
+		<b>11:35 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">insainity</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=46"><div class="forumTitle">
+		All Things ROBLOX
+	</div><div>
+		The area for discussions purely about ROBLOX – the features, the games, and company news.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">404,828</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">2,475,939</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119700435#119707694"><span class="normalTextSmaller"><div>
+		<b>11:38 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">grtsumukh</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=14"><div class="forumTitle">
+		Help (Technical Support and Account Issues)
+	</div><div>
+		Seeking account or technical help? Post your questions here.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">153,568</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">666,204</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119705899#119707572"><span class="normalTextSmaller"><div>
+		<b>11:36 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Hypactic</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=44"><div class="forumTitle">
+		I Made That
+	</div><div>
+		Calling all creative ROBLOXians! Movie makers, model builders, decal artists and re-texturers - this is your forum. 
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">29,252</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">108,699</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=115680772#119706927"><span class="normalTextSmaller"><div>
+		<b>11:26 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">ICURobotics</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=43"><div class="forumTitle">
+		ROBLOX Contests
+	</div><div>
+		Get involved with ROBLOX Contests! We're discussing ongoing and future contests in this forum.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">15,304</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">97,698</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119701077#119707598"><span class="normalTextSmaller"><div>
+		<b>11:36 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">mariusalin55</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=45"><div class="forumTitle">
+		ROBLOX Global
+	</div><div>
+		This forum is the place to find other players from your country, find online pen pals, and post discussions in foreign languages.
+
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">7,396</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">84,363</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119697939#119707737"><span class="normalTextSmaller"><div>
+		<b>11:39 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">pakesboy</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=21"><div class="forumTitle">
+		Suggestions &amp; Ideas
+	</div><div>
+		Do you have a suggestion and ideas for ROBLOX? Share your feedback here.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">361,144</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">3,331,428</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=118821482#119707337"><span class="normalTextSmaller"><div>
+		<b>11:33 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">yanik1629</div></span></a></td>
+</tr><tr class="table-header forum-table-header">
+	<th class="first" colspan="2"><a id="ctl00_cphRoblox_ForumGroupRepeater1_ctl02_GroupTitle" class="forumTitle" href="/Forum/ShowForumGroup.aspx?ForumGroupID=8">Club Houses</a></th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Threads&nbsp;&nbsp;</th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Posts&nbsp;&nbsp;</th><th style="width:135px;white-space:nowrap;">&nbsp;Last Post&nbsp;</th>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=13"><div class="forumTitle">
+		ROBLOX Talk
+	</div><div>
+		A popular hangout where ROBLOXians talk about various topics.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">3,907,215</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">28,747,005</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119705664#119707729"><span class="normalTextSmaller"><div>
+		<b>11:39 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">memro</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=18"><div class="forumTitle">
+		Off Topic
+	</div><div>
+		When no other forum makes sense for your post, Off Topic will help it make even less sense.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">3,423,184</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">23,522,368</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119707344#119707469"><span class="normalTextSmaller"><div>
+		<b>11:35 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">zacmacreborn</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=32"><div class="forumTitle">
+		Clans &amp; Guilds
+	</div><div>
+		Talk about what’s going on in your Clans, Groups, Companies, and Guilds, and about the Groups feature in general.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">1,310,226</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">11,176,578</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119707423#119707514"><span class="normalTextSmaller"><div>
+		<b>11:35 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">inversus</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=35"><div class="forumTitle">
+		Let's Make a Deal
+	</div><div>
+		A fast paced community dedicated to mastering the Limited Trades and Sales market, and divining the subtleties of the ROBLOX Currency Exchange.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">3,380,513</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">21,524,391</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119706001#119707528"><span class="normalTextSmaller"><div>
+		<b>11:35 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">mortalmess</div></span></a></td>
+</tr><tr class="table-header forum-table-header">
+	<th class="first" colspan="2"><a id="ctl00_cphRoblox_ForumGroupRepeater1_ctl03_GroupTitle" class="forumTitle" href="/Forum/ShowForumGroup.aspx?ForumGroupID=9">Game Creation and Development</a></th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Threads&nbsp;&nbsp;</th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Posts&nbsp;&nbsp;</th><th style="width:135px;white-space:nowrap;">&nbsp;Last Post&nbsp;</th>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=19"><div class="forumTitle">
+		Building Helpers
+	</div><div>
+		Learn the ins and outs of building structures in ROBLOX. Share your techniques with other builders, discuss designs, and draft plans. Help others!
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">134,017</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">693,514</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=107812821#119707463"><span class="normalTextSmaller"><div>
+		<b>11:34 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">SundownMKII</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=20"><div class="forumTitle">
+		Scripting Helpers
+	</div><div>
+		Need help with a script you are writing? Need to edit an existing script? This is the place to share your 1337 Lua programming skills and help others.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">342,539</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">2,397,340</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119705076#119707667"><span class="normalTextSmaller"><div>
+		<b>11:37 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">sarim786</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=40"><div class="forumTitle">
+		Game Design
+	</div><div>
+		The place to discuss about the novel game ideas that you are possibly working on. This is not the place to hire people nor post help requests. 
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">27,699</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">169,430</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=118642091#119707339"><span class="normalTextSmaller"><div>
+		<b>11:33 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Exellerated</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=37"><div class="forumTitle">
+		Game Test
+	</div><div>
+		This is the place to post about www.gametest1.roblox.com about the ROBLOX game and Studio. [Note: Test servers may not be up all the time.]
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">8,044</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">42,936</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119699589#119706494"><span class="normalTextSmaller"><div>
+		<b>11:18 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">paramorex3</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=36"><div class="forumTitle">
+		Website Test
+	</div><div>
+		Post about sitetest.roblox.com about ROBLOX website features here. [Note: Test servers may not be up all the time.]
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">11,330</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">65,352</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119706214#119706214"><span class="normalTextSmaller"><div>
+		<b>11:14 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">theorangeangel</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=41"><div class="forumTitle">
+		ROBLOX Mobile
+	</div><div>
+		Discuss mobile versions of the ROBLOX website, the iPhone app, and playing ROBLOX on the iPad.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">4,795</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">36,061</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=106366192#119707566"><span class="normalTextSmaller"><div>
+		<b>11:36 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Z3ROH</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=39"><div class="forumTitle">
+		ROBLOX Studio
+	</div><div>
+		This is the place to post about ROBLOX Studio for Mac and Windows.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">10,495</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">57,373</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119703197#119704327"><span class="normalTextSmaller"><div>
+		<b>10:43 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">DeadpanSky21</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=33"><div class="forumTitle">
+		Scripters
+	</div><div>
+		This is the place for discussion about scripting. Anything about scripting that is not a help request or topic belongs here.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">42,133</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">680,329</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=82170628#119707722"><span class="normalTextSmaller"><div>
+		<b>11:38 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Oysi</div></span></a></td>
+</tr><tr class="table-header forum-table-header">
+	<th class="first" colspan="2"><a id="ctl00_cphRoblox_ForumGroupRepeater1_ctl04_GroupTitle" class="forumTitle" href="/Forum/ShowForumGroup.aspx?ForumGroupID=6">Entertainment</a></th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Threads&nbsp;&nbsp;</th><th style="width:50px;white-space:nowrap;">&nbsp;&nbsp;Posts&nbsp;&nbsp;</th><th style="width:135px;white-space:nowrap;">&nbsp;Last Post&nbsp;</th>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=42"><div class="forumTitle">
+		Video Game Fans
+	</div><div>
+		Talk about your favorite video and computer games  outside of ROBLOX, with other fanatical video gamers!
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">75,573</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">722,604</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119704737#119707721"><span class="normalTextSmaller"><div>
+		<b>11:38 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Shovuc</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=38"><div class="forumTitle">
+		Forum Games
+	</div><div>
+		Post your most hilarious forum games here. Who's the best at typing with their elbows? Give gifts to the person above you. Play classic forum games and make up new ones!
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">44,632</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">1,465,342</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=85422276#119707310"><span class="normalTextSmaller"><div>
+		<b>11:32 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">RyanDolan123</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=26"><div class="forumTitle">
+		Sports Fans
+	</div><div>
+		Hang out with other ROBLOX sports fans and talk about sports and competitive activities.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">419,749</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">2,365,977</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119685180#119707407"><span class="normalTextSmaller"><div>
+		<b>11:34 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Kryptacular</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=24"><div class="forumTitle">
+		Music Talk
+	</div><div>
+		Does your Robloxian rock? Let people know. Or just talk about your favorite bands.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">81,623</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">812,918</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=119707209#119707584"><span class="normalTextSmaller"><div>
+		<b>11:36 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">xpsm1530</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=25"><div class="forumTitle">
+		Movies/TV/Books
+	</div><div>
+		Does your Robloxian belong on the silver screen, or in the pages of a novel? Show off your ROBLOX movie star, discuss your favorite TV series, films, and the books you love.
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">45,702</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">395,304</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=118431402#119707525"><span class="normalTextSmaller"><div>
+		<b>11:35 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">AT4W</div></span></a></td>
+</tr><tr class="forum-table-row">
+	<td colspan="2" style="width:80%;"><a class="forum-summary" href="/Forum/ShowForum.aspx?ForumID=23"><div class="forumTitle">
+		Role-Playing
+	</div><div>
+		The forum for story telling and imagination. Start a role-playing thread here involving your fictional characters, or role-play out a scenario with other players. 
+	</div></a></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">130,266</span></td><td class="forum-centered-cell" align="center"><span class="normalTextSmaller">7,463,460</span></td><td align="center"><a class="last-post" href="/Forum/ShowPost.aspx?PostID=118021002#119707580"><span class="normalTextSmaller"><div>
+		<b>11:36 AM</b>
+	</div></span><span class="normalTextSmaller notranslate"><div class="notranslate">Zethyr</div></span></a></td>
+</tr>
+</table>
+				<p></p>
+			</td>
+
+			<td class="CenterColumn">&nbsp;&nbsp;&nbsp;</td>
+			
+            <!-- right column -->
+			<td id="ctl00_cphRoblox_RightColumn" nowrap="nowrap" width="160" class="RightColumn" style="padding-top:88px;">
+			    
+            <div style="width: 160px">
+    <span id="3436373534393438" class="GPTAd skyscraper" data-js-adtype="gptAd">
+        <script type="text/javascript">
+            googletag.cmd.push(function () {
+                googletag.display("3436373534393438");
+            });
+        </script>
+    </span>
+    <div class="ad-annotations " style="width: 160px">
+        <span class="ad-identification">Advertisement
+        </span>
+            <a class="BadAdButton" href="/Ads/ReportAd.aspx" title="click to report an offensive ad">Report</a>
+    </div>
+</div>
+
+			</td>
+
+            <td class="RightColumn">&nbsp;&nbsp;&nbsp;</td>
+		</tr>
+	</table>
+
+
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+        </div> 
+        </div>
+        
+            
+<div id="Footer" class="footer-container">
+    <div class="FooterNav">
+        <a href="/info/Privacy.aspx">Privacy Policy</a>
+        &nbsp;|&nbsp; 
+        <a href="http://corp.roblox.com/advertise-on-roblox" class="roblox-interstitial">Advertise with Us</a>
+        &nbsp;|&nbsp; 
+        <a href="http://corp.roblox.com/roblox-press" class="roblox-interstitial">Press</a>
+        &nbsp;|&nbsp; 
+        <a href="http://corp.roblox.com/contact-us" class="roblox-interstitial">Contact Us</a>
+        &nbsp;|&nbsp;
+        <a href="http://corp.roblox.com/" class="roblox-interstitial">About Us</a>
+        &nbsp;|&nbsp;
+        <a href="http://blog.roblox.com/" class="roblox-interstitial">Blog</a>
+        &nbsp;|&nbsp;
+        <a href="http://corp.roblox.com/jobs" class="roblox-interstitial">Jobs</a>
+        &nbsp;|&nbsp;
+            <a href="/Parents.aspx">Parents</a>
+        &nbsp;|&nbsp;
+        <a href="http://shop.roblox.com/" class="roblox-interstitial">Shop</a>
+            <span class="LanguageOptionElement">&nbsp;|&nbsp;</span>
+            <span runat="server" navigateurl="/Parents.aspx" ref="footer-parents" class="LanguageOptionElement LanguageTrigger" drop-down-nav-button="LanguageTrigger">English&nbsp;<span class="FooterArrow">▼</span>
+                <div class="dropuplanguagecontainer" style="display:none;" drop-down-nav-container="LanguageTrigger">
+                    <div class="dropdownmainnav" style="z-index:1023">
+                            <a href="/UserLanguage/LanguageRedirect?languageCode=de&amp;relativePath=%2fForum%2findex.html" class="LanguageOption js-lang" data-js-langcode="de"><span class="notranslate">Deutsch</span>&nbsp;(German) </a>
+                    </div>
+                </div>
+            </span>
+    </div>
+    <div class="FooterNav">
+        <div id="SEOGenreLinks" class="SEOGenreLinks">
+                  <a href="/all-games">All Games</a> 
+                      <span>|</span>
+                  <a href="/building-games">Building</a> 
+                      <span>|</span>
+                  <a href="/horror-games">Horror</a> 
+                      <span>|</span>
+                  <a href="/town-and-city-games">Town and City</a> 
+                      <span>|</span>
+                  <a href="/military-games">Military</a> 
+                      <span>|</span>
+                  <a href="/comedy-games">Comedy</a> 
+                      <span>|</span>
+                  <a href="/medieval-games">Medieval</a> 
+                      <span>|</span>
+                  <a href="/adventure-games">Adventure</a> 
+                      <span>|</span>
+                  <a href="/sci-fi-games">Sci-Fi</a> 
+                      <span>|</span>
+                  <a href="/naval-games">Naval</a> 
+                      <span>|</span>
+                  <a href="/fps-games">FPS</a> 
+                      <span>|</span>
+                  <a href="/rpg-games">RPG</a> 
+                      <span>|</span>
+                  <a href="/sports-games">Sports</a> 
+                      <span>|</span>
+                  <a href="/fighting-games">Fighting</a> 
+                      <span>|</span>
+                  <a href="/western-games">Western</a> 
+        </div>
+    </div>
+    <div class="legal">
+        <div class="left">
+            <div id="a15b1695-1a5a-49a9-94f0-9cd25ae6c3b2">
+    <a href="//web.archive.org/web/20131207174009/http://privacy.truste.com/privacy-seal/Roblox-Corporation/validation?rid=2428aa2a-f278-4b6d-9095-98c4a2954215" title="TRUSTe Children privacy certification" target="_blank">
+        <img style="border: none" src="http://privacy-policy.truste.com/privacy-seal/Roblox-Corporation/seal?rid=2428aa2a-f278-4b6d-9095-98c4a2954215" alt="TRUSTe Children privacy certification"/>
+    </a>
+</div>
+        </div>
+        <div class="right">
+            <p class="Legalese">
+    ROBLOX, "Online Building Toy", characters, logos, names, and all related indicia are trademarks of <a href="http://corp.roblox.com/" ref="footer-smallabout" class="roblox-interstitial">ROBLOX Corporation</a>, ©2013. Patents pending.
+    ROBLOX is not sponsored, authorized or endorsed by any producer of plastic building bricks, including The LEGO Group, MEGA Brands, and K'Nex, and no resemblance to the products of these companies is intended. Use of this site signifies your acceptance of the <a href="/info/terms-of-service" ref="footer-terms">Terms and Conditions</a>.
+</p>
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+
+
+        
+        </div></div>
+    </div>
+    <div id="ChatContainer" style="position:fixed;bottom:0;right:0;z-index:1000;">
+        
+        
+    </div>
+
+    
+        
+        <script src="http://www.google-analytics.com/urchin.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            _uacct = "UA-486632-1";
+            _udn = "roblox.com";
+            _uccn = "rbx_campaign";
+            _ucmd = "rbx_medium";
+            _ucsr = "rbx_source";
+            urchinTracker();
+            __utmSetVar('Visitor/Anonymous');
+        </script>
+    
+
+    
+
+<script type="text/javascript">
+//<![CDATA[
+$(function() { RobloxEventManager.triggerEvent('rbx_evt_newuser', {}); });if(typeof __utmSetVar !== 'undefined'){ __utmSetVar(''); }if(typeof __utmSetVar !== 'undefined'){ __utmSetVar('Roblox_Forums_Middle_728x90'); }if(typeof __utmSetVar !== 'undefined'){ __utmSetVar('Roblox_Forums_Right_160x600'); }//]]>
+</script>
+</form>
+    
+    
+    
+<div id="InstallationInstructions" class="modalPopup blueAndWhite" style="display:none;overflow:hidden">
+    <a id="CancelButton2" onclick="return Roblox.Client._onCancel();" class="ImageButton closeBtnCircle_35h ABCloseCircle"></a>
+    <div style="padding-bottom:10px;text-align:center">
+        <br/><br/>
+    </div>
+</div>
+
+
+<div id="pluginObjDiv" style="height:1px;width:1px;visibility:hidden;position: absolute;top: 0;"></div>
+<iframe id="downloadInstallerIFrame" style="visibility:hidden;height:0;width:1px;position:absolute"></iframe>
+
+
+<script type="text/javascript" src="http://js.rbxcdn.com/8bcdddfb9aa61c2e1d92e5b8b5afff52.js"></script>
+
+<script type="text/javascript">
+    Roblox.Client._skip = '/install/unsupported.aspx';
+    Roblox.Client._CLSID = '';
+    Roblox.Client._installHost = '';
+    Roblox.Client.ImplementsProxy = false;
+    Roblox.Client._silentModeEnabled = false;
+    Roblox.Client._bringAppToFrontEnabled = false;
+
+         Roblox.Client._installSuccess = function() { urchinTracker('InstallSuccess'); };
+
+    $(function () {
+        Roblox.Client.Resources = {
+            //<sl:translate>
+            here: "here",
+            youNeedTheLatest: "You need Our Plugin for this.  Get the latest version from ",
+            plugInInstallationFailed: "Plugin installation failed!",
+            errorUpdating: "Error updating: "
+            //</sl:translate>
+        };
+    });
+
+</script>
+
+<div id="PlaceLauncherStatusPanel" style="display:none;width:300px">
+    <div class="modalPopup blueAndWhite PlaceLauncherModal" style="min-height: 160px">
+        <div id="Spinner" class="Spinner" style="margin:0 1em 1em 0; padding:20px 0;">
+            <img src="http://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif" alt="Progress"/>
+        </div>
+        <div id="status" style="min-height:40px;text-align:center;margin:5px 20px">
+            <div id="Starting" class="PlaceLauncherStatus MadStatusStarting" style="display:block">
+                Starting Roblox...
+            </div>
+            <div id="Waiting" class="PlaceLauncherStatus MadStatusField">Connecting to Players...</div>
+            <div id="StatusBackBuffer" class="PlaceLauncherStatus PlaceLauncherStatusBackBuffer MadStatusBackBuffer"></div>
+        </div>
+        <div style="text-align:center;margin-top:1em">
+            <input type="button" class="Button CancelPlaceLauncherButton translate" value="Cancel"/>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://js.rbxcdn.com/507606ba77acf2ff29dd3ec7cb668f06.js"></script>
+
+    <div id="videoPrerollPanel" style="display:none">
+        <div id="videoPrerollTitleDiv">
+            Gameplay sponsored by:
+        </div>
+        <div id="videoPrerollMainDiv"></div>
+        <div id="videoPrerollCompanionAd"></div>
+        <div id="videoPrerollLoadingDiv">
+            Loading <span id="videoPrerollLoadingPercent">0%</span> - <span id="videoPrerollMadStatus" class="MadStatusField">Starting game...</span><span id="videoPrerollMadStatusBackBuffer" class="MadStatusBackBuffer"></span>
+            <div id="videoPrerollLoadingBar">
+                <div id="videoPrerollLoadingBarCompleted">
+                </div>
+            </div>
+        </div>
+        <div id="videoPrerollJoinBC">
+            <span>Get more with Builders Club!</span>
+            <a href="/Upgrades/BuildersClubMemberships.aspx?ref=vpr" target="_blank" id="videoPrerollJoinBCButton"></a>
+        </div>
+    </div>
+    <script type="text/javascript">
+        Roblox.VideoPreRoll.showVideoPreRoll = false;
+        Roblox.VideoPreRoll.loadingBarMaxTime = 30000;
+        Roblox.VideoPreRoll.videoOptions.key = "robloxcorporation";
+        Roblox.VideoPreRoll.videoOptions.categories = "NonBC,IsLoggedIn,AgeUnknown,GenderUnknown";
+             Roblox.VideoPreRoll.videoOptions.id = "games";
+        Roblox.VideoPreRoll.videoLoadingTimeout = 11000;
+        Roblox.VideoPreRoll.videoPlayingTimeout = 23000;
+        Roblox.VideoPreRoll.videoLogNote = "NotWindows";
+        Roblox.VideoPreRoll.logsEnabled = true;
+        Roblox.VideoPreRoll.excludedPlaceIds = "32373412";
+            
+                Roblox.VideoPreRoll.specificAdOnPlacePageEnabled = true;
+                Roblox.VideoPreRoll.specificAdOnPlacePageId = 96623001;
+                Roblox.VideoPreRoll.specificAdOnPlacePageCategory = "stooges";
+            
+            
+                Roblox.VideoPreRoll.specificAdOnPlacePage2Enabled = true;
+                Roblox.VideoPreRoll.specificAdOnPlacePage2Id = 122911678;
+                Roblox.VideoPreRoll.specificAdOnPlacePage2Category = "lego";
+            
+        $(Roblox.VideoPreRoll.checkEligibility);
+    </script>
+
+<div id="GuestModePrompt_BoyGirl" class="Revised GuestModePromptModal" style="display:none;">
+    <div class="simplemodal-close">
+        <a class="ImageButton closeBtnCircle_20h" style="cursor: pointer; margin-left:455px;top:7px; position:absolute;"></a>
+    </div>
+    <div class="Title">
+        Choose Your Character
+    </div>
+    <div style="min-height: 275px; background-color: white;">
+        <div style="clear:both; height:25px;"></div>
+
+        <div style="text-align: center;">
+            <div class="VisitButtonsGuestCharacter VisitButtonBoyGuest" style="float:left; margin-left:45px;"></div>
+            <div class="VisitButtonsGuestCharacter VisitButtonGirlGuest" style="float:right; margin-right:45px;"></div>
+        </div>
+        <div style="clear:both; height:25px;"></div>
+        <div class="RevisedFooter">
+            <div style="width:200px;margin:10px auto 0 auto;">
+                <a href="#" onclick="redirectPlaceLauncherToRegister(); return false;"><div class="RevisedCharacterSelectSignup"></div></a>
+                <a class="HaveAccount" href="#" onclick="redirectPlaceLauncherToLogin();return false;">I have an account</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function checkRobloxInstall() {
+                 window.location= '/install/unsupported.aspx'; return false;
+    }
+        if (typeof MadStatus === "undefined") {
+            MadStatus = {};
+        }
+
+        MadStatus.Resources = {
+            //<sl:translate>
+            accelerating: "Accelerating",
+			aggregating: "Aggregating",
+			allocating: "Allocating",
+            acquiring: "Acquiring",
+			automating: "Automating",
+			backtracing: "Backtracing",
+			bloxxing: "Bloxxing",
+			bootstrapping: "Bootstrapping",
+			calibrating: "Calibrating",
+			correlating: "Correlating",
+			denoobing: "De-noobing",
+			deionizing: "De-ionizing",
+			deriving: "Deriving",
+            energizing: "Energizing",
+			filtering: "Filtering",
+			generating: "Generating",
+			indexing: "Indexing",
+			loading: "Loading",
+			noobing: "Noobing",
+			optimizing: "Optimizing",
+			oxidizing: "Oxidizing",
+			queueing: "Queueing",
+			parsing: "Parsing",
+			processing: "Processing",
+			rasterizing: "Rasterizing",
+			reading: "Reading",
+			registering: "Registering",
+			rerouting: "Re-routing",
+			resolving: "Resolving",
+			sampling: "Sampling",
+			updating: "Updating",
+			writing: "Writing",
+            blox: "Blox",
+			countzero: "Count Zero",
+			cylon: "Cylon",
+			data: "Data",
+			ectoplasm: "Ectoplasm",
+			encryption: "Encryption",
+			event: "Event",
+			farnsworth: "Farnsworth",
+			bebop: "Bebop",
+			fluxcapacitor: "Flux Capacitor",
+			fusion: "Fusion",
+			game: "Game",
+			gibson: "Gibson",
+			host: "Host",
+			mainframe: "Mainframe",
+			metaverse: "Metaverse",
+			nerfherder: "Nerf Herder",
+			neutron: "Neutron",
+			noob: "Noob",
+			photon: "Photon",
+			profile: "Profile",
+			script: "Script",
+			skynet: "Skynet",
+			tardis: "TARDIS",
+			virtual: "Virtual",
+            analogs: "Analogs",
+			blocks: "Blocks",
+			cannon: "Cannon",
+			channels: "Channels",
+			core: "Core",
+			database: "Database",
+			dimensions: "Dimensions",
+			directives: "Directives",
+			engine: "Engine",
+			files: "Files",
+			gear: "Gear",
+			index: "Index",
+			layer: "Layer",
+			matrix: "Matrix",
+			paradox: "Paradox",
+			parameters: "Parameters",
+			parsecs: "Parsecs",
+			pipeline: "Pipeline",
+			players: "Players",
+			ports: "Ports",
+			protocols: "Protocols",
+			reactors: "Reactors",
+			sphere: "Sphere",
+			spooler: "Spooler",
+			stream: "Stream",
+			switches: "Switches",
+			table: "Table",
+			targets: "Targets",
+			throttle: "Throttle",
+			tokens: "Tokens",
+			torpedoes: "Torpedoes",
+			tubes: "Tubes"
+            //</sl:translate>
+        };
+</script>
+
+<script type="text/javascript" src="http://js.rbxcdn.com/5225bbbcf23c8bfd5e9425ee18202d88.js"></script>
+
+<script type="text/javascript">
+    var Roblox = Roblox || {};
+    Roblox.UpsellAdModal = Roblox.UpsellAdModal || {};
+
+    Roblox.UpsellAdModal.Resources = {
+        //<sl:translate>
+        title: "Remove Ads Like This",
+        body: "Builders Club members do not see external ads like these.",
+        accept: "Upgrade Now",
+        decline: "No, thanks"
+        //</sl:translate>
+    };
+</script>  
+
+<div class="ConfirmationModal modalPopup unifiedModal smallModal" data-modal-handle="confirmation" style="display:none;">
+    <a class="genericmodal-close ImageButton closeBtnCircle_20h"></a>
+    <div class="Title"></div>
+    <div class="GenericModalBody">
+        <div class="TopBody">
+            <div class="ImageContainer roblox-item-image" data-image-size="small" data-no-overlays data-no-click>
+                <img class="GenericModalImage" alt="generic image"/>
+            </div>
+            <div class="Message"></div>
+        </div>
+        <div class="ConfirmationModalButtonContainer">
+            <a href roblox-confirm-btn><span></span></a>
+            <a href roblox-decline-btn><span></span></a>
+        </div>
+        <div class="ConfirmationModalFooter">
+        
+        </div>  
+    </div>   
+    <script type="text/javascript">
+        //<sl:translate>
+        Roblox.GenericConfirmation.Resources = { yes: "Yes", No: "No" }
+        //</sl:translate>
+    </script>
+</div>
+
+
+        <img src="https://secure.adnxs.com/seg?add=550800&amp;t=2" width="1" height="1" style="display:none;"/>
+
+</body>                
+</html>
+<!--
+     FILE ARCHIVED ON 17:40:09 Dec 07, 2013 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 10:07:14 Dec 23, 2018.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+-->
+<!--
+playback timings (ms):
+  LoadShardBlock: 159.371 (3)
+  esindex: 0.018
+  captures_list: 192.208
+  CDXLines.iter: 18.517 (3)
+  PetaboxLoader3.datanode: 139.119 (4)
+  exclusion.robots: 0.319
+  exclusion.robots.policy: 0.308
+  RedisCDXSource: 1.092
+  PetaboxLoader3.resolve: 45.853
+  load_resource: 81.727
+-->

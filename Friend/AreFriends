@@ -1,0 +1,8 @@
+<?php
+$everyoneisfriendswitheveryone = true;
+if ($_GET["userId"] !== null) {
+	if ($everyoneisfriendswitheveryone == true) {
+		echo '<Value Type="boolean">true</Value>';
+	}
+}
+?>

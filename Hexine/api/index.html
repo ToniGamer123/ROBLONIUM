@@ -1,0 +1,50 @@
+<?php
+session_start();
+include_once $_SERVER["DOCUMENT_ROOT"] . '/global.php';
+if ($SESSION['player']->id !== 0 and isset($SESSION['player'])){
+	header("Location: /welcome.php");
+	die();
+}
+?>
+<html>
+	<head>
+		<title>Hello Gamer</title>
+		<link rel="stylesheet" type="text/css" href="../../loading.css?3" />
+		<script type="text/javascript" src="../../jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+	
+		<table id="wrapper" style="box-shadow: inset 0px 0px 20px 2px;">
+		<tr>
+		<td><img src="../../images/RobloniumAdminLogo.png" alt="" style="-webkit-animation-name: walk; -webkit-animation-duration: 10.0s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: cubic-bezier(1, 0.24, 0, -0.6); -webkit-perspective: 6000px;" />
+			<center>
+				<br />
+				<div id = "loadtext" class ="loading_text">epikness awaits</div>
+			</center>
+		</td>
+		</tr>
+		</table>
+		<div id="wrapper" style="position: absolute; left: 0px; top: 80%; vertical-align: middle; text-align: center;">
+		<a href="https://discordapp.com/invite/pPAfUDM?utm_source=Discord%20Widget&utm_medium=Connect">
+		<image src="../../images/Discord.png" style="max-width: 10%; max-height: 10%;"></image>
+		<a/>
+		<div id = "loadtext" class ="loading_text" style="font-size: 30px">Check us out on Discord!</div>
+		<div/>
+
+		<script type="text/javascript">
+
+			$(window).resize(function(){
+
+				$('.className').css({
+					position:'absolute',
+					left: ($(window).width() - $('.className').outerWidth())/2,
+					top: ($(window).height() - $('.className').outerHeight())/2
+				});
+	
+				});
+
+				// To initially run the function:
+				$(window).resize();
+		</script
+	</body>
+</html>

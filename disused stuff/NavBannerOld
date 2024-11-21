@@ -1,0 +1,85 @@
+<div id="Container">
+            
+                   
+
+<style type="text/css">
+    div.mySubmenuFixed {
+        top: 36px;
+        background-color: #191919;
+        height: 25px;
+        *top: 0px;
+    }
+</style>
+<div id="Banner" class="BannerRedesign">
+    <div id="NavigationRedesignBannerContainer" class="BannerCenterContainer">
+        <a href="" id="navbar-logo" class="btn-logo" data-se="nav-logo"></a>
+        <div id="NavRedesign" class="NavigationRedesign">
+            <ul id="ctl00_cphBanner_ctl00_MenuUL">
+                <li><a href="" ref="nav-myroblox" data-se="nav-myhome">Home</a></li>
+                <li class="gamesLink"><a id="hlGames" data-se="nav-games" href="/Games" title="Games" ref="nav-games">Games</a> </li>
+                <li class="catalogLink"><a id="hlCatalog" data-se="nav-catalog" href="/Catalog" title="Catalog" ref="nav-catalog">Catalog</a></li>
+                <li><a id="BuildLink" data-se="nav-build" href="/My/Places.aspx" title="Build" ref="nav-build">Build</a></li>
+                <li class="upgradeLink"><a id="hlBuildersClub" data-se="nav-upgrade" href="/Upgrades/BuildersClubMemberships.aspx" title="Upgrade" ref="nav-buildersclub">Upgrade</a></li>
+                <li><a data-se="nav-forum" onclick="" href="/Forum" style="" title="Forum" ref="nav-forum">Forum</a></li>
+                
+                <li class="moreLink" drop-down-nav-button="moreLink">
+                    <div class="LinkContainer">
+                        <a id="hlMore" title="More" data-se="nav-more" ref="nav-more">More<span id="moreMenuToggle"></span></a> 
+                    </div>
+                    <div class="dropdownnavcontainer" style="display:none;" drop-down-nav-container="moreLink">
+                        <div class="dropdownmainnav" style="z-index:1023">
+                            <a class="dropdownoption" data-se="nav-more-browse" href="/Browse.aspx" title="People" ref="nav-people"><span>People</span></a>
+                            <a class="dropdownoption" data-se="nav-more-blog" href="http://blog.roblox.com/" title="Blog" ref="nav-news"><span>Blog</span></a>
+                            
+                                   <a class="dropdownoption" data-se="nav-more-sponsoredpage" href="/SponsoredPage/NewChatSystem" title="Chat Update" ref="nav-sponsoredpage">
+                                       <span style="display:none;">
+                                       Chat Update
+                                       
+                                       </span>
+                                   </a>
+                            
+                            <a class="dropdownoption" data-se="nav-more-help" href="/Help/Builderman.aspx" title="Help" ref="nav-help"><span>Help</span></a>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+  <div id="SiteWideHeaderLogin">
+    <div id="HeaderLoginButton" class="iFrameLoginSignUp">
+		<a id="HeaderSignUp" href="/Login/NewAge.aspx">Sign Up</a>
+		<span id="HeaderOr">or</span>
+        <span id="loginSpan">
+		    <a id="headerLogin" class="btn-control btn-control-large">Login <span class="grey-arrow">▼</span></a>
+        </span>
+		<div id="iFrameLogin" style="display:none">
+		<iframe class="loginFrame" src="/Login/iFrameLogin.aspx?loginRedirect=True&amp;parentUrl=http%3a%2f%2fwww.roblox.com%2fitem.aspx%3fseoname%3dGravity-Coil%26id%3d16688968" scrolling="no" frameborder="0"></iframe>
+    </div>
+</div>                
+</div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.moreLink').bind('showDropDown', function (e) {
+            var maxWidth = $('#NavRedesign .dropdownnavcontainer').width();
+            $('a.dropdownoption span').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.outerWidth() > maxWidth) {
+                    maxWidth = elem.outerWidth();
+                }
+            });
+            maxWidth = maxWidth + 5;
+            $('#NavRedesign .dropdownoption').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.width() < maxWidth) {
+                    elem.width(maxWidth);
+                }
+            });
+
+        });
+    });
+</script>
+<div class="forceSpace">&nbsp;</div>
+</div>
+</div>

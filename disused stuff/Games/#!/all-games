@@ -1,0 +1,507 @@
+<?php
+include_once $_SERVER["DOCUMENT_ROOT"] . '/global.php';
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true"/><title>
+	Roblonium Games - Do stuff
+</title>
+    
+        <style type="text/css">
+            
+        </style>
+    
+     <!--script type="text/javascript">
+         function checkForRedirect() {
+             // If it's a page load, and there's a hash in the URL, we've definitely loaded the wrong data
+             // is because hashes dont get sent to the server in requests from the browser.
+             // Thus, if we see someone trying to load a page with a hash in it on pageload (external link coming
+             // to our site, or copy paste), we should immediately refresh the page with the server friendly url
+             var loc = window.location.href;
+             var indexOfHash = loc.indexOf('#!');
+             if (indexOfHash > 0) {
+                 var newLoc = loc.substr(indexOfHash + 2);
+                 window.location.replace(newLoc);
+             }
+         }
+         checkForRedirect();
+     </script-->
+    <meta name="fragment" content="!"><!--This tag informs search engine that this is an Ajax page et that there is a dynamic content to index (see the Ajax section).-->
+<link rel="icon" type="image/vnd.microsoft.icon" href="/roblonium_c5x_icon.ico"/><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><meta http-equiv="Content-Language" content="en-us"/><meta name="author" content="ROBLONIUM"/><meta id="ctl00_metadescription" name="description" content="Welcome to the games page!"/><meta id="ctl00_metakeywords" name="keywords" content="Hexine Roblonium revival"/>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-11419793-1']);
+    _gaq.push(['_setCampSourceKey', 'rbx_source']);
+    _gaq.push(['_setCampMediumKey', 'rbx_medium']);
+    _gaq.push(['_setCampContentKey', 'rbx_campaign']);
+    
+    
+    
+    _gaq.push(['b._setAccount', 'UA-486632-1']);
+    _gaq.push(['b._setCampSourceKey', 'rbx_source']);
+    _gaq.push(['b._setCampMediumKey', 'rbx_medium']);
+    _gaq.push(['b._setCampContentKey', 'rbx_campaign']);
+
+    
+        _gaq.push(['c._setAccount', 'UA-26810151-2']);
+    
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl/' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/puzzle/ScriptGlobals.php";?>
+
+<link rel="alternate" type="application/rss+xml" title="Roblonium Games - Do stuff" href="/games?feed=rss"/></head>
+<body roblox-js-usercheckcontrollerenabled="True">
+
+    <script type="text/javascript">Roblox.XsrfToken.setToken('');</script>
+ 
+    <script type="text/javascript">
+        if (top.location != self.location) {
+            top.location = self.location.href;
+        }
+    </script>
+  
+<style type="text/css">
+    
+    #LeftGutterAdContainer 
+    {
+        margin-left: -900px;
+        width: 400px;
+    }
+    #RightGutterAdContainer
+    {
+        margin-left: 500px;
+        width: 400px;
+    }
+    #Footer
+    {
+        position: relative;
+    }                        
+    
+    div#Footer 
+    {
+        
+		width: 970px;
+		
+        margin: 0 auto;
+    }
+    
+</style>
+
+      <!--[if IE 7]>
+        <style>
+            #LeftGutterAdContainer 
+            {
+                margin-left: -898px;
+                width: 400px;
+            }
+            #RightGutterAdContainer
+            {
+                margin-left: 498px;
+                width: 400px;
+            }
+        </style>
+      <![endif]-->
+<form name="aspnetForm" method="post" action="/games" id="aspnetForm">
+<div>
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUJLTY3ODM3NTI4D2QWAmYPZBYCAgEQFgIeBmFjdGlvbgULL0dhbWVzLmFzcHhkFgoCAw8PFgIeB1Zpc2libGVoZBYCZg9kFggCAQ8QZGQWAGQCAg8QZGQWAWZkAgMPEGRkFgFmZAIEDxBkZBYBZmQCBA8PFgIfAWhkZAILDw8WAh8BaGRkAg4PZBYEZg8WAh8BZ2QCAQ8WAh4FY2xhc3MFFENvbHVtbjFlIE5ld01lbnVMb29rFgRmDxYCHwFoFgICAQ8PFgIeC05hdmlnYXRlVXJsBSlodHRwOi8vd3d3LnJvYmxveC5jb20vR2FtZXMuYXNweD9mZWVkPXJzc2RkAgEPFgIeC18hSXRlbUNvdW50Ag8WHmYPZBYCZg8VBgADYWxsA2FsbAAJQWxsIEdhbWVzA0FsbGQCAQ9kFgJmDxUGAAhidWlsZGluZwhidWlsZGluZ9MFUm9ibG94IGlzIHByb3VkIHRvIG9mZmVyIHRoZSB3ZWImIzM5O3MgYmVzdCBjb2xsZWN0aW9uIG9mIGJ1aWxkaW5nIGdhbWVzLCBvdGhlciBmcmVlIG9ubGluZSBnYW1lcyBhbmQgM0QgdmlydHVhbCB3b3JsZHMuIFdlIGFyZSBjb21taXR0ZWQgdG8gbWFraW5nIHN1cmUgdGhhdCBhbGwgb2Ygb3VyIGZyZWUgZ2FtZXMgYXJlIGZ1biBhbmQgc2FmZS4gUm9ibG94IG1lbWJlcnMgY2FuIGNyZWF0ZSB0aGVpciBvd24gdmlydHVhbCB3b3JsZCBvbmxpbmUgZ2FtZXM7IGN1c3RvbWl6ZSB0aGVpciBhdmF0YXIgY2hhcmFjdGVyIHdpdGggdGhlIGJlc3QgdmlydHVhbCBnb29kcyBsaWtlIGhhdHMsIHNoaXJ0cyBhbmQgZ2VhcjsgYW5kIHBsYXkgZnJlZSBvbmxpbmUgYnVpbGRpbmcgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gQnVpbGRpbmcgZ2FtZXMsIEFjdGlvbiBnYW1lcywgQWR2ZW50dXJlIGdhbWVzLCBDb21lZHkgZ2FtZXMsIENhciBnYW1lcywgb3IgZXZlbiBUeWNvb24gZ2FtZXMsIGNvdW50IG9uIFJvYmxveCB0byBkZWxpdmVyIHRoZSBiZXN0IGZyZWUgb25saW5lIGdhbWVzIGZvciB5b3UgdG8gcGxheS4gQ2hlY2sgb3V0IG91ciBCdWlsZGVycyBDbHViIG1lbWJlcnNoaXAgc2VydmljZSBmb3IgYW4gZW5oYW5jZWQgYnVpbGRpbmcgZ2FtZXMgZXhwZXJpZW5jZS4gDkJ1aWxkaW5nIEdhbWVzCEJ1aWxkaW5nZAICD2QWAmYPFQYABmhvcnJvcgZob3Jyb3LNBVJvYmxveCBpcyBwcm91ZCB0byBvZmZlciB0aGUgd2ViJiMzOTtzIGJlc3QgY29sbGVjdGlvbiBvZiBob3Jyb3IgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSBob3Jyb3IgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gaG9ycm9yIGdhbWVzLCBBY3Rpb24gZ2FtZXMsIEFkdmVudHVyZSBnYW1lcywgQ29tZWR5IGdhbWVzLCBDYXIgZ2FtZXMsIG9yIGV2ZW4gVHljb29uIGdhbWVzLCBjb3VudCBvbiBSb2Jsb3ggdG8gZGVsaXZlciB0aGUgYmVzdCBmcmVlIG9ubGluZSBnYW1lcyBmb3IgeW91IHRvIHBsYXkuIENoZWNrIG91dCBvdXIgQnVpbGRlcnMgQ2x1YiBtZW1iZXJzaGlwIHNlcnZpY2UgZm9yIGFuIGVuaGFuY2VkIGJ1aWxkaW5nIGdhbWVzIGV4cGVyaWVuY2UuIAxIb3Jyb3IgR2FtZXMGSG9ycm9yZAIDD2QWAmYPFQYADXRvd24tYW5kLWNpdHkNdG93bi1hbmQtY2l0eeIFUm9ibG94IGlzIHByb3VkIHRvIG9mZmVyIHRoZSB3ZWImIzM5O3MgYmVzdCBjb2xsZWN0aW9uIG9mIHRvd24gYW5kIGNpdHkgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSB0b3duIGFuZCBjaXR5IGdhbWVzIHdpdGggdGhlaXIgZnJpZW5kcyB3aGlsZSBhbHNvIG1lZXRpbmcgbmV3IGZyaWVuZHMuIFdoZXRoZXIgeW91IGFyZSBpbnRlcmVzdGVkIGluIFRvd24gYW5kIENpdHkgZ2FtZXMsIEFjdGlvbiBnYW1lcywgQWR2ZW50dXJlIGdhbWVzLCBDb21lZHkgZ2FtZXMsIENhciBnYW1lcywgb3IgZXZlbiBUeWNvb24gZ2FtZXMsIGNvdW50IG9uIFJvYmxveCB0byBkZWxpdmVyIHRoZSBiZXN0IGZyZWUgb25saW5lIGdhbWVzIGZvciB5b3UgdG8gcGxheS4gQ2hlY2sgb3V0IG91ciBCdWlsZGVycyBDbHViIG1lbWJlcnNoaXAgc2VydmljZSBmb3IgYW4gZW5oYW5jZWQgYnVpbGRpbmcgZ2FtZXMgZXhwZXJpZW5jZS4gE1Rvd24gYW5kIENpdHkgR2FtZXMNVG93biBhbmQgQ2l0eWQCBA9kFgJmDxUGAAhtaWxpdGFyeQhtaWxpdGFyedMFUm9ibG94IGlzIHByb3VkIHRvIG9mZmVyIHRoZSB3ZWImIzM5O3MgYmVzdCBjb2xsZWN0aW9uIG9mIG1pbGl0YXJ5IGdhbWVzLCBvdGhlciBmcmVlIG9ubGluZSBnYW1lcyBhbmQgM0QgdmlydHVhbCB3b3JsZHMuIFdlIGFyZSBjb21taXR0ZWQgdG8gbWFraW5nIHN1cmUgdGhhdCBhbGwgb2Ygb3VyIGZyZWUgZ2FtZXMgYXJlIGZ1biBhbmQgc2FmZS4gUm9ibG94IG1lbWJlcnMgY2FuIGNyZWF0ZSB0aGVpciBvd24gdmlydHVhbCB3b3JsZCBvbmxpbmUgZ2FtZXM7IGN1c3RvbWl6ZSB0aGVpciBhdmF0YXIgY2hhcmFjdGVyIHdpdGggdGhlIGJlc3QgdmlydHVhbCBnb29kcyBsaWtlIGhhdHMsIHNoaXJ0cyBhbmQgZ2VhcjsgYW5kIHBsYXkgZnJlZSBvbmxpbmUgbWlsaXRhcnkgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gTWlsaXRhcnkgZ2FtZXMsIEFjdGlvbiBnYW1lcywgQWR2ZW50dXJlIGdhbWVzLCBDb21lZHkgZ2FtZXMsIENhciBnYW1lcywgb3IgZXZlbiBUeWNvb24gZ2FtZXMsIGNvdW50IG9uIFJvYmxveCB0byBkZWxpdmVyIHRoZSBiZXN0IGZyZWUgb25saW5lIGdhbWVzIGZvciB5b3UgdG8gcGxheS4gQ2hlY2sgb3V0IG91ciBCdWlsZGVycyBDbHViIG1lbWJlcnNoaXAgc2VydmljZSBmb3IgYW4gZW5oYW5jZWQgYnVpbGRpbmcgZ2FtZXMgZXhwZXJpZW5jZS4gDk1pbGl0YXJ5IEdhbWVzCE1pbGl0YXJ5ZAIFD2QWAmYPFQYABmNvbWVkeQZjb21lZHnNBVJvYmxveCBpcyBwcm91ZCB0byBvZmZlciB0aGUgd2ViJiMzOTtzIGJlc3QgY29sbGVjdGlvbiBvZiBjb21lZHkgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSBjb21lZHkgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gQ29tZWR5IGdhbWVzLCBBY3Rpb24gZ2FtZXMsIEFkdmVudHVyZSBnYW1lcywgQ29tZWR5IGdhbWVzLCBDYXIgZ2FtZXMsIG9yIGV2ZW4gVHljb29uIGdhbWVzLCBjb3VudCBvbiBSb2Jsb3ggdG8gZGVsaXZlciB0aGUgYmVzdCBmcmVlIG9ubGluZSBnYW1lcyBmb3IgeW91IHRvIHBsYXkuIENoZWNrIG91dCBvdXIgQnVpbGRlcnMgQ2x1YiBtZW1iZXJzaGlwIHNlcnZpY2UgZm9yIGFuIGVuaGFuY2VkIGJ1aWxkaW5nIGdhbWVzIGV4cGVyaWVuY2UuIAxDb21lZHkgR2FtZXMGQ29tZWR5ZAIGD2QWAmYPFQYACG1lZGlldmFsCG1lZGlldmFs0gVSb2Jsb3ggaXMgcHJvdWQgdG8gb2ZmZXIgdGhlIHdlYiYjMzk7cyBiZXN0IGNvbGxlY3Rpb24gb2YgbWVkaWV2YWwgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSBtZWRpZXZhbCBnYW1lcyB3aXRoIHRoZWlyIGZyaWVuZHMgd2hpbGUgYWxzbyBtZWV0aW5nIG5ldyBmcmllbmRzLiBXaGV0aGVyIHlvdSBhcmUgaW50ZXJlc3RlZCBpbiBNZWRpZXZhbCBnYW1lcywgQWN0aW9uIGdhbWVzLCBBZHZlbnR1cmUgZ2FtZXMsIENvbWVkeSBnYW1lcywgQ2FyIGdhbWVzLCBvciBldmVuIFR5Y29vbiBnYW1lcywgY291bnQgb24gUm9ibG94IHRvIGRlbGl2ZXIgdGhlIGJlc3QgZnJlZSBvbmxpbmUgZ2FtZXMgZm9yIHlvdSB0byBwbGF5LiBDaGVjayBvdXQgb3VyIEJ1aWxkZXJzIENsdWIgbWVtYmVyc2hpcCBzZXJ2aWNlIGZvciBhbiBlbmhhbmNlZCBidWlsZGluZyBnYW1lcyBleHBlcmllbmNlLg5NZWRpZXZhbCBHYW1lcwhNZWRpZXZhbGQCBw9kFgJmDxUGAAlhZHZlbnR1cmUJYWR2ZW50dXJl1gVSb2Jsb3ggaXMgcHJvdWQgdG8gb2ZmZXIgdGhlIHdlYiYjMzk7cyBiZXN0IGNvbGxlY3Rpb24gb2YgYWR2ZW50dXJlIGdhbWVzLCBvdGhlciBmcmVlIG9ubGluZSBnYW1lcyBhbmQgM0QgdmlydHVhbCB3b3JsZHMuIFdlIGFyZSBjb21taXR0ZWQgdG8gbWFraW5nIHN1cmUgdGhhdCBhbGwgb2Ygb3VyIGZyZWUgZ2FtZXMgYXJlIGZ1biBhbmQgc2FmZS4gUm9ibG94IG1lbWJlcnMgY2FuIGNyZWF0ZSB0aGVpciBvd24gdmlydHVhbCB3b3JsZCBvbmxpbmUgZ2FtZXM7IGN1c3RvbWl6ZSB0aGVpciBhdmF0YXIgY2hhcmFjdGVyIHdpdGggdGhlIGJlc3QgdmlydHVhbCBnb29kcyBsaWtlIGhhdHMsIHNoaXJ0cyBhbmQgZ2VhcjsgYW5kIHBsYXkgZnJlZSBvbmxpbmUgYWR2ZW50dXJlIGdhbWVzIHdpdGggdGhlaXIgZnJpZW5kcyB3aGlsZSBhbHNvIG1lZXRpbmcgbmV3IGZyaWVuZHMuIFdoZXRoZXIgeW91IGFyZSBpbnRlcmVzdGVkIGluIEFkdmVudHVyZSBnYW1lcywgQWN0aW9uIGdhbWVzLCBBZHZlbnR1cmUgZ2FtZXMsIENvbWVkeSBnYW1lcywgQ2FyIGdhbWVzLCBvciBldmVuIFR5Y29vbiBnYW1lcywgY291bnQgb24gUm9ibG94IHRvIGRlbGl2ZXIgdGhlIGJlc3QgZnJlZSBvbmxpbmUgZ2FtZXMgZm9yIHlvdSB0byBwbGF5LiBDaGVjayBvdXQgb3VyIEJ1aWxkZXJzIENsdWIgbWVtYmVyc2hpcCBzZXJ2aWNlIGZvciBhbiBlbmhhbmNlZCBidWlsZGluZyBnYW1lcyBleHBlcmllbmNlLiAPQWR2ZW50dXJlIEdhbWVzCUFkdmVudHVyZWQCCA9kFgJmDxUGAAZzY2ktZmkGc2NpLWZpzQVSb2Jsb3ggaXMgcHJvdWQgdG8gb2ZmZXIgdGhlIHdlYiYjMzk7cyBiZXN0IGNvbGxlY3Rpb24gb2Ygc2NpLWZpIGdhbWVzLCBvdGhlciBmcmVlIG9ubGluZSBnYW1lcyBhbmQgM0QgdmlydHVhbCB3b3JsZHMuIFdlIGFyZSBjb21taXR0ZWQgdG8gbWFraW5nIHN1cmUgdGhhdCBhbGwgb2Ygb3VyIGZyZWUgZ2FtZXMgYXJlIGZ1biBhbmQgc2FmZS4gUm9ibG94IG1lbWJlcnMgY2FuIGNyZWF0ZSB0aGVpciBvd24gdmlydHVhbCB3b3JsZCBvbmxpbmUgZ2FtZXM7IGN1c3RvbWl6ZSB0aGVpciBhdmF0YXIgY2hhcmFjdGVyIHdpdGggdGhlIGJlc3QgdmlydHVhbCBnb29kcyBsaWtlIGhhdHMsIHNoaXJ0cyBhbmQgZ2VhcjsgYW5kIHBsYXkgZnJlZSBvbmxpbmUgc2NpLWZpIGdhbWVzIHdpdGggdGhlaXIgZnJpZW5kcyB3aGlsZSBhbHNvIG1lZXRpbmcgbmV3IGZyaWVuZHMuIFdoZXRoZXIgeW91IGFyZSBpbnRlcmVzdGVkIGluIFNjaS1GaSBnYW1lcywgQWN0aW9uIGdhbWVzLCBBZHZlbnR1cmUgZ2FtZXMsIENvbWVkeSBnYW1lcywgQ2FyIGdhbWVzLCBvciBldmVuIFR5Y29vbiBnYW1lcywgY291bnQgb24gUm9ibG94IHRvIGRlbGl2ZXIgdGhlIGJlc3QgZnJlZSBvbmxpbmUgZ2FtZXMgZm9yIHlvdSB0byBwbGF5LiBDaGVjayBvdXQgb3VyIEJ1aWxkZXJzIENsdWIgbWVtYmVyc2hpcCBzZXJ2aWNlIGZvciBhbiBlbmhhbmNlZCBidWlsZGluZyBnYW1lcyBleHBlcmllbmNlLiAMU2NpLUZpIEdhbWVzBlNjaS1GaWQCCQ9kFgJmDxUGAAVuYXZhbAVuYXZhbMoFUm9ibG94IGlzIHByb3VkIHRvIG9mZmVyIHRoZSB3ZWImIzM5O3MgYmVzdCBjb2xsZWN0aW9uIG9mIG5hdmFsIGdhbWVzLCBvdGhlciBmcmVlIG9ubGluZSBnYW1lcyBhbmQgM0QgdmlydHVhbCB3b3JsZHMuIFdlIGFyZSBjb21taXR0ZWQgdG8gbWFraW5nIHN1cmUgdGhhdCBhbGwgb2Ygb3VyIGZyZWUgZ2FtZXMgYXJlIGZ1biBhbmQgc2FmZS4gUm9ibG94IG1lbWJlcnMgY2FuIGNyZWF0ZSB0aGVpciBvd24gdmlydHVhbCB3b3JsZCBvbmxpbmUgZ2FtZXM7IGN1c3RvbWl6ZSB0aGVpciBhdmF0YXIgY2hhcmFjdGVyIHdpdGggdGhlIGJlc3QgdmlydHVhbCBnb29kcyBsaWtlIGhhdHMsIHNoaXJ0cyBhbmQgZ2VhcjsgYW5kIHBsYXkgZnJlZSBvbmxpbmUgbmF2YWwgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gTmF2YWwgZ2FtZXMsIEFjdGlvbiBnYW1lcywgQWR2ZW50dXJlIGdhbWVzLCBDb21lZHkgZ2FtZXMsIENhciBnYW1lcywgb3IgZXZlbiBUeWNvb24gZ2FtZXMsIGNvdW50IG9uIFJvYmxveCB0byBkZWxpdmVyIHRoZSBiZXN0IGZyZWUgb25saW5lIGdhbWVzIGZvciB5b3UgdG8gcGxheS4gQ2hlY2sgb3V0IG91ciBCdWlsZGVycyBDbHViIG1lbWJlcnNoaXAgc2VydmljZSBmb3IgYW4gZW5oYW5jZWQgYnVpbGRpbmcgZ2FtZXMgZXhwZXJpZW5jZS4gC05hdmFsIEdhbWVzBU5hdmFsZAIKD2QWAmYPFQYAA2ZwcwNmcHPEBVJvYmxveCBpcyBwcm91ZCB0byBvZmZlciB0aGUgd2ViJiMzOTtzIGJlc3QgY29sbGVjdGlvbiBvZiBGUFMgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSBGUFMgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gRlBTIGdhbWVzLCBBY3Rpb24gZ2FtZXMsIEFkdmVudHVyZSBnYW1lcywgQ29tZWR5IGdhbWVzLCBDYXIgZ2FtZXMsIG9yIGV2ZW4gVHljb29uIGdhbWVzLCBjb3VudCBvbiBSb2Jsb3ggdG8gZGVsaXZlciB0aGUgYmVzdCBmcmVlIG9ubGluZSBnYW1lcyBmb3IgeW91IHRvIHBsYXkuIENoZWNrIG91dCBvdXIgQnVpbGRlcnMgQ2x1YiBtZW1iZXJzaGlwIHNlcnZpY2UgZm9yIGFuIGVuaGFuY2VkIGJ1aWxkaW5nIGdhbWVzIGV4cGVyaWVuY2UuIAlGUFMgR2FtZXMDRlBTZAILD2QWAmYPFQYAA3JwZwNycGfEBVJvYmxveCBpcyBwcm91ZCB0byBvZmZlciB0aGUgd2ViJiMzOTtzIGJlc3QgY29sbGVjdGlvbiBvZiBSUEcgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSBSUEcgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gUlBHIGdhbWVzLCBBY3Rpb24gZ2FtZXMsIEFkdmVudHVyZSBnYW1lcywgQ29tZWR5IGdhbWVzLCBDYXIgZ2FtZXMsIG9yIGV2ZW4gVHljb29uIGdhbWVzLCBjb3VudCBvbiBSb2Jsb3ggdG8gZGVsaXZlciB0aGUgYmVzdCBmcmVlIG9ubGluZSBnYW1lcyBmb3IgeW91IHRvIHBsYXkuIENoZWNrIG91dCBvdXIgQnVpbGRlcnMgQ2x1YiBtZW1iZXJzaGlwIHNlcnZpY2UgZm9yIGFuIGVuaGFuY2VkIGJ1aWxkaW5nIGdhbWVzIGV4cGVyaWVuY2UuIAlSUEcgR2FtZXMDUlBHZAIMD2QWAmYPFQYABnNwb3J0cwZzcG9ydHPNBVJvYmxveCBpcyBwcm91ZCB0byBvZmZlciB0aGUgd2ViJiMzOTtzIGJlc3QgY29sbGVjdGlvbiBvZiBzcG9ydHMgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBmcmVlIG9ubGluZSBzcG9ydHMgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gU3BvcnRzIGdhbWVzLCBBY3Rpb24gZ2FtZXMsIEFkdmVudHVyZSBnYW1lcywgQ29tZWR5IGdhbWVzLCBDYXIgZ2FtZXMsIG9yIGV2ZW4gVHljb29uIGdhbWVzLCBjb3VudCBvbiBSb2Jsb3ggdG8gZGVsaXZlciB0aGUgYmVzdCBmcmVlIG9ubGluZSBnYW1lcyBmb3IgeW91IHRvIHBsYXkuIENoZWNrIG91dCBvdXIgQnVpbGRlcnMgQ2x1YiBtZW1iZXJzaGlwIHNlcnZpY2UgZm9yIGFuIGVuaGFuY2VkIGJ1aWxkaW5nIGdhbWVzIGV4cGVyaWVuY2UuIAxTcG9ydHMgR2FtZXMGU3BvcnRzZAIND2QWAmYPFQYACGZpZ2h0aW5nCGZpZ2h0aW5nzAVSb2Jsb3ggaXMgcHJvdWQgdG8gb2ZmZXIgdGhlIHdlYiYjMzk7cyBiZXN0IGNvbGxlY3Rpb24gb2YgZmlnaHRpbmcgZ2FtZXMsIG90aGVyIGZyZWUgb25saW5lIGdhbWVzIGFuZCAzRCB2aXJ0dWFsIHdvcmxkcy4gV2UgYXJlIGNvbW1pdHRlZCB0byBtYWtpbmcgc3VyZSB0aGF0IGFsbCBvZiBvdXIgZnJlZSBnYW1lcyBhcmUgZnVuIGFuZCBzYWZlLiBSb2Jsb3ggbWVtYmVycyBjYW4gY3JlYXRlIHRoZWlyIG93biB2aXJ0dWFsIHdvcmxkIG9ubGluZSBnYW1lczsgY3VzdG9taXplIHRoZWlyIGF2YXRhciBjaGFyYWN0ZXIgd2l0aCB0aGUgYmVzdCB2aXJ0dWFsIGdvb2RzIGxpa2UgaGF0cywgc2hpcnRzIGFuZCBnZWFyOyBhbmQgcGxheSBjb21lZHkgZ2FtZXMgb25saW5lIHdpdGggdGhlaXIgZnJpZW5kcyB3aGlsZSBhbHNvIG1lZXRpbmcgbmV3IGZyaWVuZHMuIFdoZXRoZXIgeW91IGFyZSBpbnRlcmVzdGVkIGluIEZpZ2h0aW5nIGdhbWVzLCBBY3Rpb24gZ2FtZXMsIEFkdmVudHVyZSBnYW1lcywgQ29tZWR5IGdhbWVzLCBDYXIgZ2FtZXMsIG9yIGV2ZW4gVHljb29uIGdhbWVzLCBjb3VudCBvbiBSb2Jsb3ggdG8gZGVsaXZlciB0aGUgYmVzdCBmcmVlIG9ubGluZSBnYW1lcyBmb3IgeW91IHRvIHBsYXkuIENoZWNrIG91dCBvdXIgQnVpbGRlcnMgQ2x1YiBtZW1iZXJzaGlwIHNlcnZpY2UgZm9yIGFuIGVuaGFuY2VkIGJ1aWxkaW5nIGdhbWVzIGV4cGVyaWVuY2UuIA5GaWdodGluZyBHYW1lcwhGaWdodGluZ2QCDg9kFgJmDxUGAAd3ZXN0ZXJuB3dlc3Rlcm7RBVJvYmxveCBpcyBwcm91ZCB0byBvZmZlciB0aGUgd2ViJiMzOTtzIGJlc3QgY29sbGVjdGlvbiBvZiB3ZXN0ZXJuIGdhbWVzLCBvdGhlciBmcmVlIG9ubGluZSBnYW1lcyBhbmQgM0QgdmlydHVhbCB3b3JsZHMuIFdlIGFyZSBjb21taXR0ZWQgdG8gbWFraW5nIHN1cmUgdGhhdCBhbGwgb2Ygb3VyIGZyZWUgZ2FtZXMgYXJlIGZ1biBhbmQgc2FmZS4gUm9ibG94IG1lbWJlcnMgY2FuIGNyZWF0ZSB0aGVpciBvd24gdmlydHVhbCB3b3JsZCBvbmxpbmUgZ2FtZXM7IGN1c3RvbWl6ZSB0aGVpciBhdmF0YXIgY2hhcmFjdGVyIHdpdGggdGhlIGJlc3QgdmlydHVhbCBnb29kcyBsaWtlIGhhdHMsIHNoaXJ0cyBhbmQgZ2VhcjsgYW5kIHBsYXkgZnJlZSBvbmxpbmUgd2VzdGVybiAgZ2FtZXMgd2l0aCB0aGVpciBmcmllbmRzIHdoaWxlIGFsc28gbWVldGluZyBuZXcgZnJpZW5kcy4gV2hldGhlciB5b3UgYXJlIGludGVyZXN0ZWQgaW4gV2VzdGVybiBnYW1lcywgQWN0aW9uIGdhbWVzLCBBZHZlbnR1cmUgZ2FtZXMsIENvbWVkeSBnYW1lcywgQ2FyIGdhbWVzLCBvciBldmVuIFR5Y29vbiBnYW1lcywgY291bnQgb24gUm9ibG94IHRvIGRlbGl2ZXIgdGhlIGJlc3QgZnJlZSBvbmxpbmUgZ2FtZXMgZm9yIHlvdSB0byBwbGF5LiBDaGVjayBvdXQgb3VyIEJ1aWxkZXJzIENsdWIgbWVtYmVyc2hpcCBzZXJ2aWNlIGZvciBhbiBlbmhhbmNlZCBidWlsZGluZyBnYW1lcyBleHBlcmllbmNlLiANV2VzdGVybiBHYW1lcwdXZXN0ZXJuZAIRDw8WAh8BaGRkGAUFI2N0bDAwJExlZnRHdXR0ZXJBZCRBc3luY0FkTXVsdGlWaWV3Dw9kAgNkBSNjdGwwMCRyYnhHb29nbGVBbmFseXRpY3MkTXVsdGlWaWV3MQ8PZGZkBSxjdGwwMCRjcGhSb2Jsb3gkR2FtZXNQYWdlQWQkQXN5bmNBZE11bHRpVmlldw8PZAIDZAUuY3RsMDAkY3BoQmFubmVyQWQkR2FtZXNCYW5uZXIkQXN5bmNBZE11bHRpVmlldw8PZAIDZAUkY3RsMDAkUmlnaHRHdXR0ZXJBZCRBc3luY0FkTXVsdGlWaWV3Dw9kAgNkGsR1rayGX+d2FehY0TD+dvR522g="/>
+</div>
+
+
+<script src="/ScriptResource.axd?d=S3FyIhIKDbG_ONjIH7tzxVkVMR-G8ZEs80RLeT1tw476UkS1sKMXp8NITvKKCmk7qm4U2OKuTUuXdQsG3lCbkgnQ_khQlUpXCG2rVhJWFZehs37mQvHK0pOXSBVFkdJYL5Htpd8OSAb-2NPij0VaAIiAeU86D9i-7d8LL1kuBQp_Jm7U4VXpphBXS-uyb0trM727Q2Bngtgp3a0QtgRzpu0Geuv3UGBMOlD2635w_zCMSKVhxTPlzZvamhv1gNtbAJGF3wa4EjX_t0jZhMS62JeeBqannc6yiWdp3gW1eA5i0ijDBZUJWQ8ARi0o9NfJxCcNLtYRSfCrdC0Ohy2ye4yMb7O0ennvm3qeN8ebctmLjErGxK0YPrBAPt0XVJkt4SLcm74lL12ahb5q-dA4Y0F1VVLBn9xqTrpPLbM_w_CHHWxwnUSDkVS-VUkxUEX0l7zpXw2" type="text/javascript"></script>
+    <div id="fb-root">
+    </div>
+    
+    
+         
+    
+
+    
+    <div id="MasterContainer">
+                   
+
+
+<script type="text/javascript">
+$(function(){
+    function trackReturns() {
+	    function dayDiff(d1, d2) {
+		    return Math.floor((d1-d2)/86400000);
+	    }
+
+	    var cookieName = 'RBXReturn';
+	    var cookieOptions = {expires:9001};
+        var cookie = $.getJSONCookie(cookieName);
+
+	    if (typeof cookie.ts === "undefined" || isNaN(new Date(cookie.ts))) {
+		    $.setJSONCookie(cookieName, {ts:new Date().toDateString()}, cookieOptions)
+		    return;
+	    }
+
+	    var daysSinceFirstVisit = dayDiff(new Date(), new Date(cookie.ts));
+	    if (daysSinceFirstVisit == 1 && typeof cookie.odr === "undefined") {
+		    RobloxEventManager.triggerEvent('rbx_evt_odr', {});
+		    cookie.odr = 1;
+	    }
+	    if (daysSinceFirstVisit >= 1 && daysSinceFirstVisit <= 7 && typeof cookie.sdr === "undefined") {
+		    RobloxEventManager.triggerEvent('rbx_evt_sdr', {});
+		    cookie.sdr = 1;
+	    }
+	
+	    $.setJSONCookie(cookieName, cookie, cookieOptions);
+    }
+
+    
+    RobloxListener.restUrl = window.location.protocol + "//" + "roblox.com/Game/EventTracker.ashx";
+    RobloxListener.init();
+    
+    GoogleListener.init();
+    
+    RobloxEventManager.initialize(true);
+    RobloxEventManager.triggerEvent('rbx_evt_pageview');
+    trackReturns();
+    
+    RobloxEventManager._idleInterval = 450000;
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_start');
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_ftp');
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_success');
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_fmp');
+    RobloxEventManager.startMonitor();
+    
+
+});
+</script>
+
+
+        
+        
+
+        <script type="text/javascript">Roblox.FixedUI.gutterAdsEnabled=true;</script>
+        
+        
+        <div id="LeftGutterAdContainer" class="">
+            
+            
+<span id="3537303437393230" class="GPTAd lgutter" data-js-adtype="gptAd">
+    <script type="text/javascript">
+        googletag.cmd.push(function () {
+            googletag.display("3537303437393230");
+        });
+    </script>
+</span> 
+    <a class="BadAdButton" href="/Ads/ReportAd.aspx" title="click to report an offensive ad">[ report ]</a>
+
+
+
+        </div>
+        <div id="RightGutterAdContainer" class="">
+            
+            
+<span id="3632323139303131" class="GPTAd gutter" data-js-adtype="gptAd">
+    <script type="text/javascript">
+        googletag.cmd.push(function () {
+            googletag.display("3632323139303131");
+        });
+    </script>
+</span> 
+
+
+
+        </div>
+        
+        
+
+        
+<?php include $_SERVER["DOCUMENT_ROOT"] . '/Banner' ;?>
+        
+            
+
+
+
+
+        <noscript><div class="SystemAlert"><div class="SystemAlertText">Please enable Javascript to use all the features on this site.</div></div></noscript>
+		<?php include $_SERVER["DOCUMENT_ROOT"] . "/Announcement" ;?>
+        <div id="BodyWrapper">
+<div id="RepositionBody" style="
+"><div class="StandardBoxHeader" style="width: 990px; background: url(/images/cssspecific/rbx2/tab_black_33h_t1.png) no-repeat left top; border-radius: 0px;"><span style="background: url(/images/cssspecific/rbx2/tab_black_33h_t2.png) no-repeat right top; overflow: hidden;">Games</span></div><div id="Body" style="/*width:970px;*/border: 1px solid #aaa;" class="StandardBox ">
+                
+    <div id="PlaceTemplateWrapper" style="display: none">
+        <div id="PlaceTemplate" style="float:left;">
+            <div class="GameItem">
+                <div class="AlwaysShown"> 
+                    <a class="roblox-thumbnail"></a>
+                    <div class="GameName" style="font-weight:bold;font-size:12px;overflow: hidden;white-space: nowrap;">
+                        <a class="GameClick roblox-game-url"></a>
+                    </div>
+                    <span class="roblox-player-count" style="float:left; font-size: 12px;font-weight:bold"></span><span class="online-player roblox-player-text" style="float: left"></span>
+                    <div class="GenreIcons" style="float:right;">
+                        <img class="GenreIcon" alt="GENREICONALT"/>
+                        <img class="GearIcon" alt="GEARICONALT"/>
+                    </div>
+                    <div class="CreatorName" style="display:none; clear: both">
+                        by <a class="roblox-creator-url"></a>
+                    </div>
+                </div>
+                <div class="HoverShown">
+                    <div class="StatsPlayed">
+                        Played <span class="roblox-plays-count"></span>
+                    </div>
+                    <div class="StatsFavorited">
+                        Favorited <span class="roblox-fav-count"></span>
+                    </div>
+                    <div class="StatsUpdated">
+                        Updated <span class="roblox-last-update"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ctl00_cphRoblox_MenuColumn" class="Column1e NewMenuLook">
+        
+        <div class="StandardBox" id="GamesLeftColumn">
+            <div id="Sort" class="GameFilter">
+                <div>Sorted By:</div>
+                <ul>
+                    
+                    <li><a class="GamesSort SelectedSort" sort="Relevance" href="/games?m=Relevance">Relevance</a></li>
+                    
+                    <li><a class="GamesSort " sort="MostPopular" href="/games?m=MostPoplular">Popular</a></li>
+                    <li><a class="GamesSort " sort="TopFavorites" href="/games?m=TopFavorites">Most Favorited</a></li>
+                    <li><a class="GamesSort " sort="Featured" href="/games?m=Featured">Featured</a></li>
+                    
+                </ul>
+            </div>  
+            <div id="Timespan" class="GameFilter" style="margin-top:20px;">
+                <div>Time:</div>
+                <ul>
+                    <li><a class="GamesFilter SelectedFilter" filter="Now" href="?t=Now">Now</a></li>
+                    <li><a class="GamesFilter " filter="PastDay" href="?t=PastDay">Past Day</a></li>
+                    <li><a class="GamesFilter " filter="PastWeek" href="?t=PastWeek">Past Week</a></li>
+                    <li><a class="GamesFilter " filter="AllTime" href="?t=AllTime">All Time</a></li>
+                </ul>
+            </div>    
+            <!--div id="Genres" class="GameFilter" style="margin-top:20px;">
+                <div>Genres:</div>
+                <ul>
+                    
+                            <li>
+                                <a class="GamesGenre " genre="all" href="/all-games" genresinfotext="" title="All Games">
+                                    All
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="building" href="/building-games" genresinfotext="Roblox is proud to offer the web's best collection of building games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online building games with their friends while also meeting new friends. Whether you are interested in Building games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Building Games">
+                                    Building
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="horror" href="/horror-games" genresinfotext="Roblox is proud to offer the web's best collection of horror games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online horror games with their friends while also meeting new friends. Whether you are interested in horror games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Horror Games">
+                                    Horror
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="town-and-city" href="/town-and-city-games" genresinfotext="Roblox is proud to offer the web's best collection of town and city games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online town and city games with their friends while also meeting new friends. Whether you are interested in Town and City games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Town and City Games">
+                                    Town and City
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="military" href="/military-games" genresinfotext="Roblox is proud to offer the web's best collection of military games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online military games with their friends while also meeting new friends. Whether you are interested in Military games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Military Games">
+                                    Military
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="comedy" href="/comedy-games" genresinfotext="Roblox is proud to offer the web's best collection of comedy games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online comedy games with their friends while also meeting new friends. Whether you are interested in Comedy games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Comedy Games">
+                                    Comedy
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="medieval" href="/medieval-games" genresinfotext="Roblox is proud to offer the web's best collection of medieval games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online medieval games with their friends while also meeting new friends. Whether you are interested in Medieval games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience." title="Medieval Games">
+                                    Medieval
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="adventure" href="/adventure-games" genresinfotext="Roblox is proud to offer the web's best collection of adventure games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online adventure games with their friends while also meeting new friends. Whether you are interested in Adventure games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Adventure Games">
+                                    Adventure
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="sci-fi" href="/sci-fi-games" genresinfotext="Roblox is proud to offer the web's best collection of sci-fi games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online sci-fi games with their friends while also meeting new friends. Whether you are interested in Sci-Fi games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Sci-Fi Games">
+                                    Sci-Fi
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="naval" href="/naval-games" genresinfotext="Roblox is proud to offer the web's best collection of naval games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online naval games with their friends while also meeting new friends. Whether you are interested in Naval games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Naval Games">
+                                    Naval
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="fps" href="/fps-games" genresinfotext="Roblox is proud to offer the web's best collection of FPS games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online FPS games with their friends while also meeting new friends. Whether you are interested in FPS games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="FPS Games">
+                                    FPS
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="rpg" href="/rpg-games" genresinfotext="Roblox is proud to offer the web's best collection of RPG games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online RPG games with their friends while also meeting new friends. Whether you are interested in RPG games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="RPG Games">
+                                    RPG
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="sports" href="/sports-games" genresinfotext="Roblox is proud to offer the web's best collection of sports games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online sports games with their friends while also meeting new friends. Whether you are interested in Sports games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Sports Games">
+                                    Sports
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="fighting" href="/fighting-games" genresinfotext="Roblox is proud to offer the web's best collection of fighting games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play comedy games online with their friends while also meeting new friends. Whether you are interested in Fighting games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Fighting Games">
+                                    Fighting
+                                </a>
+                            </li>
+                        
+                            <li>
+                                <a class="GamesGenre " genre="western" href="/western-games" genresinfotext="Roblox is proud to offer the web's best collection of western games, other free online games and 3D virtual worlds. We are committed to making sure that all of our free games are fun and safe. Roblox members can create their own virtual world online games; customize their avatar character with the best virtual goods like hats, shirts and gear; and play free online western  games with their friends while also meeting new friends. Whether you are interested in Western games, Action games, Adventure games, Comedy games, Car games, or even Tycoon games, count on Roblox to deliver the best free online games for you to play. Check out our Builders Club membership service for an enhanced building games experience. " title="Western Games">
+                                    Western
+                                </a>
+                            </li>
+                        
+                </ul>    
+            </div-->
+        </div>
+        <!-- Filters / genres -->
+    </div>    
+	<div class="Column2e">
+        <div id="PlayTabs" class="tab-container-old" style="float:left;">
+            <!-- DO NOT PUT NEW LINES IN BETWEEN TABS... This will add a 4px margin because of the display: inline-block -->
+            <div id="PlayGamesTab" class="OldStandardTabGrayActive GamesType tab-active" type="Play">
+				<span>
+					<a href="">
+						<div>Games</div>
+					</a>
+				</span>
+			</div>
+<div id="ctl00_cphRoblox_PlayPersonalServersTab" class="OldStandardTabGray GamesType" type="games personal">
+                <span>
+                    <a href="/personal-games/">
+                          <div>Personal Servers</div>
+                    </a>
+                </span>
+            </div>
+                    </a>
+                </span>
+            </div>
+        </div>
+        <!--div style="position:relative;float:right;">
+            <input id="searchbox" class="translate" type="text" name="search" value="Search" style="color:#888;height:20px;" onkeypress="if (event.keyCode == 13) { return Search(); }"/>
+            <div class="SearchIconButton" onclick="Search()"></div>
+        </div-->
+        <div class="divider-top tab-content" style="float: left; width: 790px; margin-bottom: 10px; display: block">
+		<div class="StandardBoxGray" style="float: left">
+            <div id="Games">
+                <div id="BCOnlyPlaces" style="display: none">
+                    <span class="header">
+                        <div class="BCHat" style="position: relative; vertical-align: middle"></div>
+                        <div id="BCOnlyPlacesTitle">Builders Club Games</div>
+                    </span>
+                    <div class="content">
+                        <div id="BCOnlyGamesContentPrevNavButton" class="arrow left disabled"></div>
+                        <div id="BCOnlyGamesContent"></div>
+                        <div id="BCOnlyGamesContentNextNavButton" class="arrow right disabled"></div>
+                    </div>
+                </div>
+                <div id="GamePageAdDiv" style="width: 300px; height: 300px;float: right;display: none"> <!--inline-->
+                    
+            
+<span id="38363338353531" class="GPTAd rectangle" data-js-adtype="gptAd">
+    <script type="text/javascript">
+        googletag.cmd.push(function () {
+            googletag.display("38363338353531");
+        });
+    </script>
+</span> 
+    <a class="BadAdButton" href="/Ads/ReportAd.aspx" title="click to report an offensive ad">[ report ]</a>
+
+
+
+                       
+                    </div>
+                    
+                    <div id="ShowBCOnlyGamesAlignmentDiv" style="margin-top: 10px">
+                        <div id="GamesContent" style="width: 680px; display:inline; left: 55px; position: relative">
+                            <noscript>
+                                <span style="font-size: 18px; font-weight: bold">You must have javascript enabled to view this page.</span>
+                            </noscript>
+                        </div>
+                    </div>
+            
+                <div id="GamesContentPager" style="text-align:center; padding-bottom:20px; padding-top: 10px; color:#888;font-size:14px; clear:both">
+                    <span id="GamesContentPrevNavButton" class="pager previous disabled" style="position:relative;top:9px;"></span>
+                    <span style="margin:0 5px;"><span id="GamesContentCurrPageNum">1</span> of <span id="GamesContentTotalPageNums"></span></span>
+                    <span id="GamesContentNextNavButton" class="pager next" style="position:relative;top:9px;"></span>
+                </div>
+            </div>
+            <div id="GenreDescriptionPanel">
+                <span id="GenreDescriptionPanelGenresInfoText"></span> 
+            </div>
+        </div>
+		</div>
+    </div>
+        
+    <script type="text/javascript">
+        if("False" === "True") {
+            Roblox.FixedUI.gutterAdsEnabled = true;
+        }
+
+        var defaultParamData = eval({"FilterString":"Now","GameTypeString":"Play","GenreString":"all","MinBCLevelString":"None","PageNumString":"1","PageSizeString":"1","SortString":"Relevance"});
+        var defaultSeedData = eval(<?php
+		include "GetGames.ashx";
+		?>);
+        
+        var pageSize = 12;
+        
+        var defaultBCOnlyParamData = eval(null);
+        var defaultBCOnlySeedData = eval({"TotalPages" : "0","Count" : "0","Items" : []});
+        var BCOnlyPageSize = 2;
+        
+        if (true)
+            CreateGamesDisplay.prototype._defaultSort = 'Relevance';
+
+        var GamesDisplay = new CreateGamesDisplay();
+        var BCOnlyGamesDisplay = null;
+        if (false)
+        {
+            BCOnlyGamesDisplay = new CreateGamesDisplay();    
+        }
+        
+        $(function()
+            {
+            GamesPageInit();
+        });
+    </script>
+    <br style="clear: both"/>
+
+                <div style="clear:both"></div>
+            </div>
+        </div></div> 
+        </div>
+        
+            
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/Footer";?>
+	</div>
+<?php include $_SERVER["DOCUMENT_ROOT"] . "/puzzle/Post-Footer.php";?>
+</body>                
+</html>

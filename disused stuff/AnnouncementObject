@@ -1,0 +1,7 @@
+<div id="ctl00_Announcement">
+	
+            <div id="ctl00_SystemAlertDiv" class="SystemAlert" style="background-color:AnnouncementColor;">
+                <div id="ctl00_SystemAlertTextColor" class="SystemAlertText"><div id="ctl00_LabelAnnouncement">AnnouncementText</div></div>
+            </div>
+        
+</div>

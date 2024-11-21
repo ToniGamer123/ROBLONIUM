@@ -1,0 +1,327 @@
+<script type="text/javascript">
+EventDrivenPixelManager = new function () {
+    this.bound = [];
+    this.add = function (eventKey, pixel) {
+        this.bound.push(pixel);
+        $(document).bind(eventKey, function() { EventDrivenPixelManager.handleEvent(pixel); });
+        return this;
+    };
+    this.handleEvent = function (pixel) {
+		$('body').append($(pixel));
+    };
+};
+
+$(function(){
+    var pixel;
+    EventDrivenPixelManager.acqSrc = '';
+
+    
+    
+});
+</script>
+
+        
+    <script type="text/javascript">
+        // Deferred loading a la google to prevent blocking during download and execution
+        (function () {
+            var protocol = 'https:' == document.location.protocol ? "https://ssltracking" : "http://akatracking";
+            var scriptFile = 'esearchvisiontracking.js';
+            var s = document.createElement('script');
+            s.type = 'text/javascript';
+            s.async = true;
+            s.src = protocol + ".esearchvision.com/esi/" + scriptFile;
+            var x = document.getElementsByTagName('script')[0];
+            x.parentNode.insertBefore(s, x);
+        })();
+    </script>
+
+
+<script type="text/javascript">
+$(function(){
+    function trackReturns() {
+	    function dayDiff(d1, d2) {
+		    return Math.floor((d1-d2)/86400000);
+	    }
+
+	    var cookieName = 'RBXReturn';
+	    var cookieOptions = {expires:9001};
+        var cookie = $.getJSONCookie(cookieName);
+
+	    if (typeof cookie.ts === "undefined" || isNaN(new Date(cookie.ts))) {
+		    $.setJSONCookie(cookieName, {ts:new Date().toDateString()}, cookieOptions)
+		    return;
+	    }
+
+	    var daysSinceFirstVisit = dayDiff(new Date(), new Date(cookie.ts));
+	    if (daysSinceFirstVisit == 1 && typeof cookie.odr === "undefined") {
+		    RobloxEventManager.triggerEvent('rbx_evt_generic', { type:'OneDayReturn'});
+		    cookie.odr = 1;
+	    }
+	    if (daysSinceFirstVisit >= 1 && daysSinceFirstVisit <= 7 && typeof cookie.sdr === "undefined") {
+		    RobloxEventManager.triggerEvent('rbx_evt_generic', {type: 'SevenDayReturn'});
+		    cookie.sdr = 1;
+	    }
+	
+	    $.setJSONCookie(cookieName, cookie, cookieOptions);
+    }
+
+    
+    KontagentListener.restUrl = window.location.protocol + "//" + "api.geo.kontagent.net/api/v1/";
+    KontagentListener.APIKey = "920472a959b042f782bd267c5567b480";
+    KontagentListener.StagingAPIKey = "c3ec679ac27b4f4fb393b5ccd94e7f67";
+    try { 
+        KontagentListener.StagingEvents = eval("([{'rbx_evt_ftp':'Install%20Success%20Place'},{'rbx_evt_fmp':'Five%20Minute%20Play%20Place'}])");
+    }
+    catch(ex) {
+        KontagentListener.StagingEvents = [];
+    }
+    KontagentListener.init();
+    
+    RobloxListener.restUrl = window.location.protocol + "//" + "roblox.com/Game/EventTracker.ashx";
+    RobloxListener.init();
+    
+    GoogleListener.init();
+    
+    //SearchVisionListener.init();
+    
+    RobloxEventManager.initialize(true);
+    RobloxEventManager.triggerEvent('rbx_evt_pageview');
+    trackReturns();
+    
+    RobloxEventManager._singlePluginInstance = false;
+    RobloxEventManager._idleInterval = 45000;
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_start');
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_ftp');
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_initial_install_success');
+    RobloxEventManager.registerCookieStoreEvent('rbx_evt_fmp');
+        
+    RobloxEventManager.monitorCookieStore();
+    setInterval(RobloxEventManager.monitorCookieStore, 5000);
+        
+
+});
+</script>
+
+
+<div id="Container">
+            
+                   
+
+<style type="text/css">
+    div.mySubmenuFixed {
+        top: 36px;
+        background-color: #191919;
+        height: 25px;
+        *top: 0px;
+    }
+</style>
+<link rel="stylesheet" href="/CSS/Base/CSS/MenuRedesign.css"/>
+<div id="Banner" class="BannerRedesign">
+    <div id="NavigationRedesignBannerContainer" class="BannerCenterContainer">
+        <a href="/" id="navbar-logo" class="btn-logo" data-se="nav-logo"></a>
+        <div id="NavRedesign" class="NavigationRedesign">
+            <ul id="ctl00_cphBanner_ctl00_MenuUL">
+                <li><a href="/" ref="nav-myroblox" data-se="nav-myhome">Home</a></li>
+                <li class="gamesLink"><a id="hlGames" data-se="nav-games" href="/Games" title="Games" ref="nav-games">Games</a> </li>
+                <li class="catalogLink"><a id="hlCatalog" data-se="nav-catalog" href="/Catalog" title="Catalog" ref="nav-catalog">Catalog</a></li>
+                <li><a id="BuildLink" data-se="nav-build" href="" title="Develop" ref="nav-build">[Develop]</a></li>
+				<!--"/My/Places.aspx"-->
+                <li class="upgradeLink"><a id="hlBuildersClub" data-se="nav-upgrade" href="" title="Upgrade" ref="nav-buildersclub">[Upgrade]</a></li>
+				<!--"/Upgrades/BuildersClubMemberships.aspx"-->
+                
+<!--
+                <li class="moreLink" drop-down-nav-button="moreLink">
+                    <div class="LinkContainer">
+                        <a id="hlMore" title="More" data-se="nav-more" ref="nav-more">More<span id="moreMenuToggle"></span></a> 
+                    </div>
+                    <div class="dropdownnavcontainer" style="display:none;" drop-down-nav-container="moreLink">
+                        <div class="dropdownmainnav" style="z-index:1023">
+                            <a class="dropdownoption" data-se="nav-more-browse" href="/Browse.aspx" title="People" ref="nav-people"><span>People</span></a>
+                            <a class="dropdownoption" data-se="nav-more-blog" href="http://blog.roblox.com/" title="Blog" ref="nav-news"><span>Blog</span></a>
+                            
+                                   <a class="dropdownoption" data-se="nav-more-sponsoredpage" href="/SponsoredPage/NewChatSystem" title="Chat Update" ref="nav-sponsoredpage">
+                                       <span style="display:none;">
+                                       Chat Update
+                                       
+                                       </span>
+                                   </a>
+                            
+                            <a class="dropdownoption" data-se="nav-more-help" href="/Help/Builderman.aspx" title="Help" ref="nav-help"><span>Help</span></a>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </li>
+-->
+				</ul>
+        </div>
+<div id="SiteWideHeaderLogin">
+<div id="AlertSpace">
+<div class="AlertItem" style="max-width: 50px;text-align:center;" id="logoutonclick">
+<a id="lsLoginStatus" data-se="nav-logout" class="logoutButton" href="/logout.aspx">
+Logout
+</a>
+</div>
+<div class="HeaderDivider">
+</div>
+<a data-se="nav-Tickets" href="/My/Money.aspx?tab=MyTransactions">
+<div id="TicketsWrapper" class="TicketsAlert AlertItem tooltip-bottom" original-title="Tickets">
+<div class="icons tickets_icon">
+</div>
+<div id="TicketsAlertCaption" class="AlertCaption">
+<?=$userBanner->Tickets?>
+</div>
+</div>
+</a>
+<a data-se="nav-robux" href="/My/Money.aspx?tab=MyTransactions">
+<div id="RobuxWrapper" class="RobuxAlert AlertItem tooltip-bottom" original-title="ROBUX">
+<div class="icons robux_icon">
+</div>
+<div id="RobuxAlertCaption" class="AlertCaption">
+<?=$userBanner->Robux?>
+</div>
+</div>
+</a>
+<div class="HeaderDivider">
+</div>
+<a data-se="nav-friends" href="/friends.aspx#FriendRequestsTab">
+<span id="FriendsTextWrapper" class="FriendsAlert AlertItem tooltip-bottom" original-title="Friend Requests">
+<div id="FriendsBubble" class="AlertTextWrapper" runat="server">
+<div class="AlertBox Left" style="display: none;">
+</div>
+<div class="AlertBox" style="background-position:right; padding-right:3px; display: none;">
+<div id="czxvijhoidshfiosdhfsdo" class="AlertText">
+FriendRequestsAmount
+</div>
+</div>
+</div>
+<div class="icons friends_icon" style="float:none;">
+</div>
+</span>
+</a>
+<a data-se="nav-messages" href="/My/Messages.aspx">
+<span id="MessagesTextWrapper" class="MessageAlert AlertItem tooltip-bottom" original-title="Messages">
+<div class="icons message_icon" style="float:none;">
+</div>
+<div id="MessageBubble" class="AlertTextWrapper" runat="server" style="display: none;">
+<div class="AlertBox Left">
+</div>
+<div class="AlertBox Right" style="background-position: right; padding-right:3px;">
+<div class="AlertText">
+MessageAmount
+</div>
+</div>
+</div>
+</span>
+</a>
+<f data-se="nav-login" href="/User.aspx">
+<div id="AuthenticatedUserNameWrapper">
+<div id="AuthenticatedUserName">
+<span class="login-span notranslate" id="gzxcgdsgfdhdfjhgjhgjkhg">
+<img id="over13icon" src="https://images.rbxcdn.com/8ed6b064a35786706f738c0858345c11.png" alt="13+" style="vertical-align:middle;padding-right:5px;padding-left:0px;" original-title="This is a 13+ account.">
+<?='<a class="text-nav text-overflow font-header-2" href="http://' . $_SERVER['SERVER_NAME'] . '/User.aspx?id=' . $userBanner->Id . '">'?>
+<?=$userBanner->Name?></a>
+</span>
+</div>
+</div>
+</f>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.moreLink').bind('showDropDown', function (e) {
+            var maxWidth = $('#NavRedesign .dropdownnavcontainer').width();
+            $('a.dropdownoption span').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.outerWidth() > maxWidth) {
+                    maxWidth = elem.outerWidth();
+                }
+            });
+            maxWidth = maxWidth + 5;
+            $('#NavRedesign .dropdownoption').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.width() < maxWidth) {
+                    elem.width(maxWidth);
+                }
+            });
+
+        });
+    });
+</script>
+</div>
+<!--div class="mySubmenuFixed" style="position: fixed; top: 35px; width: 100%;z-index: 10000;"-->
+<div class="mySubmenuFixed Redesign">
+    <div id="ctl00_cphSubmenu_UserSubmenu1_subMenu" class="subMenu">
+<ul>
+<li>
+<a data-se="subnav-profile" href="/User.aspx?submenu=true">
+Profile
+</a>
+</li
+><li>
+<a data-se="subnav-character" href="/My/Character.aspx">
+Character
+</a>
+</li
+><li>
+<a data-se="subnav-friends" href="/My/EditFriends.aspx">
+[Friends]
+</a>
+</li>
+<li>
+<!-- a data-se="subnav-groups" href="/My/Groups.aspx">
+Groups
+</a -->
+</li>
+<li>
+<a data-se="subnav-inventory" href="/My/Stuff.aspx">
+[Inventory]
+</a>
+</li>
+<li>
+<!-- a data-se="subnav-sets" href="/My/Sets.aspx">
+Sets
+</a -->
+</li>
+<li>
+<a data-se="subnav-trade" href="/My/Money.aspx?tab=TradeItems">
+[Trade]
+</a>
+</li>
+<li>
+<a data-se="subnav-money" href="/My/Money.aspx?tab=MyTransactions">
+[Money]
+</a>
+</li>
+<li>
+<!-- a data-se="subnav-advertising" href="/develop?Page=ads">
+Advertising
+</a -->
+</li>
+<li>
+<a data-se="subnav-account" href="/My/Account.aspx">
+[Account]
+</a>
+</li>
+<li>
+<?php
+if($userBanner->MembershipLevel >= 3) {
+echo('<a data-se="subnav-upload" href="/Catalog/Upload.aspx">
+Upload
+</a>');
+}
+?>
+</li>
+</ul>
+</div>
+</div>
+<div class="forceSpace">&nbsp;</div>
+</div>
+
+        <div class="forceSpace">&nbsp;</div>
+            
+            <div id="AdvertisingLeaderboard">
+                
+            <iframe allowtransparency="true" frameborder="0" height="90" scrolling="no" src="/LandingSmall.aspx" width="828" data-js-adtype="iframead" style="border:1px solid #555;"></iframe>
+
+            </div>

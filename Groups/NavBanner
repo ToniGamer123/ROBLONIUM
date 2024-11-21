@@ -1,0 +1,58 @@
+<div id="Container">
+            
+                   
+
+<style type="text/css">
+    div.mySubmenuFixed {
+        top: 36px;
+        background-color: #191919;
+        height: 25px;
+        *top: 0px;
+    }
+</style>
+<div id="Banner" class="BannerRedesign">
+    <div id="NavigationRedesignBannerContainer" class="BannerCenterContainer">
+        <a href="" id="navbar-logo" class="btn-logo" data-se="nav-logo"></a>
+        <div id="NavRedesign" class="NavigationRedesign">
+            <ul id="ctl00_cphBanner_ctl00_MenuUL">
+                <li><a href="" ref="nav-myroblox" data-se="nav-myhome">Home</a></li>
+            </ul>
+        </div>
+        
+  <div id="SiteWideHeaderLogin">
+    <div id="HeaderLoginButton" class="iFrameLoginSignUp">
+		<a id="HeaderSignUp" href="/Hexine/register.php">Sign Up</a>
+		<span id="HeaderOr">or</span>
+        <span id="loginSpan">
+		    <a id="headerLogin" class="btn-control btn-control-large">Login <span class="grey-arrow">▼</span></a>
+        </span>
+		<div id="iFrameLogin" style="display:none">
+		<iframe class="loginFrame" src=<?="/Hexine/login.php?loginRedirect=True&amp;parentUrl=http://" . $_SERVER[HTTP_HOST] . $_SERVER[REQUEST_URI]?>) scrolling="no" frameborder="0"></iframe>
+    </div>
+</div>                
+</div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('.moreLink').bind('showDropDown', function (e) {
+            var maxWidth = $('#NavRedesign .dropdownnavcontainer').width();
+            $('a.dropdownoption span').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.outerWidth() > maxWidth) {
+                    maxWidth = elem.outerWidth();
+                }
+            });
+            maxWidth = maxWidth + 5;
+            $('#NavRedesign .dropdownoption').each(function (index, elem) {
+                elem = $(elem);
+                if (elem.width() < maxWidth) {
+                    elem.width(maxWidth);
+                }
+            });
+
+        });
+    });
+</script>
+<div class="forceSpace">&nbsp;</div>
+</div>
+</div>
