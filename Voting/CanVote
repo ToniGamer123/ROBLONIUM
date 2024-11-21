@@ -1,0 +1,11 @@
+<?php
+header('Content-Type:application/json');
+
+$assetId = (int)$_GET['assetId'];
+$data = [
+	"success" => true,
+	"message" => "PlayGame"
+];
+
+die(json_encode($data));
+?>

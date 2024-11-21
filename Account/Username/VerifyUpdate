@@ -1,0 +1,9 @@
+<?php
+header('Content-Type:application/json');
+$newModal = [
+	"title" => "Error",
+	"message" => "An unkown error occurred!"
+];
+$newModal['message'] = "Sorry, but username changing has not been implemented yet.";
+die(json_encode($newModal));
+?>

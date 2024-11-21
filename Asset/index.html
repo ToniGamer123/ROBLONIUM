@@ -1,0 +1,54 @@
+<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/private/database.php';
+	function load($id){
+		global $database;
+		global $find;
+		$find = $database->findRow("asset", ["AssetId" => $id], ["AssetId", "IsPublicDomain"]); //Make sure these are all spelled correctly
+		if ($find && $find->rowCount() > 0){
+			$find = $find->fetch(PDO::FETCH_OBJ);
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+$id = $_GET["id"];
+if ($id == "" or $id == null){ $id = $_GET["Id"];}
+$version = $_GET["version"];
+if ($id == "" or $id == null){die();};
+$attachment_location = "./".$id;
+if ($version !== null) {
+$asseturl = "http://www.roblox.com/asset/?id=".$id."&version=".$version;
+$altasseturl = "http://assetgame.sitetest1.roblonium.com/asset/".$id;
+}else{
+$asseturl = "http://www.roblox.com/asset/?id=".$id; //."&version=1"
+$altasseturl = "http://assetgame.sitetest1.roblonium.com/asset/".$id;
+}
+header('Content-Type: text/plain');
+if (file_exists('./'.$id)) {
+	$jsonData = file_get_contents($attachment_location);
+	if ((1 <= $id) && ($id <= 50)) {
+		//this is a snippet of code from the coke14 webserver itself
+		$data = "\n" . $jsonData;
+		$key = file_get_contents("file:///C:/signing/privatekey.pem");
+		openssl_sign($data, $sig, $key, OPENSSL_ALGO_SHA1);
+		$jsonData = "--rbxsig%" . base64_encode($sig) . "%" . $data;
+	}
+	echo $jsonData;
+} else {
+	if (load($id) == true and $find->IsPublicDomain == 1) {
+	if (file_exists($_SERVER["DOCUMENT_ROOT"].'/assets/'.$id)) {
+		die(file_get_contents($_SERVER["DOCUMENT_ROOT"].'/assets/'.$id));
+	}else {
+	//header("Location: " . $asseturl);
+	header("Location: " . $altasseturl);
+	//Redirect($asseturl);
+	//echo(file_get_contents("http://finobe.com/asset/?id=".$id));
+	}
+	}else {
+	header("Location: " . $asseturl);
+	}
+}
+
+?>
