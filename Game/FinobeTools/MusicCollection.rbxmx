@@ -1,0 +1,226 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Sound" referent="RBX1357DA762844421DBED070060D8F67FC">
+		<Properties>
+			<bool name="Looped">true</bool>
+			<string name="Name">BossMusic01</string>
+			<float name="Pitch">1</float>
+			<bool name="PlayOnRemove">false</bool>
+			<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157624298</url></Content>
+			<float name="Volume">0.5</float>
+		</Properties>
+	</Item>
+	<Item class="Sound" referent="RBXD12C4AE8FBF64A8781E8BD26EB8D5347">
+		<Properties>
+			<bool name="Looped">true</bool>
+			<string name="Name">BossMusic02</string>
+			<float name="Pitch">1</float>
+			<bool name="PlayOnRemove">false</bool>
+			<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157580176</url></Content>
+			<float name="Volume">0.5</float>
+		</Properties>
+	</Item>
+	<Item class="Sound" referent="RBX9DEA1A278DDD4686901D4CC46F58542C">
+		<Properties>
+			<bool name="Looped">false</bool>
+			<string name="Name">Horn</string>
+			<float name="Pitch">1</float>
+			<bool name="PlayOnRemove">false</bool>
+			<Content name="SoundId"><url>http://www.roblox.com/asset/?id=156989404</url></Content>
+			<float name="Volume">0.699999988</float>
+		</Properties>
+	</Item>
+	<Item class="Sound" referent="RBX877272D088DF4A18AF1D7692ECF8DA54">
+		<Properties>
+			<bool name="Looped">false</bool>
+			<string name="Name">Voice</string>
+			<float name="Pitch">1</float>
+			<bool name="PlayOnRemove">false</bool>
+			<Content name="SoundId"><url>http://www.roblox.com/asset/?id=131535448</url></Content>
+			<float name="Volume">1</float>
+		</Properties>
+	</Item>
+	<Item class="IntValue" referent="RBX0DD84F67E63F489F80F362ABEEFE0141">
+		<Properties>
+			<string name="Name">Music</string>
+			<int name="Value">0</int>
+		</Properties>
+		<Item class="Sound" referent="RBX796084307ABD4C098FBE4666EEBF6EB9">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music1</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=153800341</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX67B0593AE7074AA4BDFAF61CC95A31EE">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music2</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=150755805</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBXE9DF7A8C1519429F80AC9D220D534510">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music3</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=153014431</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX8F52FE412BB44D59AD4EC1B60866E40E">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music4</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157624397</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX4497CBA03E5D4DF2AB95D4F582E17231">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music5</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157798124</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX0F4009EC95144A82920083102F577E60">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music6</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157798189</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX89FAA25B017B44839A9034E312447A23">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music7</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=158236378</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX2672078DFCC64FC1ACB940FA48866341">
+			<Properties>
+				<bool name="Looped">true</bool>
+				<string name="Name">Music8</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=158236448</url></Content>
+				<float name="Volume">0.5</float>
+			</Properties>
+		</Item>
+	</Item>
+	<Item class="IntValue" referent="RBX48831C764F0746DD9E347E10F291D03D">
+		<Properties>
+			<string name="Name">WaitingMusic</string>
+			<int name="Value">0</int>
+		</Properties>
+		<Item class="Sound" referent="RBXC7B78B294437422D9DD4754009A1F1C0">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">WaitingMusic</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157624192</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX2201D32DB5974F59AFBE25BD54DD91E1">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">WaitingMusic2</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=152324067</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX1184ED64985E4235BD14AEFCB33387FF">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">WaitingMusic3</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=145799145</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX0B0C13F89D344DF7A750AA23509B6517">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">UNICORNZOMBIE</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=150834015</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX55AD2168ADB24EA2A7C9350AA6777AF4">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">Disconnected</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=153468910</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX8832DE422989493BB002B2ABA1D8B9A9">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">RazorSharp</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=144414754</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX932F49AFFE264B7B9560E00B41E8CD50">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">OgreLord</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=152764947</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBXAD0424A7D38D4291AEBF9363F08350D8">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">DropSome</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=157556790</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX2D29D11011144571835FF4CF2DA2152A">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">VirtualRiot</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=150120645</url></Content>
+				<float name="Volume">0.699999988</float>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

@@ -1,0 +1,140 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="HopperBin" referent="RBX0">
+		<Properties>
+			<bool name="Active">false</bool>
+			<token name="BinType">0</token>
+			<string name="Name">ToolGiver</string>
+			<Content name="TextureId"><url>http://www.roblox.com/asset/?id=1329649981</url></Content>
+		</Properties>
+		<Item class="Script" referent="RBX1">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Reset</string>
+				<ProtectedString name="Source">--clockwork
+
+bin = script.Parent
+
+
+
+function onButton1Down(mouse)
+
+&#9;local player = game.Players.LocalPlayer
+&#9;if player == nil then return end
+&#9;&#9;
+&#9;end
+
+function onSelected(mouse)
+&#9;mouse.Icon = &quot;rbxasset://textures\\ArrowCursor.png&quot;
+&#9;mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+&#9;mouse.KeyDown:connect(KeyFunctions)
+end
+
+function KeyFunctions(key)
+&#9;if key == &quot;z&quot; then
+&#9;&#9;Give(6568) --Cheezburger
+&#9;end
+&#9;if key == &quot;x&quot; then
+&#9;&#9;Give(6564) --Bloxilicious Bubble Gum
+&#9;end
+&#9;if key == &quot;c&quot; then
+&#9;&#9;Give(6560) --Space Sandwich
+&#9;end
+&#9;if key == &quot;v&quot; then
+&#9;&#9;Give(6554) --Chocolate Milk
+&#9;end
+&#9;if key == &quot;b&quot; then
+&#9;&#9;Give(6548) --Taco
+&#9;end
+&#9;if key == &quot;n&quot; then
+&#9;&#9;Give(6546) --Bloxy Cola
+&#9;end
+&#9;if key == &quot;g&quot; then
+&#9;&#9;Give(6550) --Gravity Coil
+&#9;end
+&#9;if key == &quot;p&quot; then
+&#9;&#9;Give(15655) --shhhhhh
+&#9;end
+&#9;if key == &quot;k&quot; then
+      Give(18614) --Katana
+&#9;end
+&#9;if key == &quot;m&quot; then
+&#9;&#9;Give(48596336) --Morph Potion
+&#9;end
+&#9;if key == &quot;l&quot; then
+&#9;&#9;s = Instance.new(&quot;Sound&quot;)
+&#9;&#9;s.Name = &quot;Sound&quot;
+&#9;&#9;s.SoundId = &quot;http://assetgame.roblox.com/asset/?id=27697707&quot;
+&#9;&#9;s.Volume = 100
+&#9;&#9;s.Looped = false
+&#9;&#9;s.archivable = true
+&#9;&#9;s.PlayOnRemove = false
+&#9;&#9;s.Parent = ToolGiver
+&#9;&#9;wait(1)
+&#9;&#9;s:play()
+&#9;end
+end
+
+function Give(id)
+&#9;M = Game:GetService(&quot;InsertService&quot;):LoadAsset(id) 
+&#9;M.Parent = Game.Workspace 
+&#9;M:MakeJoints() 
+&#9;M:MoveTo(Game.Workspace.BrentDaMage.Torso.Position + Vector3.new(0, 0, 0))
+end
+
+bin.Selected:connect(onSelected)
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX2">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Script</string>
+				<ProtectedString name="Source">local debounce = false
+
+function getPlayer(humanoid) 
+local players = game.Players:children() 
+for i = 1, #players do 
+if players[i].Character.Humanoid == humanoid then return players[i] end 
+end 
+return nil 
+end 
+
+function onTouch(part) 
+
+local human = part.Parent:findFirstChild(&quot;Humanoid&quot;) 
+if (human ~= nil) and debounce == false then
+
+debounce = true
+
+local player = getPlayer(human) 
+
+if (player == nil) then return end 
+
+script.Parent:clone().Parent = player.Backpack
+
+wait(2)
+debounce = false
+end
+end
+
+
+script.Parent.Parent.Touched:connect(onTouch)</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Sound" referent="RBX3">
+			<Properties>
+				<bool name="Looped">false</bool>
+				<string name="Name">oof</string>
+				<float name="Pitch">1</float>
+				<bool name="PlayOnRemove">false</bool>
+				<Content name="SoundId"><url>http://www.roblox.com/asset/?id=915288747</url></Content>
+				<float name="Volume">1</float>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

@@ -1,0 +1,3462 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Model" referent="RBX0">
+		<Properties>
+			<CoordinateFrame name="ModelInPrimary">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>1</R00>
+				<R01>0</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>1</R11>
+				<R12>0</R12>
+				<R20>0</R20>
+				<R21>0</R21>
+				<R22>1</R22>
+			</CoordinateFrame>
+			<string name="Name">UNGROUP ME IN LIGHTING</string>
+			<Ref name="PrimaryPart">null</Ref>
+		</Properties>
+		<Item class="Script" referent="RBX1">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">AndGateScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+local inputs={sp.Input1:GetCurrentValue(),sp.Input2:GetCurrentValue()}
+
+function check()
+&#9;if inputs[1]&gt;.5 and sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;else
+&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;end
+&#9;if inputs[2]&gt;.5 and sp.Parent:FindFirstChild(&quot;Light2Color&quot;) then
+&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;else
+&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;end
+&#9;if inputs[1]&gt;.5 and inputs[2]&gt;.5 then
+&#9;&#9;sp.Output:SetValue(1)
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light3Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light3Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;end
+&#9;else
+&#9;&#9;sp.Output:SetValue(0)
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light3Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light3Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;end
+end
+
+sp.Input1.SourceValueChanged:connect(function(val)
+&#9;inputs[1]=val
+&#9;check()
+end)
+
+sp.Input2.SourceValueChanged:connect(function(val)
+&#9;inputs[2]=val
+&#9;check()
+end)
+
+check()
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX2">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Boombox Controller</string>
+				<ProtectedString name="Source">--
+
+sp=script.Parent
+
+
+function waitForChild(instance, name)
+&#9;while not instance:findFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+local jazzAsset = &quot;http://www.roblox.com/asset/?id=60047782&quot;
+local electronicAsset = &quot;http://www.roblox.com/asset/?id=60049010&quot;
+local rockAsset = &quot;http://www.roblox.com/asset/?id=60059129&quot;
+local funkAsset = &quot;http://www.roblox.com/asset/?id=60051616&quot;
+
+game:GetService(&quot;ContentProvider&quot;):Preload(jazzAsset)
+game:GetService(&quot;ContentProvider&quot;):Preload(electronicAsset)
+game:GetService(&quot;ContentProvider&quot;):Preload(rockAsset)
+game:GetService(&quot;ContentProvider&quot;):Preload(funkAsset)
+
+waitForChild(sp, &quot;Sound&quot;)
+local sound = sp.Sound
+waitForChild(sp,&quot;Configuration&quot;)
+local config = sp:FindFirstChild(&quot;Configuration&quot;)
+waitForChild(sp,&quot;PausePlay&quot;)
+
+
+config.Music.Changed:connect(function()
+&#9;sound.Volume=0
+&#9;sound:Stop()
+&#9;if config.Music.Value == &quot;Rock&quot; then
+&#9;&#9;sound.SoundId = rockAsset
+&#9;elseif config.Music.Value == &quot;Electronic&quot; then
+&#9;&#9;sound.SoundId = electronicAsset
+&#9;elseif config.Music.Value == &quot;Jazz&quot; then
+&#9;&#9;sound.SoundId = jazzAsset
+&#9;elseif config.Music.Value == &quot;Funk&quot; then
+&#9;&#9;sound.SoundId = funkAsset
+&#9;end
+&#9;if sp.PausePlay:GetCurrentValue()&gt;=.5 then
+&#9;&#9;sound.Volume=config.Volume.Value
+&#9;&#9;sound:Play()
+&#9;end
+end)
+
+config.Volume.Changed:connect(function()
+&#9;sound.Volume=config.Volume.Value
+end)
+
+sp.PausePlay.SourceValueChanged:connect(function(val)
+&#9;if val&gt;=.5 then
+&#9;&#9;sound.Volume=config.Volume.Value
+&#9;&#9;sound:Play()
+&#9;else
+&#9;&#9;sound.Volume=0
+&#9;&#9;sound:Pause()
+&#9;end
+end)
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX3">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">BoomboxController</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+sp=script.Parent
+
+function waitForChild(instance, name)
+&#9;while not instance:findFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Sound&quot;)
+local sound=sp.Sound
+waitForChild(sp,&quot;Configuration&quot;)
+local config=sp:FindFirstChild(&quot;Configuration&quot;)
+waitForChild(sp,&quot;PausePlay&quot;)
+if sp.Configuration:FindFirstChild(&quot;Finobe ID&quot;) == nil then
+&#9;local okcloneitok = game.Lighting:FindFirstChild(&quot;Finobe ID&quot;)
+&#9;okcloneitok:Clone().Parent = sp.Configuration
+end
+
+function update()
+&#9;sound.Volume=0
+&#9;sound:Stop()
+&#9;sound.Pitch=config.Pitch.Value
+&#9;local idtofinobe = sp.Configuration:FindFirstChild(&quot;Finobe ID&quot;)
+&#9;if idtofinobe.Value == false then
+&#9;&#9;sound.SoundId=&quot;http://www.roblox.com/asset/?id=&quot;..tostring(config.SoundId.Value)
+&#9;else
+&#9;&#9;sound.SoundId=&quot;http://finobe.com/asset?id=&quot;..tostring(config.SoundId.Value)
+&#9;end
+&#9;
+&#9;if sp.PausePlay:GetCurrentValue()&gt;=.5 then
+&#9;&#9;sound.Volume=config.Volume.Value
+&#9;&#9;sound:Play()
+&#9;end
+end
+
+for i,v in ipairs(config:GetChildren()) do
+&#9;v.Changed:connect(update)
+end
+
+sp.PausePlay.SourceValueChanged:connect(function(val)
+&#9;if val&gt;=.5 then
+&#9;&#9;sound.Volume=config.Volume.Value
+&#9;&#9;if config.RestartSound.Value then
+&#9;&#9;&#9;sound:Stop()
+&#9;&#9;end
+&#9;&#9;sound:Play()
+&#9;else
+&#9;&#9;sound.Volume=0
+&#9;&#9;sound:Pause()
+&#9;end
+end)
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX4">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">BoomboxControllera</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+sp=script.Parent
+
+function waitForChild(instance, name)
+&#9;while not instance:findFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Sound&quot;)
+local sound=sp.Sound
+waitForChild(sp,&quot;Configuration&quot;)
+local config=sp:FindFirstChild(&quot;Configuration&quot;)
+waitForChild(sp,&quot;PausePlay&quot;)
+
+function update()
+&#9;sound.Volume=0
+&#9;sound:Stop()
+&#9;sound.Pitch=config.Pitch.Value
+&#9;--local idtofinobe = sp.Configuration:FindFirstChild(&quot;Finobe ID&quot;)
+&#9;&#9;sound.SoundId=&quot;http://www.roblox.com/asset/?id=&quot;..tostring(config.SoundId.Value)
+
+&#9;
+&#9;if sp.PausePlay:GetCurrentValue()&gt;=.5 then
+&#9;&#9;sound.Volume=config.Volume.Value
+&#9;&#9;sound:Play()
+&#9;end
+end
+
+for i,v in ipairs(config:GetChildren()) do
+&#9;v.Changed:connect(update)
+end
+
+sp.PausePlay.SourceValueChanged:connect(function(val)
+&#9;if val&gt;=.5 then
+&#9;&#9;sound.Volume=config.Volume.Value
+&#9;&#9;if config.RestartSound.Value then
+&#9;&#9;&#9;sound:Stop()
+&#9;&#9;end
+&#9;&#9;sound:Play()
+&#9;else
+&#9;&#9;sound.Volume=0
+&#9;&#9;sound:Pause()
+&#9;end
+end)
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX5">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ButtonScript</string>
+				<ProtectedString name="Source">function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+function getPlayerFromPart(part)
+&#9;-- If part is inside a character, then return the player.  Else, return nil.
+&#9;while part do
+&#9;&#9;if part:FindFirstChild(&quot;Humanoid&quot;) then
+&#9;&#9;&#9;return game.Players:GetPlayerFromCharacter(part)
+&#9;&#9;end
+&#9;&#9;part = part.Parent
+&#9;end
+&#9;return nil
+end
+
+local model = script.Parent
+
+waitForChild(model, &quot;BottomBase&quot;)
+waitForChild(model, &quot;Knob&quot;)
+waitForChild(model, &quot;ClickDetector&quot;)
+waitForChild(model, &quot;Lever&quot;)
+waitForChild(model, &quot;sidewallRelative&quot;)
+waitForChild(model.Lever, &quot;LeverEngage&quot;)
+
+local lever = model.Lever
+local knob = model.Knob
+local leverEngage = lever.LeverEngage
+local bottomBase = model.BottomBase
+local cDetector = model.ClickDetector
+local sidewallRelative = model.sidewallRelative
+
+waitForChild(lever, &quot;LeverWeld&quot;)
+local leverWeld = lever.LeverWeld
+--lever.CFrame = sidewallRelative.CFrame + sidewallRelative.CFrame:vectorToWorldSpace(Vector3.new(0.7, 0, 0.7))
+
+local leverOn = false
+local leverMoveDiff = 1.7
+local movingLever = false
+
+-- was lever last on or off?
+if knob.BrickColor.Name ~= &quot;Bright red&quot; then
+&#9;leverOn = true
+end
+
+
+function moveLever()
+&#9;leverOn = not leverOn
+
+&#9;&#9;if leverOn then
+&#9;&#9;&#9;knob.BrickColor = BrickColor.new(&quot;Bright green&quot;)
+&#9;&#9;&#9;leverWeld.C1 = leverWeld.C1 + Vector3.new(0, 0, leverMoveDiff)
+&#9;&#9;else
+&#9;&#9;&#9;knob.BrickColor = BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;&#9;leverWeld.C1 = leverWeld.C1 - Vector3.new(0, 0, leverMoveDiff)
+&#9;&#9;end
+end
+
+cDetector.MouseClick:connect(function()
+&#9;if not movingLever then
+&#9;&#9;movingLever = true
+
+&#9;&#9;&#9;if not leverOn then
+&#9;&#9;&#9;&#9;moveLever() -- bring the lever down
+&#9;&#9;&#9;&#9;leverEngage:SetValue(1)
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;moveLever() -- bring the lever back up
+&#9;&#9;&#9;&#9;leverEngage:SetValue(0)
+&#9;&#9;&#9;end
+
+&#9;&#9;movingLever = false
+&#9;end
+end)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX6">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ButtonScriptOK</string>
+				<ProtectedString name="Source">function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+function getPlayerFromPart(part)
+&#9;-- If part is inside a character, then return the player.  Else, return nil.
+&#9;while part do
+&#9;&#9;if part:FindFirstChild(&quot;Humanoid&quot;) then
+&#9;&#9;&#9;return game.Players:GetPlayerFromCharacter(part)
+&#9;&#9;end
+&#9;&#9;part = part.Parent
+&#9;end
+&#9;return nil
+end
+
+local model = script.Parent
+waitForChild(model, &quot;Base&quot;)
+waitForChild(model, &quot;BottomBase&quot;)
+waitForChild(model, &quot;Button&quot;)
+local button = model.Button
+local bottomBase = model.BottomBase
+local base = model.Base
+
+-- SETTINGS
+--local offColor = BrickColor.new(&quot;Deep blue&quot;)
+--local onColor  = BrickColor.new(0.8, 0.8, 0.8)
+
+local onColor = BrickColor.new(&quot;Deep orange&quot;)
+local offColor = BrickColor.new(&quot;Neon orange&quot;)
+
+local downY = base.Position.Y
+local buttonHeight = 0.45 -- Distance above bottomBase that button should be when it&apos;s in the up position
+local upY = downY + buttonHeight
+local threshold = 0.2  -- How far down do you have to press the button before isPressed = true?
+local onlyTriggeredByPlayers = true  -- Only players can trigger this button.
+local button_maxForce = Vector3.new(1200, 1200, 1200) -- MaxForce for the Button&apos;s BodyPosition
+local button_D = 1250
+local button_P = 3500
+local stamperToolWasEquipped = false
+local isCoolingDown = false
+--
+
+
+
+local currentColor = 1
+local colors = {
+&#9;BrickColor.new(&quot;Camo&quot;),
+&#9;BrickColor.new(&quot;Cyan&quot;),
+&#9;BrickColor.new(&quot;Bright yellow&quot;),
+&#9;BrickColor.new(&quot;Deep blue&quot;),
+&#9;BrickColor.new(&quot;Bright red&quot;),
+&#9;BrickColor.new(&quot;Pink&quot;),
+&#9;BrickColor.new(&quot;Magenta&quot;),
+&#9;BrickColor.new(&quot;Bright red&quot;)
+}
+
+function button_touchHandler(part)
+&#9;local playerWhoTouched
+&#9;playerWhoTouched = getPlayerFromPart(part)
+
+&#9;if isCoolingDown then return end
+&#9;isCoolingDown = true
+&#9;-- Turn switch on
+&#9;button.BrickColor = onColor
+&#9;stop = time() + 1.4
+&#9;button.ButtonPush:SetValue(1.0)
+&#9;wait(0.2)
+&#9;button.ButtonPush:SetValue(0)
+&#9;button.BrickColor = offColor
+&#9;wait(0.4)
+&#9;isCoolingDown = false
+end
+
+-- Initialize
+button.BrickColor = offColor
+
+-- Connect events
+button.Touched:connect(function(part) button_touchHandler(part) end)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX7">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ButtonScriptcoil</string>
+				<ProtectedString name="Source">--
+
+
+
+sp=script.Parent
+oncolor=BrickColor.new(28)
+offcolor=BrickColor.new(&quot;Bright red&quot;)
+
+effectparts={&quot;Ring1&quot;,&quot;Ring2&quot;,&quot;Ring3&quot;,&quot;Ring4&quot;,&quot;Ring5&quot;,&quot;Ring6&quot;}
+
+function runeffects(trans)
+&#9;for i,v in ipairs(effectparts) do
+&#9;&#9;local part=sp.Parent:FindFirstChild(v)
+&#9;&#9;if part~=nil then
+&#9;&#9;&#9;part.Transparency=trans
+&#9;&#9;end
+&#9;&#9;wait(.15)
+&#9;end
+end
+
+sp.ClickDetector.MouseClick:connect(function()
+&#9;if sp.BrickColor == oncolor then
+&#9;&#9;sp.BrickColor = offcolor
+&#9;&#9;sp.ButtonPress:SetValue(0)
+&#9;&#9;runeffects(1)
+&#9;else
+&#9;&#9;sp.BrickColor = oncolor
+&#9;&#9;sp.ButtonPress:SetValue(1)
+&#9;&#9;runeffects(0)
+&#9;end
+end)
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX8">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DelayScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+
+function check(val)
+&#9;if sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;if val&gt;.5 then
+&#9;&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;else
+&#9;&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;end
+&#9;wait(sp.Configuration.DelayTime.Value)
+&#9;sp.Output:SetValue(val)
+&#9;if sp.Parent:FindFirstChild(&quot;Light2Color&quot;) then
+&#9;&#9;if val&gt;.5 then
+&#9;&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;else
+&#9;&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;end
+end
+
+sp.DelayInput.SourceValueChanged:connect(check)
+check(sp.DelayInput:GetCurrentValue())
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX9">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DoorScript</string>
+				<ProtectedString name="Source">-- useless comment here
+
+function waitForChild(parent, child)
+&#9;while not parent:FindFirstChild(child) do parent.ChildAdded:wait() end
+end
+
+local model = script.Parent
+local doorOpenTime = 3
+
+local weld1RelativePosition = CFrame.new() + Vector3.new(0, -1.1, .55)
+local weld2RelativePosition = CFrame.new() + Vector3.new(0, -1.1, -.55)
+
+
+waitForChild(model, &quot;PlayerIdTag&quot;)
+waitForChild(model, &quot;Configuration&quot;)
+waitForChild(model, &quot;Door1&quot;)
+waitForChild(model, &quot;Door2&quot;)
+waitForChild(model, &quot;TouchDoor1&quot;)
+waitForChild(model, &quot;TouchDoor2&quot;)
+waitForChild(model, &quot;OuterEdge&quot;)
+
+local doorOwnerId = model.PlayerIdTag.Value  -- Update the owner ID
+local config = model.Configuration
+local doorPart1 = model.Door1
+local doorPart2 = model.Door2
+local doorTouch1 = model.TouchDoor1
+local doorTouch2 = model.TouchDoor2
+local outerEdge = model.OuterEdge
+
+waitForChild(config, &quot;FriendMode&quot;)
+local mode = config.FriendMode
+
+
+function testPermission(part)
+&#9;doorOwnerId = model.PlayerIdTag.Value -- Update the owner ID
+&#9;if part == nil then return false end   -- In case part was deleted
+&#9;pChar = part.Parent
+&#9;if pChar == nil then return false end
+&#9;pPlay = game.Players:GetPlayerFromCharacter(pChar)  -- In case player left game
+&#9;if pPlay == nil then return false end
+
+&#9;-- Test permissions
+&#9;if(mode.Value == &quot;Everyone&quot;) then
+&#9;&#9;return true
+&#9;elseif (mode.Value == &quot;Only Me&quot;) then
+&#9;&#9;if pPlay.userId == doorOwnerId then
+&#9;&#9;&#9;return true
+&#9;&#9;else
+&#9;&#9;&#9;-- no access
+&#9;&#9;end
+&#9;elseif(mode.Value == &quot;Friends&quot;) then
+&#9;&#9;if (pPlay:IsFriendsWith(doorOwnerId)) then 
+&#9;&#9;&#9;return true 
+&#9;&#9;else
+&#9;&#9;&#9;-- no access
+&#9;&#9;end
+&#9;elseif(mode.Value == &quot;Best Friends&quot;) then
+&#9;&#9;if (pPlay:IsBestFriendsWith(doorOwnerId)) then
+&#9;&#9;&#9;return true
+&#9;&#9;else
+&#9;&#9;&#9;-- no access
+&#9;&#9;end
+&#9;elseif(mode.Value == &quot;Group&quot;) then
+&#9;&#9;if (pPlay:IsInGroup(doorOwnerId)) then
+&#9;&#9;&#9;return true
+&#9;&#9;else
+&#9;&#9;&#9;-- no access
+&#9;&#9;end
+&#9;end
+&#9;return false
+end
+
+local isOpen
+function doorOpen()
+&#9;isOpen = true
+&#9;--if doorPart1:FindFirstChild(&quot;DoorWeld&quot;) ~= nil then doorPart1.DoorWeld:Remove() end
+&#9;--if doorPart2:FindFirstChild(&quot;DoorWeld&quot;) ~= nil then doorPart2.DoorWeld:Remove() end
+&#9;weld1 = doorPart1:FindFirstChild(&quot;DoorWeld&quot;)
+&#9;weld2 = doorPart2:FindFirstChild(&quot;DoorWeld&quot;)
+&#9;if not weld1 or not weld2 then return end
+
+&#9;-- horrible animation code
+&#9;for i = 1, 10 do
+&#9;&#9;weld1.C1 = weld1RelativePosition + Vector3.new(0, 0, i * .2)
+&#9;&#9;weld2.C1 = weld2RelativePosition + Vector3.new(0, 0, i * -.2)
+
+&#9;&#9;wait(.1)
+&#9;end
+end
+
+function doorClose()
+&#9;-- horrible animation code
+&#9;weld1 = doorPart1:FindFirstChild(&quot;DoorWeld&quot;)
+&#9;weld2 = doorPart2:FindFirstChild(&quot;DoorWeld&quot;)
+
+&#9;if not weld1 or not weld2 then return end
+
+&#9;for i = 9, 0, -1 do
+&#9;&#9;weld1.C1 = weld1RelativePosition + Vector3.new(0, 0, i * .2)
+&#9;&#9;weld2.C1 = weld2RelativePosition + Vector3.new(0, 0, i * -.2)
+
+&#9;&#9;wait(.1)
+&#9;end
+
+&#9;isOpen = false
+&#9;--doorPart2.CFrame = doorGyro.cframe -- snap shut through the player, so that it doesn&apos;t send them flying
+end
+
+local debounce = false
+local stayOpenTime = 0
+function touchEvent(part)
+&#9;if not part or not part.Parent or part.Parent == model then return end
+
+&#9;--if (part ~= door1 and part ~= door2) then
+&#9;&#9;if (testPermission(part)) then
+&#9;&#9;&#9;if not debounce and not isOpen then
+&#9;&#9;&#9;&#9;debounce = true
+&#9;&#9;&#9;&#9;doorOpen()
+&#9;&#9;&#9;&#9;wait(doorOpenTime)
+&#9;&#9;&#9;&#9;while stayOpenTime &gt; 0 do
+&#9;&#9;&#9;&#9;&#9;local tempVariable = stayOpenTime -- allows us to use this variable in the wait while also setting it to zero
+&#9;&#9;&#9;&#9;&#9;stayOpenTime = 0
+&#9;&#9;&#9;&#9;&#9;wait(tempVariable)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;doorClose()
+&#9;&#9;&#9;&#9;debounce = false
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;stayOpenTime = doorOpenTime
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;--end
+end
+
+
+function changedEvent(prop)
+&#9;-- Only interested in CFrame (position + rotation) changes
+&#9;if(prop ~= &quot;CFrame&quot;) then return end
+
+&#9;--targetPos = underDoors.Position
+&#9;--door1bp.position = side2.Position
+&#9;--door2bp.position = side1.Position
+&#9;--a = underDoors.CFrame.lookVector
+&#9;--lookVector = Vector3.new( math.abs(a.x), math.abs(a.y), math.abs(a.z) )
+&#9;--setDoorForces()
+end
+
+changedEvent(&quot;CFrame&quot;) -- Fire once to initialize
+
+-- shut the front door
+-- create door welds if we don&apos;t have them yet
+
+weld1 = doorPart1:FindFirstChild(&quot;DoorWeld&quot;)
+weld2 = doorPart2:FindFirstChild(&quot;DoorWeld&quot;)
+if not weld1 or not weld2 then
+&#9;if weld1 then weld1:Remove() end
+&#9;if weld2 then weld2:Remove() end
+
+&#9;newDoorWeld = Instance.new(&quot;ManualWeld&quot;)
+&#9;newDoorWeld.Part0 = doorPart1
+&#9;newDoorWeld.Part1 = outerEdge
+&#9;newDoorWeld.C1 = weld1RelativePosition
+&#9;newDoorWeld.Name = &quot;DoorWeld&quot;
+&#9;newDoorWeld.Parent = doorPart1
+
+&#9;newDoorWeld = Instance.new(&quot;ManualWeld&quot;)
+&#9;newDoorWeld.Part0 = doorPart2
+&#9;newDoorWeld.Part1 = outerEdge
+&#9;newDoorWeld.C1 = weld2RelativePosition
+&#9;newDoorWeld.Name = &quot;DoorWeld&quot;
+&#9;newDoorWeld.Parent = doorPart2
+else
+&#9;weld1.C1 = weld1RelativePosition
+&#9;weld2.C1 = weld2RelativePosition
+end
+isOpen = false
+
+doorTouch1.Touched:connect(touchEvent)
+doorTouch2.Touched:connect(touchEvent)
+
+print(&quot;REACHED END&quot;)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX10">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DoorScriptDraw</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+sp=script.Parent
+framerate=30
+
+frames=1
+running=false
+direction=1
+
+
+function waitForChild(instance,name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Bottom&quot;)
+waitForChild(sp.Bottom,&quot;CloseGate&quot;)
+waitForChild(sp.Bottom,&quot;Configuration&quot;)
+
+
+function checkframes()
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local config=sp.Bottom:FindFirstChild(&quot;Configuration&quot;)
+&#9;&#9;if config then
+&#9;&#9;&#9;frames=math.floor(config.TimeToMove.Value*framerate)+1
+&#9;&#9;end
+&#9;end
+end
+sp.Bottom.Configuration.TimeToMove.Changed:connect(checkframes)
+checkframes()
+
+
+function updatedoor(frame)
+&#9;local percentage=1-(frame/frames)
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local hinge1=sp.Bottom:FindFirstChild(&quot;HingeMain&quot;)
+&#9;&#9;if hinge1~=nil then
+&#9;&#9;&#9;hinge1.C1=CFrame.new(0,-4,0)*CFrame.Angles(math.pi/2*percentage,0,0)
+&#9;&#9;end
+&#9;&#9;local hinge2=sp.Bottom:FindFirstChild(&quot;HingeSecondary&quot;)
+&#9;&#9;if hinge2~=nil then
+&#9;&#9;&#9;hinge2.C1=CFrame.new(0,-10,0)*CFrame.Angles(math.pi/2*percentage,0,0)
+&#9;&#9;end
+&#9;&#9;local hinge3=sp.Bottom:FindFirstChild(&quot;HingeCorner1&quot;)
+&#9;&#9;if hinge3~=nil then
+&#9;&#9;&#9;hinge3.C1=CFrame.new(0,0,10)*CFrame.Angles(0,math.pi/2*-percentage,0)
+&#9;&#9;end
+&#9;&#9;local hinge4=sp.Bottom:FindFirstChild(&quot;HingeCorner2&quot;)
+&#9;&#9;if hinge4~=nil then
+&#9;&#9;&#9;hinge4.C1=CFrame.new(0,0,10)*CFrame.Angles(0,math.pi/2*percentage,math.pi)
+&#9;&#9;end
+&#9;&#9;local hinge5=sp.Bottom:FindFirstChild(&quot;HingeCorner3&quot;)
+&#9;&#9;if hinge5~=nil then
+&#9;&#9;&#9;hinge5.C1=CFrame.new(0,0,13)*CFrame.Angles(0,math.pi/2*-percentage,0)
+&#9;&#9;end
+&#9;&#9;local hinge6=sp.Bottom:FindFirstChild(&quot;HingeCorner4&quot;)
+&#9;&#9;if hinge6~=nil then
+&#9;&#9;&#9;hinge6.C1=CFrame.new(0,0,13)*CFrame.Angles(0,math.pi/2*percentage,math.pi)
+&#9;&#9;end
+&#9;end
+end
+
+function runloop()
+&#9;if not running then
+&#9;&#9;running=true
+&#9;&#9;while true do
+&#9;&#9;&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;&#9;&#9;local frame=sp.Bottom:FindFirstChild(&quot;Frame&quot;)
+&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;frame.Value=frame.Value+direction
+&#9;&#9;&#9;&#9;&#9;if frame.Value&gt;frames then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=frames
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;if frame.Value&lt;=0 then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;updatedoor(frame.Value)
+&#9;&#9;&#9;&#9;&#9;wait(1/framerate)
+&#9;&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;&#9;if (frame.Value&lt;=0 and direction==-1) or (frame.Value&gt;=frames and direction==1) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;running=false
+&#9;end
+end
+
+function check(val)
+&#9;if val&gt;.5 then
+&#9;&#9;direction=1
+&#9;else
+&#9;&#9;direction=-1
+&#9;end
+&#9;runloop()
+end
+
+sp.Bottom.CloseGate.SourceValueChanged:connect(check)
+check(sp.Bottom.CloseGate:GetCurrentValue())
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX11">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DoorScriptSci</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+sp=script.Parent
+framerate=30
+
+frames=1
+running=false
+direction=1
+
+
+function waitForChild(instance,name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Bottom&quot;)
+waitForChild(sp.Bottom,&quot;OpenDoor&quot;)
+waitForChild(sp.Bottom,&quot;Configuration&quot;)
+
+
+function checkframes()
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local config=sp.Bottom:FindFirstChild(&quot;Configuration&quot;)
+&#9;&#9;if config then
+&#9;&#9;&#9;frames=math.floor(config.TimeToMove.Value*framerate)+1
+&#9;&#9;end
+&#9;end
+end
+sp.Bottom.Configuration.TimeToMove.Changed:connect(checkframes)
+checkframes()
+
+
+function updatedoor(frame)
+&#9;local percentage=frame/frames
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local bottomhinge=sp.Bottom:FindFirstChild(&quot;BottomHinge&quot;)
+&#9;&#9;if bottomhinge~=nil then
+&#9;&#9;&#9;bottomhinge.C1=CFrame.new(0,3.25*percentage,0)
+&#9;&#9;end
+&#9;&#9;local tophinge=sp.Bottom:FindFirstChild(&quot;TopHinge&quot;)
+&#9;&#9;if tophinge~=nil then
+&#9;&#9;&#9;tophinge.C1=CFrame.new(0,-3.25*percentage,0)
+&#9;&#9;end
+&#9;&#9;local center1=sp.Bottom:FindFirstChild(&quot;Center1Hinge&quot;)
+&#9;&#9;if center1~=nil then
+&#9;&#9;&#9;center1.C1=CFrame.new(0,0,3.25*percentage)
+&#9;&#9;end
+&#9;&#9;local center2=sp.Bottom:FindFirstChild(&quot;Center2Hinge&quot;)
+&#9;&#9;if center2~=nil then
+&#9;&#9;&#9;center2.C1=CFrame.new(0,0,3.25*percentage)
+&#9;&#9;end
+&#9;end
+end
+
+function checkemitters()
+&#9;if sp:FindFirstChild(&quot;Emitter1&quot;) then
+&#9;&#9;sp.Emitter1.Smoke.Enabled=running
+&#9;end
+&#9;if sp:FindFirstChild(&quot;Emitter2&quot;) then
+&#9;&#9;sp.Emitter2.Smoke.Enabled=running
+&#9;end
+end
+checkemitters()
+
+function runloop()
+&#9;if not running then
+&#9;&#9;running=true
+&#9;&#9;checkemitters()
+&#9;&#9;while true do
+&#9;&#9;&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;&#9;&#9;local frame=sp.Bottom:FindFirstChild(&quot;Frame&quot;)
+&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;frame.Value=frame.Value+direction
+&#9;&#9;&#9;&#9;&#9;if frame.Value&gt;frames then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=frames
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;if frame.Value&lt;=0 then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;updatedoor(frame.Value)
+&#9;&#9;&#9;&#9;&#9;wait(1/framerate)
+&#9;&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;&#9;if (frame.Value&lt;=0 and direction==-1) or (frame.Value&gt;=frames and direction==1) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;running=false
+&#9;&#9;checkemitters()
+&#9;end
+end
+
+function check(val)
+&#9;if val&gt;.5 then
+&#9;&#9;direction=1
+&#9;else
+&#9;&#9;direction=-1
+&#9;end
+&#9;runloop()
+end
+
+sp.Bottom.OpenDoor.SourceValueChanged:connect(check)
+check(sp.Bottom.OpenDoor:GetCurrentValue())
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX12">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DoorScriptWIRING</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+sp=script.Parent
+framerate=30
+
+frames=1
+running=false
+direction=1
+
+
+function waitForChild(instance,name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Bottom&quot;)
+waitForChild(sp.Bottom,&quot;OpenDoor&quot;)
+waitForChild(sp.Bottom,&quot;Configuration&quot;)
+
+
+function checkframes()
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local config=sp.Bottom:FindFirstChild(&quot;Configuration&quot;)
+&#9;&#9;if config then
+&#9;&#9;&#9;frames=math.floor(config.TimeToMove.Value*framerate)+1
+&#9;&#9;end
+&#9;end
+end
+sp.Bottom.Configuration.TimeToMove.Changed:connect(checkframes)
+checkframes()
+
+
+function updatedoor(frame)
+&#9;local percentage=frame/frames
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local hinge1=sp.Bottom:FindFirstChild(&quot;Hinge1&quot;)
+&#9;&#9;if hinge1~=nil then
+&#9;&#9;&#9;hinge1.C1=CFrame.new(1.75,0,0)*CFrame.Angles(0,(math.pi/2)*percentage,0)*CFrame.new(-1.75,0,0)
+&#9;&#9;end
+&#9;&#9;local hinge2=sp.Bottom:FindFirstChild(&quot;Hinge2&quot;)
+&#9;&#9;if hinge2~=nil then
+&#9;&#9;&#9;hinge2.C1=CFrame.new(-1.75,0,0)*CFrame.Angles(0,(-math.pi/2)*percentage,0)*CFrame.new(1.75,0,0)
+&#9;&#9;end
+&#9;end
+end
+
+function runloop()
+&#9;if not running then
+&#9;&#9;running=true
+&#9;&#9;while true do
+&#9;&#9;&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;&#9;&#9;local frame=sp.Bottom:FindFirstChild(&quot;Frame&quot;)
+&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;frame.Value=frame.Value+direction
+&#9;&#9;&#9;&#9;&#9;if frame.Value&gt;frames then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=frames
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;if frame.Value&lt;=0 then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;updatedoor(frame.Value)
+&#9;&#9;&#9;&#9;&#9;wait(1/framerate)
+&#9;&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;&#9;if (frame.Value&lt;=0 and direction==-1) or (frame.Value&gt;=frames and direction==1) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;running=false
+&#9;end
+end
+
+function check(val)
+&#9;if val&gt;.5 then
+&#9;&#9;direction=1
+&#9;else
+&#9;&#9;direction=-1
+&#9;end
+&#9;runloop()
+end
+
+sp.Bottom.OpenDoor.SourceValueChanged:connect(check)
+check(sp.Bottom.OpenDoor:GetCurrentValue())
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX13">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DoorScriptiris</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+sp=script.Parent
+framerate=30
+
+frames=1
+running=false
+direction=1
+
+
+function waitForChild(instance,name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Bottom&quot;)
+waitForChild(sp.Bottom,&quot;OpenDoor&quot;)
+waitForChild(sp.Bottom,&quot;Configuration&quot;)
+
+
+function checkframes()
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local config=sp.Bottom:FindFirstChild(&quot;Configuration&quot;)
+&#9;&#9;if config then
+&#9;&#9;&#9;frames=math.floor(config.TimeToMove.Value*framerate)+1
+&#9;&#9;end
+&#9;end
+end
+sp.Bottom.Configuration.TimeToMove.Changed:connect(checkframes)
+checkframes()
+
+
+function updatedoor(frame)
+&#9;local percentage=frame/frames
+&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;local hingedist=1.9
+&#9;&#9;local hinge1=sp.Bottom:FindFirstChild(&quot;Door1&quot;)
+&#9;&#9;if hinge1~=nil then
+&#9;&#9;&#9;hinge1.C1=CFrame.new(-hingedist,-hingedist,0)*CFrame.Angles(0,0,(math.pi/2)*percentage)*CFrame.new(hingedist,hingedist,0)
+&#9;&#9;end
+&#9;&#9;local hinge1=sp.Bottom:FindFirstChild(&quot;Door2&quot;)
+&#9;&#9;if hinge1~=nil then
+&#9;&#9;&#9;hinge1.C1=CFrame.new(-hingedist,hingedist,0)*CFrame.Angles(0,0,(math.pi/2)*percentage)*CFrame.new(hingedist,-hingedist,0)
+&#9;&#9;end
+&#9;&#9;local hinge1=sp.Bottom:FindFirstChild(&quot;Door3&quot;)
+&#9;&#9;if hinge1~=nil then
+&#9;&#9;&#9;hinge1.C1=CFrame.new(hingedist,hingedist,0)*CFrame.Angles(0,0,(math.pi/2)*percentage)*CFrame.new(-hingedist,-hingedist,0)
+&#9;&#9;end
+&#9;&#9;local hinge1=sp.Bottom:FindFirstChild(&quot;Door4&quot;)
+&#9;&#9;if hinge1~=nil then
+&#9;&#9;&#9;hinge1.C1=CFrame.new(hingedist,-hingedist,0)*CFrame.Angles(0,0,(math.pi/2)*percentage)*CFrame.new(-hingedist,hingedist,0)
+&#9;&#9;end
+&#9;end
+end
+
+function runloop()
+&#9;if not running then
+&#9;&#9;running=true
+&#9;&#9;while true do
+&#9;&#9;&#9;if sp:FindFirstChild(&quot;Bottom&quot;) then
+&#9;&#9;&#9;&#9;local frame=sp.Bottom:FindFirstChild(&quot;Frame&quot;)
+&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;frame.Value=frame.Value+direction
+&#9;&#9;&#9;&#9;&#9;if frame.Value&gt;frames then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=frames
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;if frame.Value&lt;=0 then
+&#9;&#9;&#9;&#9;&#9;&#9;frame.Value=0
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;updatedoor(frame.Value)
+&#9;&#9;&#9;&#9;&#9;wait(1/framerate)
+&#9;&#9;&#9;&#9;&#9;if frame then
+&#9;&#9;&#9;&#9;&#9;&#9;if (frame.Value&lt;=0 and direction==-1) or (frame.Value&gt;=frames and direction==1) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;running=false
+&#9;end
+end
+
+function check(val)
+&#9;if val&gt;.5 then
+&#9;&#9;direction=1
+&#9;else
+&#9;&#9;direction=-1
+&#9;end
+&#9;runloop()
+end
+
+sp.Bottom.OpenDoor.SourceValueChanged:connect(check)
+check(sp.Bottom.OpenDoor:GetCurrentValue())
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX14">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">DoorbellScript</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+
+sp=script.Parent
+button=sp.Parent:FindFirstChild(&quot;Button&quot;)
+ontill=0
+
+function on()
+&#9;sp.ButtonPushed:SetValue(1)
+&#9;button.BrickColor=BrickColor.new(&quot;Cool yellow&quot;)
+&#9;button.Mesh.Offset=Vector3.new(0,.25,0)
+end
+
+function off()
+&#9;sp.ButtonPushed:SetValue(0)
+&#9;button.BrickColor=BrickColor.new(&quot;Bright yellow&quot;)
+&#9;button.Mesh.Offset=Vector3.new(0,.1,0)
+end
+
+button.ClickDetector.MouseClick:connect(function()
+&#9;on()
+&#9;ontill=tick()+sp.Configuration.ActivationTime.Value
+&#9;while ontill&gt;tick() do
+&#9;&#9;wait()
+&#9;end
+&#9;off()
+end)
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX15">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ElevatorScript</string>
+				<ProtectedString name="Source">function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+
+
+-- SETTINGS
+local offColor = BrickColor.new(&quot;Earth green&quot;)
+local onColor  = BrickColor.new(&quot;Lime green&quot;)
+local platformOffset = -3.6 -- Offset the platform this many studs from the goalTop and goalBottom positions (along the Platform&apos;s lookVector axis).
+local triggerStopThreshold = 1  -- How close must platform be to goal position to signal a stop?
+
+local model = script.Parent
+waitForChild(model, &quot;SwitchBottom&quot;)
+waitForChild(model, &quot;SwitchBottomWedge&quot;)
+waitForChild(model, &quot;SwitchTop&quot;)
+waitForChild(model, &quot;Platform&quot;)
+waitForChild(model, &quot;Invisiweight&quot;)
+waitForChild(model, &quot;Spine&quot;)
+waitForChild(model, &quot;Bottom&quot;)
+waitForChild(model, &quot;SpineBottom&quot;)
+local platform = model.Platform
+local weight = model.Invisiweight
+waitForChild(weight, &quot;BodyPosition&quot;)
+local bodyPosition = weight.BodyPosition
+waitForChild(weight, &quot;BodyGyro&quot;)
+local bodyGyro = weight.BodyGyro
+
+local switchBottom = model.SwitchBottom
+local switchBottomWedge = model.SwitchBottomWedge
+local switchTop = model.SwitchTop
+local spine = model.Spine
+local spineBottom = model.SpineBottom
+local bottom = model.Bottom
+local goalTop = switchTop
+local goalBottom = spineBottom
+local goalTopPosition  -- Platform&apos;s position at top
+local goalBottomPosition  -- Platform&apos;s position at bottom
+local goalPositionOffset = Vector3.new(0, (weight.Size.y/2 + platform.Size.y/2), 0)
+-- In more exact terms: goalTop.Position + Platform.CFrame.lookVector*(this amount) should put the platform in its goalTop and goalBottom positions.
+local isMoving = false
+local isGoingUp = false
+local timeout = 5
+local platformListenerDisabled = false  -- Necessary because your legs call the platform way too much.
+
+-- FUNCTIONS
+
+function platformLoop()
+&#9;local endTime = time() + timeout
+&#9;local stayAlive = true
+&#9;while stayAlive do
+&#9;&#9;local dist = weight.Position - bodyPosition.position
+&#9;&#9;if(dist.magnitude &lt;= triggerStopThreshold) then
+&#9;&#9;&#9;print(&quot;Platform has reached goal.  isMoving = false.&quot;)
+&#9;&#9;&#9;isMoving = false
+&#9;&#9;&#9;stayAlive = false
+&#9;&#9;else
+&#9;&#9;&#9;wait(0.5)
+&#9;&#9;&#9;print(&quot;loop...&quot;)
+&#9;&#9;&#9;if time() &gt; endTime then
+&#9;&#9;&#9;&#9;print(&quot;loop: timeout. Reversing...&quot;)
+&#9;&#9;&#9;&#9;if isGoingUp then
+&#9;&#9;&#9;&#9;&#9;moveElevatorDown()
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;moveElevatorUp()
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;stayAlive = false
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+platformCoroutine = coroutine.create(platformLoop)
+
+function moveElevatorUp()
+&#9;print(&quot;moveElevatorUp()&quot;)
+&#9;switchTop.BrickColor = onColor
+&#9;switchBottom.BrickColor = offColor
+&#9;switchBottomWedge.BrickColor = offColor
+&#9;bodyPosition.position = goalTopPosition
+&#9;bodyGyro.cframe = CFrame.new(goalTopPosition, goalTopPosition + spine.CFrame.lookVector)
+&#9;isMoving = true
+&#9;local status = coroutine.status(platformCoroutine)
+&#9;print(status)
+&#9;if status==&quot;dead&quot; then
+&#9;&#9;platformCoroutine = coroutine.create(platformLoop)
+&#9;&#9;coroutine.resume(platformCoroutine)
+&#9;end
+end
+
+function moveElevatorDown()
+&#9;print(&quot;moveElevatorDown()&quot;)
+&#9;switchTop.BrickColor = offColor
+&#9;switchBottom.BrickColor = onColor
+&#9;switchBottomWedge.BrickColor = onColor
+&#9;bodyPosition.position = goalBottomPosition
+&#9;bodyGyro.cframe = CFrame.new(goalTopPosition, goalTopPosition + spine.CFrame.lookVector)
+&#9;isMoving = true
+&#9;local status = coroutine.status(platformCoroutine)
+&#9;print(status)
+&#9;if status==&quot;dead&quot; then
+&#9;&#9;platformCoroutine = coroutine.create(platformLoop)
+&#9;&#9;coroutine.resume(platformCoroutine)
+&#9;end
+end
+
+function switchTopListener(part)
+&#9;print(&quot;switchTopListener():&quot;, part)
+&#9;if part==nil then print(&quot;switchTopListener(): part==nil. Canceling.&quot;) return end
+&#9;if part.Parent==model then print(&quot;switchTopListener(): part.Parent==elevator. Canceling.&quot;) return end
+&#9;moveElevatorUp()
+end
+
+function switchBottomListener(part)
+&#9;print(&quot;switchBottomListener():&quot;, part)
+&#9;if part==nil then print(&quot;switchBottomListener(): part==nil. Canceling.&quot;) return end
+&#9;if part.Parent==model then print(&quot;switchBottomListener(): part.Parent==elevator. Canceling.&quot;) return end
+&#9;moveElevatorDown()
+end
+
+function platformListener(part)
+&#9;-- when you walk onto the platform, and it&apos;s stopped at either top or bottom, trigger it after a short delay.
+&#9;if part==nil then print(&quot;platformListener(): part==nil. Canceling.&quot;) return end
+&#9;if part.Parent==model then print(&quot;platformListener(): part.Parent==nil. Canceling.&quot;) return end
+&#9;if isMoving then print(&quot;platformListener(): isMoving==true. Canceling.&quot;) return end
+&#9;if platformListenerDisabled then print (&quot;platformListener(): platformListenerDisabled==true. Canceling.&quot;) return end
+
+&#9;print(&quot;platformListener():&quot;, part)
+&#9;platformListenerDisabled = true
+&#9;wait(1.5)
+&#9;if(bodyPosition.position==goalBottomPosition) then
+&#9;&#9;moveElevatorUp()
+&#9;elseif(bodyPosition.position==goalTopPosition) then
+&#9;&#9;moveElevatorDown()
+&#9;else
+&#9;&#9;print(&quot;Platform is somewhere in middle, and not moving.  What the heck?&quot;)
+&#9;end
+&#9;platformListenerDisabled = false
+end
+
+function getWeight(part)
+&#9;-- Returns the force of gravity on the object
+&#9;-- Useful for making things weightless
+&#9;-- If part is inside a character, we get weight of the entire character.
+&#9;-- Otherwise, we get weight of only this part.
+&#9;local character
+&#9;while part.Parent ~= nil and part.Parent ~= Workspace do
+&#9;&#9;if part:FindFirstChild(&quot;Humanoid&quot;) then
+&#9;&#9;&#9;character = part
+&#9;&#9;end
+&#9;end
+&#9;local parts
+&#9;if character then
+&#9;&#9;-- It&apos;s a character.  Find mass of character.
+&#9;&#9;parts = character:GetChildren()
+&#9;else
+&#9;&#9;parts = {part}
+&#9;end
+&#9;-- Sum up the mass of all parts
+&#9;local mass = 0
+&#9;for i=1,#parts do
+&#9;&#9;local n = parts[i].className
+&#9;&#9;if(n==&quot;Part&quot; or n==&quot;TrussPart&quot; or n==&quot;WedgePart&quot;) then
+&#9;&#9;&#9;mass = mass + parts[i]:GetMass()
+&#9;&#9;elseif(n==&quot;Hat&quot; or n==&quot;Tool&quot;) then
+&#9;&#9;&#9;mass = mass + parts[i].Handle:GetMass()
+&#9;&#9;end
+&#9;end
+&#9;print(&quot;getWeight(): character:&quot;, character, &quot;part:&quot;, part, &quot;mass:&quot;, mass)
+end
+
+
+function setGoalPositions()
+&#9;local wasAlignedTo
+&#9;if bodyPosition.position == goalTopPosition then wasAlignedTo = &quot;top&quot;
+&#9;elseif bodyPosition.position == goalBottomPosition then wasAlignedTo = &quot;bottom&quot; end
+&#9;--goalTopPosition = goalTop.Position + platformOffset*platform.CFrame.lookVector + goalPositionOffset
+&#9;--goalBottomPosition = goalBottom.Position + platformOffset*platform.CFrame.lookVector + goalPositionOffset
+&#9;goalTopPosition = goalTop.Position + goalPositionOffset + platformOffset * spine.CFrame.lookVector
+&#9;goalBottomPosition = goalBottom.Position + goalPositionOffset + platformOffset * spine.CFrame.lookVector
+&#9;if wasAlignedTo==&quot;top&quot; then bodyPosition.position = goalTopPosition bodyGyro.cframe = CFrame.new(goalTopPosition, goalTopPosition + spine.CFrame.lookVector)
+&#9;elseif wasAlignedTo==&quot;bottom&quot; then bodyPosition.position = goalBottomPosition bodyGyro.cframe = CFrame.new(goalTopPosition, goalTopPosition + spine.CFrame.lookVector) end
+&#9;print(&quot;setGoalPositions() top:&quot;, goalTopPosition, &quot;bottom:&quot;, goalBottomPosition)
+end
+
+function changedEvent(prop)
+&#9;-- Only interested in CFrame (position + rotation) changes
+&#9;if(prop ~= &quot;CFrame&quot;) then return end
+&#9;print(&quot;changedEvent()&quot;, prop)
+&#9;setGoalPositions()
+end
+
+function destroyElevator()
+&#9;-- Destroy forces, and disable script.
+&#9;print(&quot;destroyElevator()&quot;)
+&#9;a = weight:GetChildren()
+&#9;for i=1,#a do
+&#9;&#9;a[i]:Remove()
+&#9;end
+&#9;-- Make switches dark
+&#9;switchTop.BrickColor = offColor
+&#9;switchBottom.BrickColor = offColor
+&#9;switchBottomWedge.BrickColor = offColor
+&#9;-- Disconnect events
+&#9;pcall(function() con1:disconnect() end)
+&#9;pcall(function() con2:disconnect() end)
+&#9;pcall(function() con3:disconnect() end)
+&#9;pcall(function() con4:disconnect() end)
+&#9;pcall(function() con5:disconnect() end)
+&#9;pcall(function() con6:disconnect() end)
+&#9;script.Disabled = true
+end
+
+function checkIfHasWeld(part)
+&#9;print(&quot;checkIfHasWeld():&quot;, part)
+&#9;-- If spine and bottom have no weld, then the elevator has come unanchored and must break. (Otherwise, platform will float mid-air.)
+&#9;local hasAWeld = false
+&#9;local a = bottom:GetChildren()
+&#9;for i=1,#a do
+&#9;&#9;local c = a[i].className
+&#9;&#9;if c==&quot;Weld&quot; or c==&quot;ManualWeld&quot; then hasAWeld = true end
+&#9;end
+&#9;local a = spine:GetChildren()
+&#9;for i=1,#a do
+&#9;&#9;local c = a[i].className
+&#9;&#9;if c==&quot;Weld&quot; or c==&quot;ManualWeld&quot; then hasAWeld = true end
+&#9;end
+&#9;if not hasAWeld then destroyElevator() return end
+end
+
+setGoalPositions() -- Fire once to initialize
+if (weight.Position - goalTopPosition):Dot(weight.Position - goalTopPosition) &lt; (weight.Position - goalBottomPosition):Dot(weight.Position - goalBottomPosition) then
+&#9;isGoingUp = true
+&#9;moveElevatorUp()
+else
+&#9;moveElevatorDown()
+end
+bodyPosition.maxForce = Vector3.new(200000, 16000, 200000)
+bodyGyro.maxTorque = Vector3.new(4000000, 4000000, 4000000)
+wait(1)
+
+print(&quot;ElevatorScript: adding connections.&quot;)
+local con1 = switchBottom.Touched:connect(switchBottomListener)
+local con2 = switchTop.Touched:connect(switchTopListener)
+local con3 = platform.Touched:connect(platformListener)
+local con4 = spine.Changed:connect(changedEvent)
+local con5 = spine.ChildRemoved:connect(checkIfHasWeld)
+local con6 = bottom.ChildRemoved:connect(checkIfHasWeld)
+print(&quot;ElevatorScript: finished adding connections.&quot;)
+
+coroutine.resume(platformCoroutine)
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX16">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">EnergyScript</string>
+				<ProtectedString name="Source">script.Parent.ConstantCurrent:SetValue(1)
+
+
+--&#9;&#9;&#9;...good?
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="BoolValue" referent="RBX17">
+			<Properties>
+				<string name="Name">Finobe ID</string>
+				<bool name="Value">false</bool>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX18">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">FixThings</string>
+				<ProtectedString name="Source">while true do
+&#9;wait (.5)
+&#9;&#9;for _,v in pairs(script.Parent:GetChildren()) do
+&#9;&#9;&#9;if v.Name == &quot;Spikes_Simple&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;for _,q in pairs(v:GetChildren()) do
+&#9;&#9;&#9;&#9;&#9;game.Lighting.SpikeScript:Clone().Parent = q
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Spike_Retracting&quot; and v:FindFirstChild(&quot;SpikeTrap&quot;) == nil then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.SpikeControlScript:Clone().Parent = v.Spikes
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;FriendOnlyDoorHostile&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.FriendDoorDeadly:Clone().Parent = v
+&#9;&#9;&#9;&#9;v.FriendDoorDeadly.Name = &quot;Script&quot;
+&#9;&#9;&#9;&#9;v.Script.Disabled = false
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;SpaceHatch&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DoorScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;UltimateFloatPadSideways&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.PadScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;UltimateFloatPad&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.PadScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;e&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ElevatorScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;FriendOnlyDoor2&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ScriptFO:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Boombox&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;local controller = game.Lighting:FindFirstChild(&quot;Boombox Controller&quot;)
+&#9;&#9;&#9;&#9;controller:Clone().Parent = v.Boombox
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;WireLeverSimple&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ButtonScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;ConfigPortrait&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.PictureScript:Clone().Parent = v.Picture
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;ConfigPlacePicture&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.PictureScripts:Clone().Parent = v.Picture
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;IrisDoor&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DoorScriptiris:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;LaserTrigger&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.LaserTriggerScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;LightSwitch&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.SwitchScript:Clone().Parent = v.Fixture
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;SciFiDoor&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DoorScriptSci:Clone().Parent = v
+&#9;&#9;&#9;end
+----[[
+&#9;&#9;&#9;if v.Name == &quot;WiredTrapPart&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.PlatformScrwipt:Clone().Parent = v.Head
+&#9;&#9;&#9;end
+--]]--
+&#9;&#9;&#9;if v.Name == &quot;Timer&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.TimerScript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;DoorbellButton&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DoorbellScript:Clone().Parent = v.Fixture
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;CastleDrawbridge&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DoorScriptDraw:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;EnergyButton&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ButtonScriptcoil:Clone().Parent = v.Button
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Speaker&quot; then
+&#9;&#9;&#9;&#9;if script.DoesFinobe.Value == true then
+&#9;&#9;&#9;&#9;&#9;game.Lighting.BoomboxController:Clone().Parent = v.Speaker
+&#9;&#9;&#9;&#9;else 
+&#9;&#9;&#9;&#9;&#9;game.Lighting.BoomboxControllera:Clone().Parent = v.Speaker
+&#9;&#9;&#9;&#9;end
+
+&#9;&#9;&#9;--&#9;local okcloneitok = game.Lighting:FindFirstChild(&quot;Finobe ID&quot;)
+&#9;&#9;&#9;--&#9;okcloneitok:Clone().Parent = v.Configuration
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Incinerator&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.Grate:Clone().Parent = v.Grate
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;MagicBall&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.MagicScript:Clone().Parent = v:FindFirstChild(&quot;Control Sphere&quot;)
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;EnergyCore&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.EnergyScript:Clone().Parent = v.EnergyBall
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;DelayGate&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DelayScript:Clone().Parent = v.BasePart
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Repeater&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.RepeaterScript:Clone().Parent = v.BasePart
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Inverter&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.InvertScript:Clone().Parent = v.BasePart
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;ORgate&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.OrGateScript:Clone().Parent = v.BasePart
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;ANDgate&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.AndGateScript:Clone().Parent = v.BasePart
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Lamp&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.LightScript:Clone().Parent = v.Light
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;WiredButton1&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ButtonScriptOK:Clone().Parent = v.Button
+&#9;&#9;&#9;end
+&#9;&#9;&#9;----[[
+&#9;&#9;&#9;if v.Name == &quot;Flame Thrower&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ScriptFT:Clone().Parent = v.Flamethrower
+&#9;&#9;&#9;end
+&#9;&#9;--&#9;]]--
+&#9;&#9;&#9;if v.Name == &quot;TransparentTrigger&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.ScriptSSS:Clone().Parent = v.Part
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;AppearingPlatformModel&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.PlatformScript:Clone().Parent = v.AppearingPlatform
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;WiringDoor&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.DoorScriptWIRING:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Trapdoor&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.Trapscript:Clone().Parent = v.Head
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name == &quot;Head&quot; then
+&#9;&#9;&#9;&#9;
+&#9;&#9;&#9;&#9;game.Lighting.Trapscript:Clone().Parent = v
+&#9;&#9;&#9;end
+&#9;&#9;&#9;if v.Name ~= &quot;FixThings&quot; then
+&#9;&#9;&#9;&#9;v.Parent = game.Workspace
+&#9;&#9;&#9;end&#9;
+&#9;&#9;end
+end
+
+</ProtectedString>
+			</Properties>
+			<Item class="BoolValue" referent="RBX19">
+				<Properties>
+					<string name="Name">DoesFinobe</string>
+					<bool name="Value">false</bool>
+				</Properties>
+			</Item>
+		</Item>
+		<Item class="Script" referent="RBX20">
+			<Properties>
+				<bool name="Disabled">true</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">FriendDoorDeadly</string>
+				<ProtectedString name="Source">-- useless comment
+
+function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+local debris = game:GetService(&quot;Debris&quot;)
+
+print(&quot;Starting script&quot;)
+
+local door = script.Parent
+waitForChild(door, &quot;PlayerIdTag&quot;)
+
+print(&quot;Getting ownerId&quot;)
+
+local ownerId = door.PlayerIdTag.Value
+waitForChild(door, &quot;Poster&quot;)
+local poster = door.Poster.Decal
+poster.Texture = (&quot;http://finobe.com/thumbnail/user/&quot; .. tostring(ownerId))
+
+print(&quot;Getting Lasers&quot;)
+
+waitForChild(door, &quot;Laser1&quot;)
+waitForChild(door, &quot;Laser2&quot;)
+waitForChild(door, &quot;Laser3&quot;)
+
+waitForChild(door, &quot;Bottom&quot;)
+
+local laser1 = door.Laser1
+local laser2 = door.Laser2
+local laser3 = door.Laser3
+
+local laserWeld1 = door:FindFirstChild(&quot;LaserWeld1&quot;)
+if not laserWeld1 then
+&#9;laserWeld1 = Instance.new(&quot;ManualWeld&quot;)
+&#9;laserWeld1.Name = &quot;LaserWeld1&quot;
+&#9;laserWeld1.Part0 = laser1
+&#9;laserWeld1.Part1 = door.Bottom
+&#9;laserWeld1.C0 = laser1.CFrame:inverse() * door.Bottom.CFrame
+&#9;laserWeld1.Parent = door
+&#9;laser1.Anchored = false
+else
+&#9;laserWeld1.C0 = laser1.CFrame:inverse() * door.Bottom.CFrame
+end
+
+local laserWeld2 = door:FindFirstChild(&quot;LaserWeld2&quot;)
+if not laserWeld2 then
+&#9;laserWeld2 = Instance.new(&quot;ManualWeld&quot;)
+&#9;laserWeld2.Name = &quot;LaserWeld2&quot;
+&#9;laserWeld2.Part0 = laser2
+&#9;laserWeld2.Part1 = door.Bottom
+&#9;laserWeld2.C0 = laser2.CFrame:inverse() * door.Bottom.CFrame
+&#9;laserWeld2.Parent = door
+&#9;laser2.Anchored = false
+else
+&#9;laserWeld2.C0 = laser2.CFrame:inverse() * door.Bottom.CFrame
+end
+
+local laserWeld3 = door:FindFirstChild(&quot;LaserWeld3&quot;)
+if not laserWeld3 then
+&#9;laserWeld3 = Instance.new(&quot;ManualWeld&quot;)
+&#9;laserWeld3.Name = &quot;LaserWeld3&quot;
+&#9;laserWeld3.Part0 = laser3
+&#9;laserWeld3.Part1 = door.Bottom
+&#9;laserWeld3.C0 = laser3.CFrame:inverse() * door.Bottom.CFrame
+&#9;laserWeld3.Parent = door
+&#9;laser3.Anchored = false
+else
+&#9;laserWeld3.C0 = laser3.CFrame:inverse() * door.Bottom.CFrame
+end
+
+local lasers = {laser1, laser2, laser3}
+local laserWelds = {laserWeld1, laserWeld2, laserWeld3}
+
+print(&quot;Defining fcns&quot;)
+
+local laserTextures = {}
+for i = 1, #lasers do
+&#9;laserTextures[2*i-1] = lasers[i].Decal1.Texture
+&#9;laserTextures[2*i] = lasers[i].Decal2.Texture
+end
+
+waitForChild(door, &quot;Wedge1&quot;)
+waitForChild(door, &quot;Wedge2&quot;)
+local Wedge1 = door.Wedge1
+local Wedge2 = door.Wedge2
+
+local wedge1 = Wedge1.Position
+local wedge2 = Wedge2.Position
+
+function burninatePlayer(vChar)
+&#9;--vChar.Head:remove() -- for now, simple kill
+&#9;if vChar:FindFirstChild(&quot;Torso&quot;) then
+&#9;&#9;vChar.Torso:BreakJoints()
+&#9;&#9;littleParts = vChar:GetChildren()
+&#9;&#9;for i = 1, #littleParts do
+&#9;&#9;&#9;if littleParts[i]:IsA(&quot;Part&quot;) or littleParts[i]:IsA(&quot;TrussPart&quot;) or littleParts[i]:IsA(&quot;WedgePart&quot;) then
+&#9;&#9;&#9;&#9;if littleParts[i]:FindFirstChild(&quot;Burrrrrn&quot;) == nil then
+&#9;&#9;&#9;&#9;&#9;tempFire = Instance.new(&quot;Fire&quot;)
+&#9;&#9;&#9;&#9;&#9;tempFire.Name = &quot;Burrrrrn&quot;
+&#9;&#9;&#9;&#9;&#9;tempFire.Parent = littleParts[i]
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+function shutOffLasers()
+&#9;lasers[#lasers].CanCollide = false
+&#9;for i = 1, #lasers do
+&#9;&#9;lasers[i].Decal1.Texture = &quot;&quot;
+&#9;&#9;lasers[i].Decal2.Texture = &quot;&quot;
+&#9;end
+end
+
+function turnOnLasers()
+&#9;lasers[#lasers].CanCollide = true
+&#9;for i = 1, #lasers do
+&#9;&#9;lasers[i].Decal1.Texture = laserTextures[2*i-1]
+&#9;&#9;lasers[i].Decal2.Texture = laserTextures[2*i]
+&#9;end
+end
+
+function flickerOnLasers()
+&#9;for i = 1, #lasers do
+&#9;&#9;coinFlip = math.random(0,1)
+&#9;&#9;if coinFlip == 0 then
+&#9;&#9;&#9;lasers[i].Decal1.Texture = laserTextures[2*i-1]
+&#9;&#9;&#9;lasers[i].Decal2.Texture = laserTextures[2*i]
+&#9;&#9;end
+&#9;end
+end
+
+function flickerOffLasers()
+&#9;for i = 1, #lasers do
+&#9;&#9;coinFlip = math.random(0,1)
+&#9;&#9;if coinFlip == 0 then
+&#9;&#9;&#9;lasers[i].Decal1.Texture = &quot;&quot;
+&#9;&#9;&#9;lasers[i].Decal2.Texture = &quot;&quot;
+&#9;&#9;end
+&#9;end
+end
+
+function accessGranted(part)
+-- prevent outside collisions (as extremities can &quot;poke through&quot; walls)&#9;
+&#9;if part.Name == &quot;Right Leg&quot; or part.Name == &quot;Left Leg&quot; or part.Name == &quot;Right Arm&quot; or part.Name == &quot;Left Arm&quot; then return false end
+
+&#9;if part == nil then return false end
+&#9;pChar = part.Parent
+&#9;if pChar == nil then return false end
+&#9;pPlay = game.Players:GetPlayerFromCharacter(pChar)
+&#9;if pPlay == nil then return false end
+&#9;-- insert friend code here...  currently, door will open at a humanoid&apos;s touch
+
+&#9;if (pPlay:IsFriendsWith(ownerId)) or player.userId == ownerId then return true end
+&#9;burninatePlayer(pChar)
+&#9;return false
+&#9;--return true
+end
+
+--local lasersOn = {true, true, true}
+
+local lasersOn = true
+
+function checkHit(part)
+&#9;if not part or not part.Parent then return end
+&#9;local didItHit = accessGranted(part)
+&#9;if lasersOn and didItHit then
+&#9;&#9;-- win
+&#9;&#9;lasersOn = false
+&#9;&#9;shutOffLasers()
+&#9;&#9;wait(5)
+&#9;&#9;flickerOnLasers()
+&#9;&#9;wait(.1)
+&#9;&#9;flickerOffLasers()
+&#9;&#9;wait(.2)
+&#9;&#9;flickerOnLasers()
+&#9;&#9;wait(.1)
+&#9;&#9;flickerOffLasers()
+&#9;&#9;wait(.1)
+&#9;&#9;turnOnLasers()
+&#9;&#9;lasersOn = true
+&#9;end
+end
+
+for i = 1, #lasers do
+&#9;lasers[i].Touched:connect(checkHit)
+end
+
+--[[for i = 1, #lasers do
+&#9;lasers[i].Touched:connect(function (part) 
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;if lasersOn[i] and not accessGranted(part) then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;-- win
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasersOn[i] = false
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal1.Texture = &quot;&quot;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal2.Texture = &quot;&quot;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(5)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal1.Texture = laserTextures[2*i-1]
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal2.Texture = laserTextures[2*i]
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(.1)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal1.Texture = &quot;&quot;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal2.Texture = &quot;&quot;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(.2)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal1.Texture = laserTextures[2*i-1]
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal2.Texture = laserTextures[2*i]
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(.1)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal1.Texture = &quot;&quot;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal2.Texture = &quot;&quot;
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;wait(.1)
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal1.Texture = laserTextures[2*i-1]
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasers[i].Decal2.Texture = laserTextures[2*i]
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;lasersOn[i] = true
+&#9;end
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;&#9;end)
+end
+
+--]]
+
+print(&quot;fodhv ended&quot;)
+
+
+local laserVelocities = {Vector3.new(0,0,0.5), Vector3.new(0,0,-0.5), Vector3.new(0,0,0)}
+
+local dir = (wedge2 - wedge1).unit
+--[[for i = 1, #lasers do
+&#9;&#9;coinFlip = math.random(0,1)
+&#9;&#9;if coinFlip == 0 then
+&#9;&#9;&#9;--lasers[i].Velocity = dir / 2
+&#9;&#9;&#9;lasers[i].Velocity = Vector3.new(1,0,0)/2
+&#9;&#9;else
+&#9;&#9;&#9;--lasers[i].Velocity = -dir / 2
+&#9;&#9;&#9;lasers[i].Velocity = -Vector3.new(1,0,0)/2
+&#9;&#9;end
+end]]--
+
+local dist = math.sqrt((wedge2 - wedge1):Dot(wedge2 - wedge1))
+
+local loopGo = true
+while loopGo do
+&#9;wedge1 = Wedge1.Position
+&#9;wedge2 = Wedge2.Position&#9;
+&#9;dir = (wedge2 - wedge1).unit
+&#9;loopGo = false
+&#9;for i = 1, #lasers-1 do
+&#9;&#9;if lasers[i] ~= nil and lasers[i].Parent ~= nil then
+&#9;&#9;&#9;--if (lasers[i].Position-wedge1):Dot(dir) &lt;= 0 or (lasers[i].Position - wedge1):Dot(dir) &gt; dist then laserVelocities[i] = -laserVelocities[i] end
+&#9;&#9;&#9;--lasers[i].CFrame = lasers[i].CFrame + lasers[i].Velocity
+
+&#9;&#9;&#9;if (lasers[i].Position-wedge1-dir*.5):Dot(dir) &lt;= 0 then  -- extra -dir*.5 so that it breaks one step early and returns without expanding bounding box
+&#9;&#9;&#9;&#9;--laserVelocities[i] = -laserVelocities[i]
+&#9;&#9;&#9;&#9;laserVelocities[i] = Vector3.new(0, 0, 0.5)
+&#9;&#9;&#9;elseif (lasers[i].Position - wedge1):Dot(dir) &gt; dist then
+&#9;&#9;&#9;&#9;--laserVelocities[i] = -laserVelocities[i]
+&#9;&#9;&#9;&#9;laserVelocities[i] = Vector3.new(0, 0, -0.5)
+&#9;&#9;&#9;end
+
+&#9;&#9;&#9;if laserWelds[i] ~= nil and laserWelds[i].Parent ~= nil then laserWelds[i].C0 = laserWelds[i].C0 + laserVelocities[i] loopGo = true
+&#9;&#9;&#9;else 
+&#9;&#9;&#9;&#9;-- laser dead; make sure we remove it [commented out for now, since this gets triggered when we rotate the model (since scripts aren&apos;t currently stopped correctly)]
+&#9;&#9;&#9;&#9;--lasers[i].Parent = nil
+&#9;&#9;&#9;&#9;loopGo = true
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+&#9;wait(.1)
+end
+
+-- if we get here, then all three laserWelds have been killed X|
+debris:AddItem(door, 15)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX21">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Grate</string>
+				<ProtectedString name="Source">--
+
+
+sp=script.Parent
+
+function incinerate(part)
+&#9;if part and sp.Fire.Enabled then
+&#9;&#9;if part.Parent then
+&#9;&#9;&#9;if part.Parent~=sp.Parent and not part.Anchored then
+&#9;&#9;&#9;&#9;part:BreakJoints()
+&#9;&#9;&#9;&#9;part.BrickColor=BrickColor.new(&quot;Black&quot;)
+&#9;&#9;&#9;&#9;delay(sp.Configuration.IncinerationSpeed.Value,function()
+&#9;&#9;&#9;&#9;&#9;if part then
+&#9;&#9;&#9;&#9;&#9;&#9;if part.Parent~=nil then
+&#9;&#9;&#9;&#9;&#9;&#9;&#9;part:remove()
+&#9;&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;end)
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+sp.Touched:connect(incinerate)
+
+function check(val)
+&#9;if val==1 then
+&#9;&#9;sp.Fire.Enabled=true
+&#9;&#9;initialparts=game.Workspace:FindPartsInRegion3(Region3.new(sp.Position+Vector3.new(-sp.Size.x/2,.4,-sp.Size.z/2),sp.Position+Vector3.new(sp.Size.x/2,3,sp.Size.z/2)),nil,100)
+&#9;&#9;for i,v in ipairs(initialparts) do
+&#9;&#9;&#9;incinerate(v)
+&#9;&#9;end
+&#9;else
+&#9;&#9;sp.Fire.Enabled=false
+&#9;end
+end
+
+sp.Input.SourceValueChanged:connect(check)
+check(sp.Input:GetCurrentValue())
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX22">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">InvertScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+
+function check(val)
+&#9;if val==0 then
+&#9;&#9;sp.Output:SetValue(1)
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light2Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;end
+&#9;else
+&#9;&#9;sp.Output:SetValue(0)
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;end
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light2Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;end
+end
+
+sp.InvertInput.SourceValueChanged:connect(check)
+check(sp.InvertInput:GetCurrentValue())
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX23">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">LaserTriggerScript</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+
+sp=script.Parent
+
+recasttime=.15
+maxdist=50
+leeway=.1
+
+function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Configuration&quot;)
+waitForChild(sp,&quot;Base&quot;)
+waitForChild(sp.Base,&quot;LaserTrigger&quot;)
+waitForChild(sp,&quot;Laser&quot;)
+waitForChild(sp.Laser,&quot;Mesh&quot;)
+waitForChild(sp,&quot;Configuration&quot;)
+lastdist=sp.Configuration.Distance.Value
+dist=lastdist
+running=false
+
+function updatelaser()
+&#9;if not running then
+&#9;&#9;running=true
+&#9;&#9;while running and sp.Laser.Transparency&lt;1 do
+&#9;&#9;&#9;sp.Laser.Transparency=sp.Laser.Transparency+.05
+&#9;&#9;&#9;wait(.15)
+&#9;&#9;end
+&#9;&#9;running=false
+&#9;end
+end
+updatelaser()
+
+function raycast(spos,vec,totaldist,currentdist)
+&#9;local hit2,pos2=game.Workspace:FindPartOnRay(Ray.new(spos+(vec*.01),vec*(totaldist-currentdist)),sp)
+&#9;if hit2~=nil and pos2 then
+&#9;&#9;if hit2.Transparency&gt;=.5 then
+&#9;&#9;&#9;local currentdist=currentdist+(pos2-spos).magnitude
+&#9;&#9;&#9;return raycast(pos2,vec,totaldist,currentdist)
+&#9;&#9;end
+&#9;end
+&#9;return hit2,pos2
+end
+
+while true do
+&#9;wait(1/sp.Configuration.RaysPerSecond.Value)
+&#9;if sp.Base:FindFirstChild(&quot;Weld&quot;) then
+&#9;&#9;lastdist=dist
+&#9;&#9;local vec=((sp.Laser.CFrame*CFrame.new(0,1,0)).p-sp.Laser.Position).unit
+&#9;&#9;hit,pos=raycast(sp.Laser.Position,vec,sp.Configuration.Distance.Value,0)
+&#9;&#9;--hit,pos=game.Workspace:FindPartOnRay(Ray.new(sp.Laser.Position,vec*(sp.Configuration.Distance.Value)),sp)
+&#9;&#9;if hit~=nil then
+&#9;&#9;&#9;dist=(sp.Laser.Position-pos).magnitude
+&#9;&#9;else
+&#9;&#9;&#9;dist=sp.Configuration.Distance.Value
+&#9;&#9;end
+&#9;&#9;sp.Laser.Mesh.Scale=Vector3.new(.2,dist*(1/sp.Laser.Size.y),.2)
+&#9;&#9;sp.Laser.Mesh.Offset=Vector3.new(0,(dist/2)-.1,0)
+&#9;&#9;if math.abs(lastdist-dist)&gt;leeway then
+&#9;&#9;&#9;sp.Base.LaserTrigger:SetValue(1)
+&#9;&#9;&#9;sp.Laser.Transparency=.5
+&#9;&#9;&#9;delay(0,updatelaser)
+&#9;&#9;else
+&#9;&#9;&#9;sp.Base.LaserTrigger:SetValue(0)
+&#9;&#9;end
+&#9;&#9;--[[if math.random()&lt;(1/15)*(1/sp.Configuration.RaysPerSecond.Value) then
+&#9;&#9;&#9;sp.Laser.Transparency=.75
+&#9;&#9;&#9;delay(0,updatelaser)
+&#9;&#9;end]]
+&#9;end
+end
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX24">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">LightScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+sp.Luminate.SourceValueChanged:connect(function(val)
+&#9;if val==1 then
+&#9;&#9;sp.BrickColor=BrickColor.new(&quot;New Yeller&quot;)
+&#9;&#9;sp.Transparency=0
+&#9;&#9;sp.Sparkles.Enabled=true
+&#9;elseif val==0 then
+&#9;&#9;sp.BrickColor=BrickColor.new(&quot;Medium stone grey&quot;)
+&#9;&#9;sp.Transparency=.5
+&#9;&#9;sp.Sparkles.Enabled=false
+&#9;end
+end)
+
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX25">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">MagicScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+sp.ClickDetector.MouseClick:connect(function()
+&#9;sp.Fire.Enabled=not sp.Fire.Enabled
+&#9;if sp.Fire.Enabled then
+&#9;&#9;sp.Magic:SetValue(1)
+&#9;else
+&#9;&#9;sp.Magic:SetValue(0)
+&#9;end
+end)
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX26">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">OrGateScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+local inputs={sp.Input1:GetCurrentValue(),sp.Input2:GetCurrentValue()}
+
+function check()
+&#9;if inputs[1]&gt;.5 and sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;else
+&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;end
+&#9;if inputs[2]&gt;.5 and sp.Parent:FindFirstChild(&quot;Light2Color&quot;) then
+&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;else
+&#9;&#9;sp.Parent.Light2Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;end
+&#9;if inputs[1]&gt;.5 or inputs[2]&gt;.5 then
+&#9;&#9;sp.Output:SetValue(1)
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light3Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light3Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;end
+&#9;else
+&#9;&#9;sp.Output:SetValue(0)
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light3Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light3Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;end
+end
+
+sp.Input1.SourceValueChanged:connect(function(val)
+&#9;inputs[1]=val
+&#9;check()
+end)
+
+sp.Input2.SourceValueChanged:connect(function(val)
+&#9;inputs[2]=val
+&#9;check()
+end)
+
+check()
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX27">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">PadScript</string>
+				<ProtectedString name="Source">function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+local pad = script.Parent
+waitForChild(pad, &quot;Base&quot;)
+waitForChild(pad, &quot;FakeBase&quot;)
+waitForChild(pad, &quot;Configuration&quot;)
+waitForChild(pad.Configuration, &quot;Height&quot;)
+waitForChild(pad.Configuration, &quot;Speed&quot;)
+waitForChild(pad, &quot;UpFacingWedge&quot;)
+
+local base = pad.Base
+local base2 = pad.FakeBase
+local height = pad.Configuration.Height
+local speed = pad.Configuration.Speed
+
+local debris = game:GetService(&quot;Debris&quot;)
+local r = game:GetService(&quot;RunService&quot;)
+
+local airDir = pad.UpFacingWedge.CFrame.lookVector
+
+-- animation variables
+local continueAnimation = false
+
+waitForChild(base, &quot;Fire&quot;)
+waitForChild(base, &quot;Smoke&quot;)
+
+local onColor = BrickColor.new(&quot;Toothpaste&quot;)
+local offColor = BrickColor.new(&quot;Really blue&quot;)
+
+
+function truncate(value)
+&#9;if value &lt; .5 then return 0
+&#9;else return 1 end
+end
+
+function zeroOut(value)
+&#9;if math.abs(value) &lt; .01 then return 0
+&#9;else return 1 end
+end
+
+local dX = Vector3.new(0,0,0)
+local dY = base.CFrame.lookVector
+local truncatedAirDir = Vector3.new(zeroOut(airDir.X), zeroOut(airDir.Y), zeroOut(airDir.Z))
+function updateAirDirection()
+&#9;airDir = pad.UpFacingWedge.CFrame.lookVector
+&#9;dY = base.CFrame.lookVector -- we assume when upFacingWedge changes, so too does base
+&#9;dX = airDir:Cross(dY)
+&#9;truncatedAirDir = Vector3.new(zeroOut(airDir.X), zeroOut(airDir.Y), zeroOut(airDir.Z))
+end
+
+local debounce = false
+function touchHandler(part)
+&#9;if part == nil then return end
+&#9;if part.Anchored then return end
+&#9;while debounce do wait() end
+&#9;if(part.Parent:FindFirstChild(&quot;Humanoid&quot;) ~= nil) then
+&#9;&#9;-- If part is the arm or leg of a humanoid, then move everything to the torso.
+&#9;&#9;-- This is so we can&apos;t double up forces on a humanoid (scripts inside each leg, arm, etc)
+&#9;&#9;waitForChild(part.Parent, &quot;Torso&quot;)
+&#9;&#9;part = part.Parent.Torso
+&#9;end
+
+&#9;-- below case necessary for hats and tools (don&apos;t want to float them separately)
+&#9;if (part.Parent.Parent ~= nil and part.Parent.Parent:FindFirstChild(&quot;Humanoid&quot;) ~= nil) then
+&#9;&#9;waitForChild(part.Parent.Parent, &quot;Torso&quot;)
+&#9;&#9;part = part.Parent.Parent.Torso
+&#9;end
+
+&#9;debounce = true
+
+&#9;local newBV = part:FindFirstChild(&quot;FloatMe&quot;)
+
+&#9;if newBV ~= nil then
+&#9;&#9;if math.abs(newBV.velocity:Dot(airDir)) &gt; speed.ConstrainedValue then debounce = false return end
+
+&#9;&#9;newBV.velocity = speed.ConstrainedValue*airDir + newBV.velocity - newBV.velocity:Dot(airDir)*airDir
+&#9;&#9;newBV.maxForce = truncatedAirDir*Vector3.new(newBV.P, newBV.P, newBV.P)
+&#9;else
+&#9;&#9;-- make new float force
+&#9;&#9;newBV = Instance.new(&quot;BodyVelocity&quot;)
+&#9;&#9;newBV.Name = &quot;FloatMe&quot;
+&#9;&#9;newBV.P = 100000
+
+&#9;&#9;newBV.velocity = speed.ConstrainedValue * airDir
+&#9;&#9;newBV.maxForce = truncatedAirDir*Vector3.new(newBV.P, newBV.P, newBV.P)
+
+&#9;&#9;newBV.Parent = part
+&#9;&#9;debris:AddItem(newBV, .5) -- force disappears after .5 seconds
+&#9;end
+
+&#9;continueAnimation = true
+&#9;debounce = false
+end
+
+-- to use the region3 or raycast code, unfortunately, we still have to poll
+pad.UpFacingWedge.Changed:connect(updateAirDirection)
+
+local lastOn = 0
+local curTime = 0
+local wasOn = false
+
+local baseSize = base.Size.X / 6 -- we assume square base, and want to travel 1/6 from the center, so we divide region into 3rds
+
+while true do&#9;&#9;
+&#9;continueAnimation = false
+&#9;currTime = r.Stepped:wait()  -- serves as the loop wait; want this to be as fast as possible
+
+&#9;-- pass up to 4 parts (first parts caught by the rays) to our touchHandler every polling period
+&#9;for xStep = -1, 1, 2 do
+&#9;&#9;for yStep = -1, 1, 2 do
+&#9;&#9;&#9;touchHandler(game.Workspace:FindPartOnRay(Ray.new(base.Position + xStep * dX * baseSize + yStep * dY * baseSize , height.ConstrainedValue * airDir), pad))
+&#9;&#9;end
+&#9;end
+
+&#9;if continueAnimation then 
+&#9;&#9;base.BrickColor = onColor
+&#9;&#9;base.Fire.Enabled = true
+&#9;&#9;base.Smoke.Enabled = true
+&#9;&#9;lastOn = currTime
+&#9;&#9;wasOn = true
+&#9;else
+&#9;&#9;base.Fire.Enabled = false
+&#9;&#9;--wait(0.5)
+&#9;&#9;-- only shut off smoke and change brick color if it&apos;s been at least .5 seconds since blast pad was active
+&#9;&#9;if currTime - lastOn &gt; .5 and wasOn then
+&#9;&#9;&#9;base.Smoke.Enabled = false
+&#9;&#9;&#9;base.BrickColor = offColor
+&#9;&#9;&#9;wasOn = false
+&#9;&#9;end
+&#9;end
+end
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX28">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">PictureScript</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+
+sp=script.Parent
+
+function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Configuration&quot;)
+waitForChild(sp,&quot;Decal&quot;)
+waitForChild(sp.Configuration,&quot;Player Name&quot;)
+
+playername=sp.Configuration[&quot;Player Name&quot;]
+
+function check()
+&#9;if playername and playername.Parent~=nil and sp:FindFirstChild(&quot;Decal&quot;) then
+&#9;&#9;sp.Decal.Texture=&quot;http://www.roblox.com/Thumbs/Avatar.ashx?x=200&amp;y=200&amp;Format=Png&amp;username=&quot;..playername.Value
+&#9;end
+end
+
+check()
+playername.Changed:connect(check)
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX29">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">PictureScripts</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+
+sp=script.Parent
+
+function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+waitForChild(sp,&quot;Configuration&quot;)
+waitForChild(sp,&quot;Decal&quot;)
+waitForChild(sp.Configuration,&quot;Place Id&quot;)
+
+placeid=sp.Configuration[&quot;Place Id&quot;]
+
+function check()
+&#9;if placeid and placeid.Parent~=nil and sp:FindFirstChild(&quot;Decal&quot;) then
+&#9;&#9;sp.Decal.Texture=&quot;http://www.roblox.com/Thumbs/Asset.ashx?format=png&amp;width=420&amp;height=230&amp;assetId=&quot;..placeid.Value
+&#9;end
+end
+
+check()
+placeid.Changed:connect(check)
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX30">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">PlatformScript</string>
+				<ProtectedString name="Source">local platform = script.Parent
+
+function waitForChild(parent, child)
+&#9;while not parent:FindFirstChild(child) do parent.ChildAdded:wait() end
+end
+
+waitForChild(platform, &quot;Configuration&quot;)
+local config = platform.Configuration
+
+waitForChild(config, &quot;Time&quot;)
+local maxTime = config.Time
+
+local appearTime = 0
+
+local platformCoroutine = nil
+
+-- start platform off as mostly transparent
+platform.Transparency = .8
+platform.CanCollide = false
+
+function runPlatform()
+&#9;local timeStep = 0
+
+&#9;while appearTime &gt; 0 do
+&#9;&#9;if (appearTime &gt; .2 * maxTime.Value) then
+&#9;&#9;&#9;-- do nothing during this time
+&#9;&#9;else
+&#9;&#9;&#9;-- fade out
+&#9;&#9;&#9;platform.Transparency = .8*(1 - appearTime/(.2*maxTime.Value))
+&#9;&#9;end
+&#9;&#9;timeStep = wait()
+&#9;&#9;appearTime = appearTime - timeStep
+&#9;end
+&#9;platform.Transparency = .8
+&#9;platform.CanCollide = false
+end
+
+platform.MakeAppear.SourceValueChanged:connect(function(val)
+&#9;if val &gt; 0 then
+&#9;&#9;appearTime = math.max(maxTime.Value,appearTime)
+&#9;&#9;platform.Transparency = 0
+&#9;&#9;platform.CanCollide = true
+&#9;&#9;if not platformCoroutine or coroutine.status(platformCoroutine) == &quot;dead&quot; then
+&#9;&#9;&#9;-- need a new coroutine
+&#9;&#9;&#9;platformCoroutine = coroutine.create(runPlatform)
+&#9;&#9;&#9;coroutine.resume(platformCoroutine)
+&#9;&#9;end
+&#9;end
+end)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX31">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">PlatformScrwipt</string>
+				<ProtectedString name="Source">local platform = script.Parent
+
+function waitForChild(parent, child)
+&#9;while not parent:FindFirstChild(child) do parent.ChildAdded:wait() end
+end
+
+waitForChild(platform, &quot;Configuration&quot;)
+local config = platform.Configuration
+
+waitForChild(config, &quot;Time&quot;)
+local maxTime = config.Time
+
+local appearTime = 0
+
+local platformCoroutine = nil
+
+-- start platform off as normal block
+platform.Transparency = 0
+platform.CanCollide = true
+
+function runPlatform()
+&#9;local timeStep = 0
+
+&#9;while appearTime &gt; 0 do
+&#9;&#9;if (appearTime &gt; .2 * maxTime.ConstrainedValue) then
+&#9;&#9;&#9;-- do nothing during this time
+&#9;&#9;else
+&#9;&#9;&#9;-- fade back in
+&#9;&#9;&#9;platform.Transparency = 1*appearTime/(.2*maxTime.Value)
+&#9;&#9;&#9;if appearTime &lt; .1*maxTime.Value then
+&#9;&#9;&#9;&#9;platform.CanCollide = true
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;timeStep = wait()
+&#9;&#9;appearTime = appearTime - timeStep
+&#9;end
+&#9;platform.Transparency = 0
+end
+
+platform.MakeDisappear.SourceValueChanged:connect(function(val)
+&#9;if val &gt; .5 then
+&#9;&#9;appearTime = math.max(maxTime.Value, appearTime)
+&#9;&#9;platform.Transparency = 1
+&#9;&#9;platform.CanCollide = false
+&#9;&#9;if not platformCoroutine or coroutine.status(platformCoroutine) == &quot;dead&quot; then
+&#9;&#9;&#9;-- need a new coroutine
+&#9;&#9;&#9;platformCoroutine = coroutine.create(runPlatform)
+&#9;&#9;&#9;coroutine.resume(platformCoroutine)
+&#9;&#9;end
+&#9;end
+end)
+
+
+d1=platform:FindFirstChild(&quot;Decal1&quot;)
+if d1 then
+&#9;d1:Remove()
+end
+d2=platform:FindFirstChild(&quot;Decal2&quot;)
+if d2 then
+&#9;d2:Remove()
+end
+d3=platform:FindFirstChild(&quot;Decal3&quot;)
+if d3 then
+&#9;d3:Remove()
+end
+d4=platform:FindFirstChild(&quot;Decal4&quot;)
+if d4 then
+&#9;d4:Remove()
+end
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX32">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">RepeaterScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+
+--method #1
+on=false
+shutdown=false
+
+function check(val)
+&#9;if val==1 then
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Dark green&quot;)
+&#9;&#9;end
+&#9;&#9;shutdown=false
+&#9;&#9;if not on then
+&#9;&#9;&#9;on=true
+&#9;&#9;&#9;while true do
+&#9;&#9;&#9;&#9;sp.RepeaterOutput:SetValue(1)
+&#9;&#9;&#9;&#9;wait(sp.Configuration.TimeOn.Value)
+&#9;&#9;&#9;&#9;sp.RepeaterOutput:SetValue(0)
+&#9;&#9;&#9;&#9;wait(sp.Configuration.TimeOff.Value)
+&#9;&#9;&#9;&#9;if shutdown then
+&#9;&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;end
+&#9;&#9;&#9;shutdown=false
+&#9;&#9;&#9;on=false
+&#9;&#9;end
+&#9;elseif val==0 then
+&#9;&#9;if sp.Parent:FindFirstChild(&quot;Light1Color&quot;) then
+&#9;&#9;&#9;sp.Parent.Light1Color.BrickColor=BrickColor.new(&quot;Bright red&quot;)
+&#9;&#9;end
+&#9;&#9;shutdown=true
+&#9;end
+end
+
+sp.Input.SourceValueChanged:connect(check)
+check(sp.Input:GetCurrentValue())
+
+--method #2&#9;&#9;con: does not start exactly when powered
+--[[while true do
+&#9;sp.RepeaterOutput:SetValue(sp.Input:GetCurrentValue())
+&#9;wait(sp.Configuration.TimeOn.Value)
+&#9;sp.RepeaterOutput:SetValue(0)
+&#9;wait(sp.Configuration.TimeOff.Value)
+end]]
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX33">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ScriptFO</string>
+				<ProtectedString name="Source">-- useless comment
+
+function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+local model = script.Parent
+waitForChild(model, &quot;PlayerNameTag&quot;)
+waitForChild(model, &quot;PlayerIdTag&quot;)
+waitForChild(model, &quot;PlayerNameTag&quot;)
+waitForChild(model, &quot;Wedge1&quot;)
+waitForChild(model, &quot;Wedge2&quot;)
+waitForChild(model, &quot;Door1&quot;)
+waitForChild(model, &quot;Door2&quot;)
+waitForChild(model, &quot;Side1&quot;)
+waitForChild(model, &quot;Side2&quot;)
+waitForChild(model, &quot;Door1Hinge1&quot;)
+waitForChild(model, &quot;Door1Hinge2&quot;)
+waitForChild(model, &quot;Door2Hinge1&quot;)
+waitForChild(model, &quot;Door2Hinge2&quot;)
+waitForChild(model, &quot;UnderDoors&quot;)
+waitForChild(model, &quot;Mode&quot;)
+waitForChild(model, &quot;Bottom&quot;)
+waitForChild(model, &quot;Head&quot;)
+
+local doorOwnerId = model.PlayerIdTag.Value
+local doorOwnerName = model.PlayerNameTag.Value
+
+local door1 = model.Door1
+local door2 = model.Door2
+local wedge1 = model.Wedge1
+local wedge2 = model.Wedge2
+local side1 = model.Side1
+local side2 = model.Side2
+local top = model.Head
+local head = model.Head
+local bottom = model.Bottom
+local underDoors = model.UnderDoors
+local door1bp = model.Door1.BodyPosition
+local door2bp = model.Door2.BodyPosition
+local lookVector
+local mode = model.Mode
+local weld1 = nil
+local weld2 = nil
+
+-- SETTINGS
+local offColor = BrickColor.new(&quot;Earth green&quot;)
+local onColor  = BrickColor.new(&quot;Lime green&quot;)
+local openForce = 300 -- maxForce when off (should let doors swing)
+local closedForce = 2000 -- maxForce when on (should prevent players pushing doors open)
+local currentForce = closedForce
+local doorOpenTime = 3
+
+local isOpen = false
+
+--[[
+-- Owner Image stuff
+waitForChild(model, &quot;DoorSign1&quot;)
+waitForChild(model.DoorSign1, &quot;Decal&quot;)
+
+local pic = model.DoorSign1.Decal
+pic.Texture = &quot;http://www.roblox.com/thumbs/avatar.ashx?userId=&quot;.. doorOwnerId ..&quot;&amp;x=352&amp;y=352&quot;
+
+waitForChild(model, &quot;DoorSign2&quot;)
+waitForChild(model.DoorSign2, &quot;Decal&quot;)
+
+local otherSide = model.DoorSign2.Decal
+otherSide.Texture = &quot;http://www.roblox.com/thumbs/avatar.ashx?userId=&quot;.. doorOwnerId ..&quot;&amp;x=352&amp;y=352&quot;
+--]]
+
+function setDoorForces()
+&#9;local f = lookVector * currentForce
+&#9;door1bp.maxForce = f
+&#9;door2bp.maxForce = f
+&#9;print(&quot;door forces:&quot;, f)
+end
+
+function doorOpen()
+&#9;print(&quot;doorOpen()&quot;)
+&#9;isOpen = true
+&#9;if(weld1 ~= nil) then weld1:Remove() end
+&#9;if(weld2 ~= nil) then weld2:Remove() end
+&#9;top.BrickColor = onColor
+&#9;currentForce = openForce
+&#9;setDoorForces()
+end
+
+function doorClose()
+&#9;print(&quot;doorClose()&quot;)
+&#9;isOpen = false
+&#9;top.BrickColor = offColor
+&#9;currentForce = closedForce
+&#9;setDoorForces()
+&#9;wait(0.3)
+&#9;-- Weld doors
+&#9;weld1 = Instance.new(&quot;Weld&quot;)
+&#9;weld2 = Instance.new(&quot;Weld&quot;)
+&#9;weld1.Part0 = door1
+&#9;weld1.Part1 = bottom
+&#9;weld2.Part0 = door2
+&#9;weld2.Part1 = bottom
+--&#9;weld1.C0 = door1
+--&#9;weld1.C1 =  bottom.CFrame:inverse() * door1.CFrame
+--&#9;weld2.C0 = door2
+&#9;--weld2.C1 = bottom.CFrame:inverse() * door2.CFrame
+&#9;weld1.C1 = CFrame.Angles(0,math.pi,0) + Vector3.new(0, 4, -1.71)
+&#9;weld2.C1 = CFrame.new() + Vector3.new(0, 4, 1.71)
+&#9;weld1.Parent = door1
+&#9;weld2.Parent = door2
+end
+
+function testPermission2(part)
+&#9;return true
+end
+
+function debug(a)
+&#9;print(&quot;debug:&quot;, a)
+&#9;model.Name = a
+end
+
+function testPermission(part)
+&#9;print(&quot;testPermission:&quot;, part.Name)
+&#9;doorOwnerId = model.PlayerIdTag.Value  -- Update the owner ID
+&#9;if part == nil then return false end   -- In case part was deleted
+&#9;local pChar = part.Parent
+&#9;if pChar == nil then return false end
+&#9;local pPlay = game.Players:GetPlayerFromCharacter(pChar)  -- In case player left game
+&#9;if not pPlay then return false end
+
+&#9;-- Test permissions
+&#9;if(mode.Value == &quot;true&quot; or mode.Value == &quot;debug&quot;) then
+&#9;&#9;debug(&quot;debug mode always true&quot;)
+&#9;&#9;return true
+&#9;elseif(mode.Value == &quot;friend&quot;) then
+&#9;&#9;if (pPlay:IsFriendsWith(doorOwnerId)) then 
+&#9;&#9;&#9;debug(pPlay.Name .. &quot; is friends with &quot; .. doorOwnerId)
+&#9;&#9;&#9;return true 
+&#9;&#9;else
+&#9;&#9;&#9;debug(pPlay.Name .. &quot; is NOT friends with &quot; .. doorOwnerId)
+&#9;&#9;end
+&#9;elseif(mode.Value == &quot;bestFriend&quot;) then
+&#9;&#9;if (pPlay:IsBestFriendsWith(doorOwnerId)) then
+&#9;&#9;&#9;debug(pPlay.Name .. &quot; is best friends with &quot; .. doorOwnerId)
+&#9;&#9;&#9;return true
+&#9;&#9;else
+&#9;&#9;&#9;debug(&quot;player &quot; .. pPlay.Name .. &quot; is NOT best friends with &quot; .. doorOwnerId)
+&#9;&#9;end
+&#9;elseif(mode.Value == &quot;group&quot;) then
+&#9;&#9;if (pPlay:IsInGroup(doorOwnerId)) then
+&#9;&#9;&#9;debug(pPlay.Name .. &quot; is in group &quot; .. doorOwnerId)
+&#9;&#9;&#9;return true
+&#9;&#9;else
+&#9;&#9;&#9;debug(pPlay.Name .. &quot; is NOT in group &quot; .. doorOwnerId)
+&#9;&#9;end
+&#9;end
+&#9;return false
+end
+
+function touchEvent(part)
+&#9;print(&quot;touchEvent&quot;)
+&#9;if (part ~= door1 and part ~= door2) then
+&#9;&#9;if (testPermission(part)) then
+&#9;&#9;&#9;if not isOpen then
+&#9;&#9;&#9;&#9;doorOpen()
+&#9;&#9;&#9;&#9;wait(doorOpenTime)
+&#9;&#9;&#9;&#9;doorClose()
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;end
+end
+
+function changedEvent(prop)
+&#9;-- Only interested in CFrame (position + rotation) changes
+&#9;if(prop ~= &quot;CFrame&quot;) then return end
+&#9;print(&quot;positionChangedEvent()&quot;)
+&#9;targetPos = underDoors.Position
+&#9;door1bp.position = side2.Position
+&#9;door2bp.position = side1.Position
+&#9;a = underDoors.CFrame.lookVector
+&#9;lookVector = Vector3.new( math.abs(a.x), math.abs(a.y), math.abs(a.z) )
+&#9;setDoorForces()
+end
+
+wedge1.Touched:connect(touchEvent)
+wedge2.Touched:connect(touchEvent)
+door1.Touched:connect(touchEvent)
+door2.Touched:connect(touchEvent)
+underDoors.Changed:connect(changedEvent)
+
+changedEvent(&quot;CFrame&quot;) -- Fire once to initialize
+doorClose()
+
+print(&quot;Events added.&quot;)</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX34">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ScriptFT</string>
+				<ProtectedString name="Source">function waitForChild(parent, child)
+&#9;while not parent:FindFirstChild(child) do parent.ChildAdded:wait() end
+end
+
+local thisModel = script.Parent.Parent
+
+
+local off_time = 0
+local thread_running = false
+
+waitForChild(thisModel, &quot;FireSmoke&quot;)
+waitForChild(thisModel, &quot;Flamethrower&quot;)
+local FIRESMOKE = thisModel.FireSmoke
+local BASE = thisModel.Flamethrower
+local EXTENTCHECK1 = Vector3.new(-2, -2, -2.5)
+local EXTENTCHECK2 = Vector3.new(2, 2, -7.5)
+
+function mix(v1, v2, fn)
+&#9;return Vector3.new(fn(v1.x, v2.x), fn(v1.y, v2.y), fn(v1.z, v2.z))
+end
+
+-- init fire and smoke (we don&apos;t save these for state bug fix)
+local fire = Instance.new(&quot;Fire&quot;)
+fire.Color = Color3.new(1,128/255,0)
+fire.Enabled = false
+fire.Heat = 25
+fire.Name = &quot;Fire&quot;
+fire.SecondaryColor = Color3.new(1,0,0)
+fire.Size = 5
+fire.Archivable = false
+fire.Parent = FIRESMOKE
+
+local smoke = Instance.new(&quot;Smoke&quot;)
+smoke.Color = Color3.new(95/255,95/255,95/255)
+smoke.Enabled = false
+smoke.Opacity = 0.2
+smoke.Name = &quot;Smoke&quot;
+smoke.RiseVelocity = 10
+smoke.Size = 1
+smoke.Archivable = false
+smoke.Parent = FIRESMOKE
+
+-- get player&apos;s base plate, if possible
+local playerArea = thisModel.Parent
+local playerBasePlate = nil
+local minBoundsVect = nil
+local maxBoundsVect = nil
+if playerArea.Name == &quot;PlayerArea&quot; then
+&#9;playerBasePlate = playerArea:FindFirstChild(&quot;BasePlate&quot;)
+&#9;if not playerBasePlate and playerArea.Parent then playerBasePlate = playerArea.Parent:FindFirstChild(&quot;BasePlate&quot;) end
+
+&#9;if playerBasePlate then
+&#9;&#9;extent1 = playerBasePlate.CFrame:pointToWorldSpace(-playerBasePlate.Size/2)
+&#9;&#9;extent2 = playerBasePlate.CFrame:pointToWorldSpace(playerBasePlate.Size/2)
+&#9;&#9;minBoundsVect = mix(extent1, extent2, math.min)
+&#9;&#9;minBoundsVect = Vector3.new(minBoundsVect.x, -1000, minBoundsVect.z)
+&#9;&#9;maxBoundsVect = mix(extent1, extent2, math.max)
+&#9;&#9;maxBoundsVect = Vector3.new(maxBoundsVect.x, 1000, maxBoundsVect.z)
+&#9;end
+end
+
+function damageHumanoids()
+&#9;local hitHumanoids = {}
+&#9;local extent1 = BASE.CFrame:pointToWorldSpace(EXTENTCHECK1)
+&#9;local extent2 = BASE.CFrame:pointToWorldSpace(EXTENTCHECK2)
+&#9;local region3 = nil
+&#9;if playerBasePlate then 
+&#9;&#9;region3 = Region3.new(
+&#9;&#9;&#9;mix(mix(extent1, extent2, math.min), minBoundsVect, math.max),
+&#9;&#9;&#9;mix(mix(extent1, extent2, math.max), maxBoundsVect, math.min))
+&#9;else
+&#9;&#9;region3 = Region3.new(
+&#9;&#9;&#9;mix(extent1, extent2, math.min),
+&#9;&#9;&#9;mix(extent1, extent2, math.max))
+&#9;end
+
+&#9;local parts = game.Workspace:FindPartsInRegion3(region3, thisModel)
+&#9;for idx, part in ipairs(parts) do
+&#9;&#9;local humanoid = part.Parent:FindFirstChild(&quot;Humanoid&quot;)
+&#9;&#9;if humanoid and humanoid:IsA(&quot;Humanoid&quot;) then
+&#9;&#9;&#9;hitHumanoids[humanoid] = true
+&#9;&#9;end
+&#9;end
+&#9;for humanoid, unused in pairs(hitHumanoids) do
+&#9;&#9;humanoid:TakeDamage(49.5)
+&#9;end
+end
+
+function monitorFire()
+&#9;thread_running = true
+&#9;while time() &lt;= off_time do
+&#9;&#9;damageHumanoids()
+&#9;&#9;wait(0.25)
+&#9;end
+&#9;FIRESMOKE.Fire.Enabled = false
+&#9;FIRESMOKE.Smoke.Enabled = false
+&#9;thread_running = false
+end
+
+script.Parent.Fire.SourceValueChanged:connect(function(val)
+&#9;if val == 0 then return end
+&#9;FIRESMOKE.Fire.Enabled = true
+&#9;FIRESMOKE.Smoke.Enabled = true
+&#9;off_time = time() + 4
+&#9;if not thread_running then
+&#9;&#9;delay(0, monitorFire)
+&#9;end
+end)
+
+script.Parent.Parent.AncestryChanged:connect(function(child,parent)
+&#9;if parent == nil then
+&#9;&#9;FIRESMOKE.Fire.Enabled = false
+&#9;&#9;FIRESMOKE.Smoke.Enabled = false
+&#9;end
+end)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX35">
+			<Properties>
+				<bool name="Disabled">true</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ScriptHashWhitelistMaker</string>
+				<ProtectedString name="Source">-- registers stampable models with the insert service on the server side of things
+local baseUrl = string.lower(game:GetService(&quot;ContentProvider&quot;).BaseUrl)
+local isGametest = string.find(baseUrl,&quot;gametest&quot;)
+local userIdsForStamperParts = {11744447,2409156}
+
+if isGametest then
+&#9;table.insert(userIdsForStamperParts,28215009)
+&#9;table.insert(userIdsForStamperParts,28215010)
+&#9;table.insert(userIdsForStamperParts,28220612)
+&#9;table.insert(userIdsForStamperParts,28220614)
+else
+&#9;table.insert(userIdsForStamperParts,18881789)
+&#9;table.insert(userIdsForStamperParts,18881808)
+&#9;table.insert(userIdsForStamperParts,19238067)
+&#9;table.insert(userIdsForStamperParts,19238114)
+end
+
+local userData = {}
+local newTable = {}
+
+local newHint = Instance.new(&quot;Message&quot;)
+newHint.Text = &quot;Creating Script Hash Whitelist&quot;
+newHint.Parent = game.Workspace
+
+function getAllScriptHashes(model, myTable)
+&#9;if not model then return end
+&#9;if model:IsA(&quot;Script&quot;) or model:IsA(&quot;LocalScript&quot;) then
+&#9;&#9;--table.insert(myTable, model:GetHash())
+&#9;&#9;myTable[model:GetHash()] = true
+&#9;end
+
+&#9;-- recuRsion!  the big R stands for &quot;recuRsion&quot;
+&#9;local mc = model:GetChildren()
+&#9;for i = 1, #mc do
+&#9;&#9;getAllScriptHashes(mc[i], myTable)
+&#9;end
+end
+
+function collectScriptsToApprove(id)
+&#9;local newThing = game:GetService(&quot;InsertService&quot;):LoadAsset(id)
+&#9;getAllScriptHashes(newThing, newTable)
+end
+
+
+for i = 1, #userIdsForStamperParts do
+&#9;local newUserData = game:GetService(&quot;InsertService&quot;):GetUserCategories(userIdsForStamperParts[i])
+&#9;if newUserData and #newUserData &gt; 0 then
+&#9;&#9;for j = 1, #newUserData do
+&#9;&#9;&#9;table.insert(userData, newUserData[j])
+&#9;&#9;end
+&#9;end
+end
+
+
+local counter = 0
+
+print(&quot;Registering script hashes.&quot;)
+
+-- register all the good hashes :)
+for index, object in pairs(userData) do
+&#9;local tempSet = game:GetService(&quot;InsertService&quot;):GetCollection(object.CategoryId)
+&#9;for sIndex, sObject in pairs(tempSet) do
+&#9;&#9;counter = counter + 1
+&#9;&#9;
+&#9;&#9;local assetId = sObject.AssetId
+&#9;&#9;collectScriptsToApprove(assetId)
+&#9;end
+end
+
+local counter2 = 0
+local newHashString = Instance.new(&quot;StringValue&quot;)
+newHashString.Name = &quot;ScriptHashWhitelist&quot;
+newHashString.Value = &quot;&quot;
+newHashString.Parent = game.Lighting
+
+for i,j in pairs(newTable) do
+&#9;counter2 = counter2 + 1
+&#9;print(counter2)
+&#9;print(i)
+&#9;if counter2 == 1 then newHashString.Value = newHashString.Value .. i
+&#9;else newHashString.Value = newHashString.Value .. &quot;;&quot; .. i end
+end
+
+print(&quot;Registered &quot; .. tostring(counter2) .. &quot; scripts from &quot; .. tostring(counter) .. &quot; assets.&quot;)
+newHint:Remove()
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX36">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">ScriptSSS</string>
+				<ProtectedString name="Source">function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+
+local trigger = script.Parent
+
+waitForChild(script.Parent,&quot;Configuration&quot;)
+waitForChild(script.Parent.Configuration,&quot;Trigger Reset Time&quot;)
+local resetTime = script.Parent.Configuration:FindFirstChild(&quot;Trigger Reset Time&quot;)
+
+trigger.CanCollide = false
+
+local triggerDebounce = false
+trigger.Touched:connect(function (hit)
+&#9;if triggerDebounce then return end
+
+&#9;triggerDebounce = true
+&#9;trigger.Triggered:SetValue(1.0)
+&#9;wait(resetTime.Value - 0.1)
+&#9;trigger.Triggered:SetValue(0)
+&#9;wait(0.1) -- to stop value from being immediately reset
+&#9;triggerDebounce = false
+end)
+
+-- Remove decals
+waitForChild(script.Parent, &quot;Decal1&quot;)
+waitForChild(script.Parent, &quot;Decal2&quot;)
+waitForChild(script.Parent, &quot;Decal3&quot;)
+waitForChild(script.Parent, &quot;Decal4&quot;)
+script.Parent.Decal1:Remove()
+script.Parent.Decal2:Remove()
+script.Parent.Decal3:Remove()
+script.Parent.Decal4:Remove()
+script.Parent.Transparency = 1</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX37">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">SpikeControlScript</string>
+				<ProtectedString name="Source">-- V2
+
+print(&quot;Starting SpikeControlScript&quot;)
+
+-- offset should be between .1 and 1 inclusive, speed should be integer (0 for no movement, 1 for instant, 9 is decent speed), and delay is number of seconds to wait between shifts (so like 5, 3, or 1 for very fast are all good numbers)
+
+local forceField = script.Parent
+local SpikeModel = forceField.Parent
+local box = SpikeModel.Box
+
+local debris = game:GetService(&quot;Debris&quot;)
+
+--local forceFieldExtent = 9.29 - 5.8 -- forceField should extend by this amount past box when stretched to its fullest extent
+--local spikeExtent = 9.61 - 5.8 -- spikes should extend by this amount past box when stretched to their fullest extent
+--local spikeExtent = 9.61 - 5.5
+local spikeExtent = 9.61 - 5.8
+
+local spikeWeld = box:FindFirstChild(&quot;SpikeWeld&quot;)
+if spikeWeld == nil then
+&#9;spikeWeld = Instance.new(&quot;ManualWeld&quot;)
+&#9;spikeWeld.Name = &quot;SpikeWeld&quot;
+&#9;spikeWeld.Part0 = box
+&#9;spikeWeld.Part1 = forceField
+&#9;spikeWeld.C0 = CFrame.new() + Vector3.new(0,1,0)*(spikeExtent - 3.75*0)
+&#9;spikeWeld.Parent = box
+end
+
+local parts = SpikeModel:GetChildren()
+
+local heightFactor = 1
+local config = SpikeModel:FindFirstChild(&quot;Configuration&quot;)
+
+local spikesDown = false
+
+print(&quot;Finished Declarations&quot;)
+
+function onTouched(hit)
+&#9;if spikesDown then return end
+&#9;if hit == nil then return end
+&#9;if hit.Name == &quot;Right Arm&quot; or hit.Name == &quot;Left Arm&quot; then return end
+
+&#9;local human = hit.Parent:findFirstChild(&quot;Humanoid&quot;)&#9;
+&#9;if human and human:IsA(&quot;Humanoid&quot;) then&#9;&#9;human:TakeDamage(100)
+&#9;end
+end
+script.Parent.Touched:connect(onTouched)
+
+
+--box.Anchored = true
+--forceField.Anchored = true
+
+
+print(&quot;Configuring Speed&quot;)
+
+local dh = 1/9
+if config ~= nil and config:FindFirstChild(&quot;Speed&quot;) ~= nil then 
+&#9;if config.Speed.Value == 0 then dh = .1
+&#9;else dh = 1/config.Speed.Value end
+end
+
+print(&quot;Configuring Delay&quot;)
+
+local waitTime = 3
+if config ~= nil and config:FindFirstChild(&quot;Delay&quot;) ~= nil then waitTime = config.Delay.Value end
+
+if config ~= nil and config:FindFirstChild(&quot;Offset&quot;) ~= nil then 
+&#9;totalTime = waitTime*2+2*.05*math.ceil(0.9/dh)
+&#9;offset = config.Offset.Value
+&#9;startTime = offset*totalTime
+&#9;if offset == 1 then offset = 0 end
+&#9;if startTime &lt;= waitTime then
+&#9;&#9;wait(waitTime - startTime + .05)
+&#9;&#9;dh = -dh
+&#9;&#9;heightFactor = 1 + dh
+&#9;elseif startTime &lt; waitTime+.05*math.ceil(0.9/dh) then
+&#9;&#9;dh = -dh
+&#9;&#9;numItersToSkip = math.floor((startTime - waitTime)/.05)
+&#9;&#9;heightFactor = 1 + dh*numItersToSkip
+&#9;&#9;extraTime = startTime - waitTime - numItersToSkip*.05
+&#9;&#9;wait(extraTime) -- wait the extra
+&#9;elseif startTime &lt;= waitTime*2 + .05*math.ceil(0.9/dh) then
+&#9;&#9;timeToWait = startTime - waitTime - .05*math.ceil(0.9/dh)
+&#9;&#9;spikesDown = true
+&#9;&#9;wait(waitTime - timeToWait + .05)
+&#9;&#9;heightFactor = 0.1 + dh
+&#9;&#9;spikesDown = false
+&#9;else
+&#9;&#9;timeIntoIters = startTime - waitTime*2 - .05*math.ceil(0.9/dh)
+&#9;&#9;numItersToSkip = math.floor(timeIntoIters/.05)
+&#9;&#9;heightFactor = 0.1 + dh*numItersToSkip
+&#9;&#9;extraTime = timeIntoIters - numItersToSkip*.05
+&#9;&#9;wait(extraTime)
+&#9;end
+
+if config ~= nil and config:FindFirstChild(&quot;Speed&quot;) ~= nil then 
+&#9;if config.Speed.Value == 0 then dh = 0 end
+end
+
+&#9;--heightFactor = config.Offset.Value 
+end
+
+print(&quot;Starting Loop&quot;)
+
+local smallVector = Vector3.new(0,0.001,0)
+
+local loopGo = true
+while loopGo do
+&#9;if heightFactor &gt;= 1 or heightFactor &lt;= 0.1 then 
+&#9;&#9;if heightFactor &lt;= 0.1 then spikesDown = true end
+&#9;&#9;print(&quot;end of animation.  Waiting.&quot;)
+&#9;&#9;wait(waitTime)
+&#9;&#9;if heightFactor &lt;= 0.1 then 
+&#9;&#9;&#9;spikesDown = false 
+&#9;&#9;&#9;--altForceField = forceField:Clone()
+&#9;&#9;&#9;--altForceField.SpikeControlScript.Disabled = true
+&#9;&#9;&#9;--altForceField.SpikeScript.Disabled = false
+&#9;&#9;&#9;--altForceField.Parent = SpikeModel
+&#9;&#9;&#9;--debris:AddItem(altForceField, 1)
+&#9;&#9;end
+&#9;&#9;dh = -dh 
+&#9;end
+&#9;heightFactor = heightFactor + dh
+&#9;wait(.05)
+&#9;--for i = 1, #parts do
+&#9;&#9;--currPart = parts[i]
+&#9;--&#9;currPart.Anchored = true
+&#9;&#9;--if currPart:FindFirstChild(&quot;Mesh&quot;) ~= nil then
+&#9;&#9;&#9;--currPart.CFrame = box.CFrame + currPart.CFrame:vectorToWorldSpace(Vector3.new(0,1,0)).unit*(spikeExtent - 3.75*(1-heightFactor))
+--&#9;&#9;end
+--&#9;end
+
+&#9;--spikeWeld.C0 = forceField.CFrame:inverse()*(box.CFrame + box.CFrame:vectorToWorldSpace(Vector3.new(0,1,0)).unit*(spikeExtent - 3.75*(1-heightFactor)))
+&#9;--spikeWeld.C0 = CFrame.new() + box.CFrame:vectorToWorldSpace(Vector3.new(0,1,0)).unit*(spikeExtent - 3.75*(2-heightFactor))
+&#9;if spikeWeld == nil or spikeWeld.Parent == nil then debris:AddItem(SpikeModel, 15) loopGo = false
+&#9;else 
+&#9;&#9;spikeWeld.C0 = CFrame.new() + Vector3.new(0,1,0)*(spikeExtent - 3.75 * (1-heightFactor))
+&#9;&#9;--box.CFrame = box.CFrame+Vector3.new(0,0,.01*math.random()-.005)
+&#9;&#9;forceField.Mesh.VertexColor = Vector3.new(1-heightFactor*.01, 1-heightFactor*.01, 1-heightFactor*.01)
+&#9;end
+end
+
+print(&quot;got here&quot;)
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX38">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">SpikeScript</string>
+				<ProtectedString name="Source">-- useless comment
+
+function onTouched(hit)
+&#9;if not hit or not hit.Parent then return end
+&#9;local human = hit.Parent:findFirstChild(&quot;Humanoid&quot;)
+&#9;if human and human:IsA(&quot;Humanoid&quot;) then&#9;&#9;human:TakeDamage(100)
+&#9;end
+end
+script.Parent.Touched:connect(onTouched)</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX39">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">SwitchScript</string>
+				<ProtectedString name="Source">--
+
+
+
+
+
+sp=script.Parent
+
+sp.ClickDetector.MouseClick:connect(function()
+&#9;sp.OnOff.Value=not sp.OnOff.Value
+&#9;if sp.OnOff.Value then
+&#9;&#9;sp.LightSwitch:SetValue(1)
+&#9;&#9;sp.SwitchWeld.C1=CFrame.Angles(.8,0,0)
+&#9;else
+&#9;&#9;sp.LightSwitch:SetValue(0)
+&#9;&#9;sp.SwitchWeld.C1=CFrame.Angles(-.8,0,0)
+&#9;end
+end)
+
+
+
+
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX40">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">TimerScript</string>
+				<ProtectedString name="Source">--Stickmasterluke
+
+
+sp=script.Parent
+
+numberids={59518377,59518402,59518433,59518457,59518480,59518522,59518607,59518632,59518651,59518670}
+flashingtime=5
+
+running=false
+timer=math.ceil(sp.Configuration.Timer.Value)
+
+function updatedisplay()
+&#9;d4=timer%10
+&#9;d3=math.floor((timer%60)/10)
+&#9;d2=math.floor(timer/60)%10
+&#9;d1=math.floor(timer/600)%10
+&#9;sp.Timer1.Decal.Texture=&quot;http://www.roblox.com/asset?id=&quot;..tostring(numberids[d1+1])
+&#9;sp.Timer2.Decal.Texture=&quot;http://www.roblox.com/asset?id=&quot;..tostring(numberids[d2+1])
+&#9;sp.Timer3.Decal.Texture=&quot;http://www.roblox.com/asset?id=&quot;..tostring(numberids[d3+1])
+&#9;sp.Timer4.Decal.Texture=&quot;http://www.roblox.com/asset?id=&quot;..tostring(numberids[d4+1])
+end
+
+function colortimer(clr)
+&#9;for i,v in ipairs(sp:GetChildren()) do
+&#9;&#9;if v.Name==&quot;Color&quot; or v.Name==&quot;Part&quot; or v.Name==&quot;Wedge&quot; then
+&#9;&#9;&#9;v.BrickColor=BrickColor.new(clr)
+&#9;&#9;end
+&#9;end
+end
+
+function countdown()
+&#9;if not running then
+&#9;&#9;running=true
+&#9;&#9;timer=math.ceil(sp.Configuration.Timer.Value)
+&#9;&#9;colortimer(&quot;Black&quot;)
+&#9;&#9;while running and timer&gt;0 do
+&#9;&#9;&#9;if timer&lt;=flashingtime then--and timer%2==1 then
+&#9;&#9;&#9;&#9;local flashtimes=(flashingtime-timer)+1
+&#9;&#9;&#9;&#9;if flashtimes%2==1 then
+&#9;&#9;&#9;&#9;&#9;flashtimes=flashtimes+1
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;local a=0
+&#9;&#9;&#9;&#9;for i=1,flashtimes do
+&#9;&#9;&#9;&#9;&#9;a=a+1
+&#9;&#9;&#9;&#9;&#9;if a%2==1 then
+&#9;&#9;&#9;&#9;&#9;&#9;colortimer(&quot;Really red&quot;)
+&#9;&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;&#9;colortimer(&quot;Black&quot;)
+&#9;&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;&#9;&#9;wait(1/flashtimes)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;wait(1)
+&#9;&#9;&#9;end
+&#9;&#9;&#9;timer=timer-1
+&#9;&#9;&#9;updatedisplay()
+&#9;&#9;end
+&#9;&#9;colortimer(&quot;Black&quot;)
+&#9;&#9;sp.Antenna.TimerOutput:SetValue(1)
+&#9;&#9;sp.Antenna.BrickColor=BrickColor.new(&quot;Really red&quot;)
+&#9;&#9;wait(sp.Configuration.OutputTime.Value)
+&#9;&#9;sp.Antenna.BrickColor=BrickColor.new(&quot;Really black&quot;)
+&#9;&#9;sp.Antenna.TimerOutput:SetValue(0)
+&#9;&#9;running=false
+&#9;&#9;check(sp.Antenna.StartTimer:GetCurrentValue())
+&#9;end
+end
+
+function check(val)
+&#9;if val&gt;.5 then
+&#9;&#9;countdown()
+&#9;else
+&#9;&#9;--No going back. Lol
+&#9;end
+end
+
+sp.Configuration.Timer.Changed:connect(function()
+&#9;timer=math.ceil(sp.Configuration.Timer.Value)
+&#9;updatedisplay()
+end)
+
+for i,v in ipairs(sp:GetChildren()) do
+&#9;if v.Name==&quot;Color&quot; then
+&#9;&#9;v.BrickColor=BrickColor.new(&quot;Black&quot;)
+&#9;end
+end
+sp.Antenna.BrickColor=BrickColor.new(&quot;Really black&quot;)
+
+sp.Antenna.TimerOutput:SetValue(0)
+sp.Antenna.StartTimer.SourceValueChanged:connect(check)
+check(sp.Antenna.StartTimer:GetCurrentValue())
+updatedisplay()
+</ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX41">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">Trapscript</string>
+				<ProtectedString name="Source">function waitForChild(instance, name)
+&#9;while not instance:FindFirstChild(name) do
+&#9;&#9;instance.ChildAdded:wait()
+&#9;end
+end
+
+local player = nil
+
+local door = script.Parent
+--door.Anchored = true
+door.CanCollide = false
+local isOpen = false
+
+local doorOpenTime = 1
+
+--[[function accessGranted(part)
+&#9;if part.Parent == nil then return false end
+&#9;pPlay = game.Players:GetPlayerFromCharacter(part.Parent)
+&#9;if pPlay == nil then return false end
+&#9;player = part.Parent
+&#9;return true
+end]]--
+
+function checkHit(part)
+&#9;--if (accessGranted(part)) then
+&#9;&#9;if not isOpen then
+&#9;&#9;&#9;isOpen = true
+&#9;&#9;&#9;wait(.3)
+&#9;&#9;&#9;door.Transparency = 1
+&#9;&#9;&#9;wait(doorOpenTime)
+&#9;&#9;&#9;door.Transparency = 0
+&#9;&#9;&#9;isOpen = false
+&#9;&#9;end
+end
+
+
+door.Touched:connect(checkHit)
+
+-- Remove decals
+waitForChild(script.Parent, &quot;Decal1&quot;)
+waitForChild(script.Parent, &quot;Decal2&quot;)
+waitForChild(script.Parent, &quot;Decal3&quot;)
+waitForChild(script.Parent, &quot;Decal4&quot;)
+script.Parent.Decal1:Remove()
+script.Parent.Decal2:Remove()
+script.Parent.Decal3:Remove()
+script.Parent.Decal4:Remove()</ProtectedString>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>

@@ -1,0 +1,515 @@
+<roblox xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.roblox.com/roblox.xsd" version="4">
+	<External>null</External>
+	<External>nil</External>
+	<Item class="Tool" referent="RBX0">
+		<Properties>
+			<bool name="CanBeDropped">true</bool>
+			<bool name="Enabled">true</bool>
+			<CoordinateFrame name="Grip">
+				<X>0</X>
+				<Y>0</Y>
+				<Z>0</Z>
+				<R00>0</R00>
+				<R01>1</R01>
+				<R02>0</R02>
+				<R10>0</R10>
+				<R11>0</R11>
+				<R12>1</R12>
+				<R20>1</R20>
+				<R21>0</R21>
+				<R22>0</R22>
+			</CoordinateFrame>
+			<string name="Name">Laser Pointer</string>
+			<Content name="TextureId"><null></null></Content>
+			<string name="ToolTip"></string>
+		</Properties>
+		<Item class="Part" referent="RBX1">
+			<Properties>
+				<bool name="Anchored">false</bool>
+				<float name="BackParamA">-0.5</float>
+				<float name="BackParamB">0.5</float>
+				<token name="BackSurface">0</token>
+				<token name="BackSurfaceInput">0</token>
+				<float name="BottomParamA">-0.5</float>
+				<float name="BottomParamB">0.5</float>
+				<token name="BottomSurface">0</token>
+				<token name="BottomSurfaceInput">0</token>
+				<int name="BrickColor">1019</int>
+				<CoordinateFrame name="CFrame">
+					<X>-0.400000006</X>
+					<Y>0.5</Y>
+					<Z>-0.5</Z>
+					<R00>0</R00>
+					<R01>1</R01>
+					<R02>-0</R02>
+					<R10>1</R10>
+					<R11>0</R11>
+					<R12>-0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>-1</R22>
+				</CoordinateFrame>
+				<bool name="CanCollide">false</bool>
+				<float name="Elasticity">0.5</float>
+				<float name="Friction">0.300000012</float>
+				<float name="FrontParamA">-0.5</float>
+				<float name="FrontParamB">0.5</float>
+				<token name="FrontSurface">0</token>
+				<token name="FrontSurfaceInput">0</token>
+				<float name="LeftParamA">-0.5</float>
+				<float name="LeftParamB">0.5</float>
+				<token name="LeftSurface">0</token>
+				<token name="LeftSurfaceInput">0</token>
+				<bool name="Locked">true</bool>
+				<token name="Material">256</token>
+				<string name="Name">Handle</string>
+				<float name="Reflectance">0</float>
+				<float name="RightParamA">-0.5</float>
+				<float name="RightParamB">0.5</float>
+				<token name="RightSurface">0</token>
+				<token name="RightSurfaceInput">0</token>
+				<Vector3 name="RotVelocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<float name="TopParamA">-0.5</float>
+				<float name="TopParamB">0.5</float>
+				<token name="TopSurface">0</token>
+				<token name="TopSurfaceInput">0</token>
+				<float name="Transparency">0</float>
+				<Vector3 name="Velocity">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+				</Vector3>
+				<token name="formFactorRaw">1</token>
+				<token name="shape">1</token>
+				<Vector3 name="size">
+					<X>1</X>
+					<Y>1.20000005</Y>
+					<Z>1</Z>
+				</Vector3>
+			</Properties>
+		</Item>
+		<Item class="RotateP" referent="RBX2">
+			<Properties>
+				<float name="BaseAngle">0.25</float>
+				<CoordinateFrame name="C0">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<CoordinateFrame name="C1">
+					<X>0</X>
+					<Y>0</Y>
+					<Z>0</Z>
+					<R00>1</R00>
+					<R01>0</R01>
+					<R02>0</R02>
+					<R10>0</R10>
+					<R11>1</R11>
+					<R12>0</R12>
+					<R20>0</R20>
+					<R21>0</R21>
+					<R22>1</R22>
+				</CoordinateFrame>
+				<string name="Name">d&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;&#229;ng.........you got owned...</string>
+				<Ref name="Part0">null</Ref>
+				<Ref name="Part1">null</Ref>
+			</Properties>
+		</Item>
+		<Item class="Script" referent="RBX3">
+			<Properties>
+				<bool name="Disabled">true</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">LineConnect</string>
+				<ProtectedString name="Source">wait()
+local check = script.Part2
+local part1 = script.Part1.Value
+local part2 = script.Part2.Value
+local parent = script.Par.Value
+local color = script.Color
+local line = Instance.new(&quot;Part&quot;)
+line.TopSurface = 0
+line.BottomSurface = 0
+line.Reflectance = .5
+line.Name = &quot;Laser&quot;
+line.Locked = true
+line.CanCollide = false
+line.Anchored = true
+line.formFactor = 0
+line.Size = Vector3.new(1,1,1)
+local mesh = Instance.new(&quot;BlockMesh&quot;)
+mesh.Parent = line
+while true do
+&#9;if (check.Value==nil) then break end
+&#9;if (part1==nil or part2==nil or parent==nil) then break end
+&#9;if (part1.Parent==nil or part2.Parent==nil) then break end
+&#9;if (parent.Parent==nil) then break end
+&#9;local lv = CFrame.new(part1.Position,part2.Position)
+&#9;local dist = (part1.Position-part2.Position).magnitude
+&#9;line.Parent = parent
+&#9;line.BrickColor = color.Value.BrickColor
+&#9;line.Reflectance = color.Value.Reflectance
+&#9;line.Transparency = color.Value.Transparency
+&#9;line.CFrame = CFrame.new(part1.Position+lv.lookVector*dist/2)
+&#9;line.CFrame = CFrame.new(line.Position,part2.Position)
+&#9;mesh.Scale = Vector3.new(.25,.25,dist)
+&#9;wait()
+end
+line:remove()
+script:remove() </ProtectedString>
+			</Properties>
+		</Item>
+		<Item class="LocalScript" referent="RBX4">
+			<Properties>
+				<bool name="Disabled">false</bool>
+				<Content name="LinkedSource"><null></null></Content>
+				<string name="Name">MainScript</string>
+				<ProtectedString name="Source">wait() 
+tool = script.Parent
+lineconnect = tool.LineConnect
+object = nil
+mousedown = false
+found = false
+BP = Instance.new(&quot;BodyPosition&quot;)
+BP.maxForce = Vector3.new(math.huge*math.huge,math.huge*math.huge,math.huge*math.huge) --pwns everyone elses bodyposition
+BP.P = BP.P*8 --faster movement. less bounceback.
+dist = nil
+point = Instance.new(&quot;Part&quot;)
+point.Locked = true
+point.Anchored = true
+point.formFactor = 0
+point.Shape = 0
+point.BrickColor = BrickColor.new(&quot;Toothpaste&quot;)
+point.Size = Vector3.new(1,1,1)
+point.CanCollide = false
+local mesh = Instance.new(&quot;SpecialMesh&quot;)
+mesh.MeshType = &quot;Sphere&quot;
+mesh.Scale = Vector3.new(.7,.7,.7)
+mesh.Parent = point
+handle = tool.Handle
+front = tool.Handle
+color = tool.Handle
+objval = nil
+local hooked = false 
+local hookBP = BP:clone() 
+hookBP.maxForce = Vector3.new(30000,30000,30000) 
+
+function LineConnect(part1,part2,parent)
+&#9;local p1 = Instance.new(&quot;ObjectValue&quot;)
+&#9;p1.Value = part1
+&#9;p1.Name = &quot;Part1&quot;
+&#9;local p2 = Instance.new(&quot;ObjectValue&quot;)
+&#9;p2.Value = part2
+&#9;p2.Name = &quot;Part2&quot;
+&#9;local par = Instance.new(&quot;ObjectValue&quot;)
+&#9;par.Value = parent
+&#9;par.Name = &quot;Par&quot;
+&#9;local col = Instance.new(&quot;ObjectValue&quot;)
+&#9;col.Value = color
+&#9;col.Name = &quot;Color&quot;
+&#9;local s = lineconnect:clone()
+&#9;s.Disabled = false
+&#9;p1.Parent = s
+&#9;p2.Parent = s
+&#9;par.Parent = s
+&#9;col.Parent = s
+&#9;s.Parent = workspace
+&#9;if (part2==object) then
+&#9;&#9;objval = p2
+&#9;end
+end
+
+function onButton1Down(mouse)
+&#9;if (mousedown==true) then return end
+&#9;mousedown = true
+&#9;coroutine.resume(coroutine.create(function()
+&#9;&#9;local p = point:clone()
+&#9;&#9;p.Parent = tool
+&#9;&#9;LineConnect(front,p,workspace)
+&#9;&#9;while (mousedown==true) do
+&#9;&#9;&#9;p.Parent = tool
+&#9;&#9;&#9;if (object==nil) then
+&#9;&#9;&#9;&#9;if (mouse.Target==nil) then
+&#9;&#9;&#9;&#9;&#9;local lv = CFrame.new(front.Position,mouse.Hit.p)
+&#9;&#9;&#9;&#9;&#9;p.CFrame = CFrame.new(front.Position+(lv.lookVector*1000))
+&#9;&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;&#9;p.CFrame = CFrame.new(mouse.Hit.p)
+&#9;&#9;&#9;&#9;end
+&#9;&#9;&#9;else
+&#9;&#9;&#9;&#9;LineConnect(front,object,workspace)
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;&#9;wait()
+&#9;&#9;end
+&#9;&#9;p:remove()
+&#9;end))
+&#9;while (mousedown==true) do
+&#9;&#9;if (mouse.Target~=nil) then
+&#9;&#9;&#9;local t = mouse.Target
+&#9;&#9;&#9;if (t.Anchored==false) then
+&#9;&#9;&#9;&#9;object = t
+&#9;&#9;&#9;&#9;dist = (object.Position-front.Position).magnitude
+&#9;&#9;&#9;&#9;break
+&#9;&#9;&#9;end
+&#9;&#9;end
+&#9;&#9;wait()
+&#9;end
+&#9;while (mousedown==true) do
+&#9;&#9;if (object.Parent==nil) then break end
+&#9;&#9;local lv = CFrame.new(front.Position,mouse.Hit.p)
+&#9;&#9;BP.Parent = object
+&#9;&#9;BP.position = front.Position+lv.lookVector*dist
+&#9;&#9;wait()
+&#9;end
+&#9;BP:remove()
+&#9;object = nil
+&#9;objval.Value = nil
+end
+
+function onKeyDown(key,mouse) 
+&#9;local key = key:lower() 
+&#9;local yesh = false 
+&#9;if (key==&quot;q&quot;) then 
+&#9;&#9;if (dist&gt;=5) then 
+&#9;&#9;&#9;dist = dist-5 
+&#9;&#9;end 
+&#9;end 
+&#9;if key == &quot;l&quot; then 
+&#9;if (object==nil) then return end 
+&#9;for _,v in pairs(object:children()) do 
+&#9;if v.className == &quot;BodyGyro&quot; then 
+&#9;return nil 
+&#9;end 
+&#9;end 
+&#9;BG = Instance.new(&quot;BodyGyro&quot;) 
+&#9;BG.maxTorque = Vector3.new(math.huge,math.huge,math.huge) 
+&#9;BG.cframe = CFrame.new(object.CFrame.p) 
+&#9;BG.Parent = object 
+&#9;repeat wait() until(object.CFrame == CFrame.new(object.CFrame.p)) 
+&#9;BG.Parent = nil 
+&#9;if (object==nil) then return end 
+&#9;for _,v in pairs(object:children()) do 
+&#9;if v.className == &quot;BodyGyro&quot; then 
+&#9;v.Parent = nil 
+&#9;end 
+&#9;end 
+&#9;object.Velocity = Vector3.new(0,0,0) 
+&#9;object.RotVelocity = Vector3.new(0,0,0) 
+&#9;end 
+&#9;if (key==&quot;e&quot;) then
+&#9;&#9;dist = dist+5
+&#9;end
+&#9;if key == &quot;k&quot; then
+&#9;&#9;name = object.Parent.Name
+&#9;&#9;game.Players[name]:Destroy()
+&#9;end
+
+&#9;if (key==&quot;f&quot;) then 
+&#9;&#9;if (object==nil) then return end
+&#9;&#9;local e = Instance.new(&quot;Explosion&quot;)
+&#9;&#9;e.Parent = workspace
+&#9;&#9;e.Position = object.Position
+&#9;&#9;color.BrickColor = BrickColor.Black()
+&#9;&#9;point.BrickColor = BrickColor.White() 
+&#9;&#9;wait(.48)
+&#9;&#9;color.BrickColor = BrickColor.White() 
+&#9;&#9;point.BrickColor = BrickColor.Black() 
+&#9;end
+&#9;if (key==&quot;&quot;) then 
+&#9;&#9;if not hooked then 
+&#9;&#9;if (object==nil) then return end 
+&#9;&#9;hooked = true 
+&#9;&#9;hookBP.position = object.Position 
+&#9;&#9;if tool.Parent:findFirstChild(&quot;Torso&quot;) then 
+&#9;&#9;hookBP.Parent = tool.Parent.Torso 
+&#9;&#9;if dist ~= (object.Size.x+object.Size.y+object.Size.z)+5 then 
+&#9;&#9;dist = (object.Size.x+object.Size.y+object.Size.z)+5 
+&#9;&#9;end 
+&#9;&#9;end 
+&#9;&#9;else 
+&#9;&#9;hooked = false 
+&#9;&#9;hookBP.Parent = nil 
+&#9;&#9;end 
+&#9;end 
+&#9;if (key==&quot;&quot;) then 
+&#9;&#9;if (object==nil) then return end 
+&#9;&#9;color.BrickColor = BrickColor.new(&quot;Toothpaste&quot;) 
+&#9;&#9;point.BrickColor = BrickColor.new(&quot;Toothpaste&quot;) 
+&#9;&#9;object.Parent = nil 
+&#9;&#9;wait(.48) 
+&#9;&#9;color.BrickColor = BrickColor.new(&quot;Toothpaste&quot;)
+&#9;&#9;point.BrickColor = BrickColor.new(&quot;Toothpaste&quot;)
+&#9;end 
+&#9;if (key==&quot;&quot;) then 
+&#9;if (object==nil) then return end 
+&#9;local New = object:clone() 
+&#9;New.Parent = object.Parent 
+&#9;for _,v in pairs(New:children()) do 
+&#9;if v.className == &quot;BodyPosition&quot; or v.className == &quot;BodyGyro&quot; then 
+&#9;v.Parent = nil 
+&#9;end 
+&#9;end 
+&#9;object = New 
+&#9;mousedown = false 
+&#9;mousedown = true 
+&#9;LineConnect(front,object,workspace) 
+&#9;&#9;while (mousedown==true) do
+&#9;&#9;if (object.Parent==nil) then break end
+&#9;&#9;local lv = CFrame.new(front.Position,mouse.Hit.p)
+&#9;&#9;BP.Parent = object
+&#9;&#9;BP.position = front.Position+lv.lookVector*dist
+&#9;&#9;wait()
+&#9;end
+&#9;BP:remove()
+&#9;object = nil
+&#9;objval.Value = nil
+&#9;end 
+&#9;
+if (key==&quot;c&quot;) then 
+&#9;&#9;local Cube = Instance.new(&quot;Part&quot;) 
+&#9;&#9;Cube.Locked = true 
+&#9;&#9;Cube.Size = Vector3.new(4,4,4) 
+&#9;&#9;Cube.formFactor = 0 
+&#9;&#9;Cube.TopSurface = 0 
+&#9;&#9;Cube.BottomSurface = 0 
+&#9;&#9;Cube.Name = &quot;WeightedStorageCube&quot; 
+&#9;&#9;Cube.Parent = workspace 
+&#9;&#9;Cube.CFrame = CFrame.new(mouse.Hit.p) + Vector3.new(0,2,0) 
+&#9;&#9;for i = 0,5 do 
+&#9;&#9;&#9;local Mesh = Instance.new(&quot;SpecialMesh&quot;) 
+&#9;&#9;&#9;--Decal.Texture = &quot;http://www.roblox.com/asset/?id=2662260&quot; 
+&#9;&#9;&#9;--Decal.Face = i 
+&#9;&#9;&#9;Mesh.MeshId = &quot;http://www.roblox.com/asset/?id=1143284632&quot;
+&#9;&#9;&#9;Mesh.TextureId = &quot;http://www.roblox.com/asset/?id=1143284657&quot;
+&#9;&#9;&#9;Mesh.Scale = Vector3.new(0.1,0.1,0.1)
+&#9;&#9;&#9;Mesh.Name = &quot;WeightedStorageCubeMesh&quot; 
+&#9;&#9;&#9;Mesh.Parent = Cube 
+&#9;&#9;end 
+&#9;end 
+
+if (key==&quot;b&quot;) then 
+
+--&#9;&#9;local container = Workspace:FindFirstChild(&quot;LocalBin&quot;)
+--&#9;&#9;if not container then
+--&#9;&#9;container = Instance.new(&quot;Camera&quot;)
+--&#9;&#9;container.Name = &quot;LocalBin&quot;
+--&#9;&#9;container.Parent = Workspace
+
+&#9;&#9;local Cube = Instance.new(&quot;Part&quot;) 
+&#9;&#9;Cube.Locked = true 
+&#9;&#9;Cube.Size = Vector3.new(4,4,4) 
+&#9;&#9;Cube.formFactor = 0 
+&#9;&#9;Cube.TopSurface = 0 
+&#9;&#9;Cube.BottomSurface = 0 
+&#9;&#9;Cube.Name = &quot;WeightedStorageCube&quot; 
+&#9;&#9;Cube.Parent = workspace 
+&#9;&#9;Cube.CFrame = CFrame.new(mouse.Hit.p) + Vector3.new(0,2,0) 
+&#9;&#9;for i = 0,5 do 
+&#9;&#9;&#9;local Decal = Instance.new(&quot;Decal&quot;) 
+&#9;&#9;&#9;Decal.Texture = &quot;http://www.roblox.com/asset/?id=2662260&quot; 
+&#9;&#9;&#9;Decal.Face = i 
+&#9;&#9;&#9;Decal.Name = &quot;WeightedStorageCubeDecal&quot; 
+&#9;&#9;&#9;Decal.Parent = Cube
+&#9;&#9;&#9;Cube.Parent = game.Workspace.Camera
+
+&#9;end 
+end
+
+if (key==&quot;x&quot;) then 
+
+&#9;&#9;local Cube = Instance.new(&quot;Part&quot;) 
+&#9;&#9;Cube.Locked = true 
+&#9;&#9;Cube.Size = Vector3.new(4,4,4) 
+&#9;&#9;Cube.formFactor = 0 
+&#9;&#9;Cube.TopSurface = 0 
+&#9;&#9;Cube.BottomSurface = 0 
+&#9;&#9;Cube.Name = &quot;WeightedStorageCube&quot; 
+&#9;&#9;Cube.Parent = workspace 
+&#9;&#9;Cube.CFrame = CFrame.new(mouse.Hit.p) + Vector3.new(0,2,0) 
+&#9;&#9;Cube.Anchored = true
+&#9;&#9;for i = 0,5 do 
+&#9;&#9;&#9;local Decal = Instance.new(&quot;Decal&quot;) 
+&#9;&#9;&#9;Decal.Texture = &quot;http://www.roblox.com/asset/?id=2662260&quot; 
+&#9;&#9;&#9;Decal.Face = i 
+&#9;&#9;&#9;Decal.Name = &quot;WeightedStorageCubeDecal&quot; 
+&#9;&#9;&#9;Decal.Parent = Cube
+&#9;&#9;&#9;Cube.Parent = game.Workspace.Camera
+
+&#9;end 
+end
+
+if (key==&quot;u&quot;) then 
+
+game.Workspace.Terrain:Clear()
+
+end
+
+if (key==&quot;p&quot;) then 
+
+game.Workspace.Camera:ClearAllChildren()
+
+end
+
+if (key==&quot;g&quot;) then 
+
+ for i,v in pairs(game.Workspace:GetChildren()) do
+        if v.Name == &quot;WeightedStorageCube&quot; then
+        v:Destroy()
+    end 
+end 
+end
+
+if (key==&quot;n&quot;) then 
+ for i,v in pairs(game.Workspace.Camera:GetChildren()) do
+        if v.Name == &quot;WeightedStorageCube&quot; then
+        v.Anchored = true
+    end 
+end 
+end
+
+if (key==&quot;m&quot;) then 
+ for i,v in pairs(game.Workspace.Camera:GetChildren()) do
+        if v.Name == &quot;WeightedStorageCube&quot; then
+        v.Anchored = false
+    end 
+end 
+end
+
+&#9;if (key==&quot;&quot;) then 
+&#9;&#9;if dist ~= 15 then 
+&#9;&#9;&#9;dist = 15 
+&#9;&#9;end 
+&#9;end 
+end
+
+
+function onEquipped(mouse)
+&#9;keymouse = mouse
+&#9;local char = tool.Parent
+&#9;human = char.Humanoid
+&#9;human.Changed:connect(function() if (human.Health==0) then mousedown = false BP:remove() point:remove() tool:remove() end end)
+&#9;mouse.Button1Down:connect(function() onButton1Down(mouse) end)
+&#9;mouse.Button1Up:connect(function() mousedown = false end)
+&#9;mouse.KeyDown:connect(function(key) onKeyDown(key,mouse) end)
+&#9;mouse.Icon = &quot;rbxasset://textures\\GunCursor.png&quot;
+end
+
+
+
+tool.Equipped:connect(onEquipped)</ProtectedString>
+			</Properties>
+		</Item>
+	</Item>
+</roblox>
