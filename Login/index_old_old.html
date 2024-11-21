@@ -1,0 +1,139 @@
+<?php
+session_start();
+include_once $_SERVER["DOCUMENT_ROOT"] . '/global.php';
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Sign In</title>
+	    
+<link onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' rel='stylesheet' href='https://static.rbxcdn.com/css/page___fa4e8d37c4c6db5665124f9ff74ba0f4_m.css/fetch' />
+
+	    <script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true'  type='text/javascript' src='//ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.1.min.js'></script>
+<script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-1.11.1.js'><\/script>")</script>
+<script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true'  type='text/javascript' src='//ajax.aspnetcdn.com/ajax/jquery.migrate/jquery-migrate-1.2.1.min.js'></script>
+<script type='text/javascript'>window.jQuery || document.write("<script type='text/javascript' src='/js/jquery/jquery-migrate-1.2.1.js'><\/script>")</script>
+<script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true'  type='text/javascript' src='//ajax.aspnetcdn.com/ajax/4.0/1/MicrosoftAjax.js'></script>
+<script type='text/javascript'>window.Sys || document.write("<script type='text/javascript' src='/js/Microsoft/MicrosoftAjax.js'><\/script>")</script>
+
+	    <script onerror='Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)' data-monitor='true' data-bundlename='ideloginpage' type='text/javascript' src='https://js.rbxcdn.com/dafedeb76d50f05659ea7853b8b31b39.js.gzip'></script>
+
+    </head>
+    <body id="loginBody">
+        
+
+<div>
+
+
+<div id="TwoStepVerificationApiPaths"
+     data-request-code-unauthenticated="https://api.roblox.com/twostepverification/request-unauthenticated"
+     data-request-code="https://api.roblox.com/twostepverification/request"
+     data-verify-code-unauthenticated="https://api.roblox.com/twostepverification/verify-unauthenticated"
+     data-verify-code="https://api.roblox.com/twostepverification/verify">
+</div>
+
+<div class="GenericModal modalPopup unifiedModal smallModal" style="display:none;">
+    <div class="Title"></div>
+    <div class="GenericModalBody">
+        <div>
+            <div class="ImageContainer">
+                <img class="GenericModalImage" alt="generic image"/>
+            </div>
+            <div class="Message"></div>
+        </div>
+        <div class="clear"></div>
+        <div id="GenericModalButtonContainer" class="GenericModalButtonContainer">
+            <a class="ImageButton btn-neutral btn-large roblox-ok">OK</a>
+        </div>
+    </div>
+</div>
+        <form action="/ide/login" method="POST" id="loginForm">
+<div class="validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+            <div id="loginarea" class="" data-is-captcha-on="False">
+                <div id="leftArea">
+                    <div id="loginPanel">
+                        <table id="logintable" class="login-table">
+                            <tr id="username">
+                                <td class="label"><label class="form-label" for="Username">Username:</label></td>
+                                <td class="input-box"><input class="text-box text-box-medium" data-val-required="You must enter a username." id="Username" name="Username" type="text" aria-required="true" aria-invalid="false"></td>
+                            </tr>
+                            <tr id="password">
+                                <td class="label"><label class="form-label" for="Password">Password:</label></td>
+                                <td class="input-box"><input class="text-box text-box-medium" data-val-required="You must enter a password." id="Password" name="Password" type="password" aria-required="true" aria-invalid="false"></td>
+                            </tr>
+                        </table>
+                        <div id="captchaPanel">
+                        </div>
+                        <div class="sign-in-section">
+                            <div id="forgotPasswordPanel">
+                                <a class="text-link" href="/login/forgot-password-or-username/" target="_blank">Forgot password or username?</a>
+                            </div>
+                            <div id="signInButtonPanel">
+                                <a  roblox-js-onclick class="btn-medium btn-disabled-neutral" disabled>Sign In</a>
+                                <a  roblox-js-oncancel class="btn-medium btn-negative">Cancel</a>
+                            </div>
+                            <div class="clearFloats">
+                            </div>
+                        </div>
+                                <span id="fb-root">
+                                </span>
+                    </div>
+                </div>
+                <div id="rightArea" class="divider-left">
+                    <div id="signUpPanel" class="FrontPageLoginBox">
+                        <p class="text">Not a member?</p>
+                        <h2 class="sign-up-title">Sign Up to Build &amp; Make Friends</h2>
+<a  roblox-js-onsignup href="/Login/NewAge.aspx" target="_blank" class="btn-medium btn-primary">Sign up</a>                    </div>
+                </div>
+            </div>
+            <input id="ReturnUrl" name="ReturnUrl" type="hidden" value="/index.html" />
+        </form>
+
+</div>
+
+
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+
+<script type="text/javascript">
+    var Roblox = Roblox || {};
+    Roblox.Login = Roblox.Login || {};
+
+    Roblox.Login.Resources = {
+        errors: {
+            unknown: {
+                code: 0,
+                message: "An error occurred while logging in, please try again."
+            },
+            usernamePasswordRequired: {
+                code: 1,
+                message: "You must enter a valid username, and password."
+            },
+            captchaRequired: {
+                code: 2,
+                message: "You must pass the robot test before logging in."
+            },
+            invalidCredentials: {
+                code: 3,
+                message: "Incorrect username or password. Please try again."
+            }
+        },
+        
+        loginPageUrl: "/newlogin",
+        loginApiUrl: "https://api.roblox.com/v2/login",
+        twoStepVerificationPageUrl: "/login/twostepverification"
+    };
+</script>
+<script type="text/javascript">
+    $(function () {
+
+        Roblox.Login.service.init(decodeURIComponent("https%3a%2f%2fwww.roblox.com%2fhome") || window.location.href);
+        Roblox.Login.form.init(false);
+    });
+</script>
+    </body>
+</html>

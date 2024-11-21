@@ -1,0 +1,35 @@
+<?php
+header('Content-Type: application/json; charset=UTF-8; X-Robots-Tag: noindex');
+
+include_once $_SERVER["DOCUMENT_ROOT"] . '../RobloxWebSite/Hexine/api/mobile/user.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . '../RobloxWebSite/Hexine/api/private/register.php';
+
+$username = $_POST["username"] /*?? $_GET["username"]*/;
+$password = $_POST["password"] /*?? $_GET["password"]*/;
+
+if ($username == null or $password == null) {
+	die(http_response_code(400));
+}
+
+$login = new login;
+if (isset($username)){
+	$login->username = $username;
+	$login->password = $password;
+	$account = $login->attempt();
+	$error = $account["error"];
+}
+
+if (isset($error) && $error != null) {
+	// error
+	echo(json_encode(["message" => "Credentials"]));
+	die(http_response_code(403));
+}
+$player = new Player($_SESSION['player']);
+
+$userInfo = getUserInfo($account["player"]);
+
+$status = "OK";
+
+die(json_encode(["Status" => $status, "UserInfo" => $userInfo], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_NUMERIC_CHECK));
+
+?>

@@ -1,0 +1,36 @@
+Type.registerNamespace('Roblox.Website.Marketplace');
+Roblox.Website.Marketplace.EconomyServices=function() {
+Roblox.Website.Marketplace.EconomyServices.initializeBase(this);
+this._timeout = 0;
+this._userContext = null;
+this._succeeded = null;
+this._failed = null;
+}
+Roblox.Website.Marketplace.EconomyServices.prototype={
+_get_path:function() {
+ var p = this.get_path();
+ if (p) return p;
+ else return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_path();},
+GetEstimatedTradeReturnForTickets:function(ticketsToTrade,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEstimatedTradeReturnForTickets',false,{ticketsToTrade:ticketsToTrade},succeededCallback,failedCallback,userContext); },
+GetEstimatedTradeReturnForRobux:function(robuxToTrade,succeededCallback, failedCallback, userContext) {
+return this._invoke(this._get_path(), 'GetEstimatedTradeReturnForRobux',false,{robuxToTrade:robuxToTrade},succeededCallback,failedCallback,userContext); }}
+Roblox.Website.Marketplace.EconomyServices.registerClass('Roblox.Website.Marketplace.EconomyServices',Sys.Net.WebServiceProxy);
+Roblox.Website.Marketplace.EconomyServices._staticInstance = new Roblox.Website.Marketplace.EconomyServices();
+Roblox.Website.Marketplace.EconomyServices.set_path = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_path(value); }
+Roblox.Website.Marketplace.EconomyServices.get_path = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_path(); }
+Roblox.Website.Marketplace.EconomyServices.set_timeout = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_timeout(value); }
+Roblox.Website.Marketplace.EconomyServices.get_timeout = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_timeout(); }
+Roblox.Website.Marketplace.EconomyServices.set_defaultUserContext = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_defaultUserContext(value); }
+Roblox.Website.Marketplace.EconomyServices.get_defaultUserContext = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_defaultUserContext(); }
+Roblox.Website.Marketplace.EconomyServices.set_defaultSucceededCallback = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_defaultSucceededCallback(value); }
+Roblox.Website.Marketplace.EconomyServices.get_defaultSucceededCallback = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_defaultSucceededCallback(); }
+Roblox.Website.Marketplace.EconomyServices.set_defaultFailedCallback = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_defaultFailedCallback(value); }
+Roblox.Website.Marketplace.EconomyServices.get_defaultFailedCallback = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_defaultFailedCallback(); }
+Roblox.Website.Marketplace.EconomyServices.set_enableJsonp = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_enableJsonp(value); }
+Roblox.Website.Marketplace.EconomyServices.get_enableJsonp = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_enableJsonp(); }
+Roblox.Website.Marketplace.EconomyServices.set_jsonpCallbackParameter = function(value) { Roblox.Website.Marketplace.EconomyServices._staticInstance.set_jsonpCallbackParameter(value); }
+Roblox.Website.Marketplace.EconomyServices.get_jsonpCallbackParameter = function() { return Roblox.Website.Marketplace.EconomyServices._staticInstance.get_jsonpCallbackParameter(); }
+Roblox.Website.Marketplace.EconomyServices.set_path("/Marketplace/EconomyServices.asmx");
+Roblox.Website.Marketplace.EconomyServices.GetEstimatedTradeReturnForTickets= function(ticketsToTrade,onSuccess,onFailed,userContext) {Roblox.Website.Marketplace.EconomyServices._staticInstance.GetEstimatedTradeReturnForTickets(ticketsToTrade,onSuccess,onFailed,userContext); }
+Roblox.Website.Marketplace.EconomyServices.GetEstimatedTradeReturnForRobux= function(robuxToTrade,onSuccess,onFailed,userContext) {Roblox.Website.Marketplace.EconomyServices._staticInstance.GetEstimatedTradeReturnForRobux(robuxToTrade,onSuccess,onFailed,userContext); }

@@ -1,0 +1,60 @@
+
+<link rel="stylesheet" href="/CSS/Base/CSS/StyleGuide.css" />
+
+<h1>Usage Examples</h1>
+<script src="/js/jquery/jquery-1.7.2.min.js" type="text/javascript"></script>
+<script>
+    $(function () {
+        $("[data-js-do-things]").click(function () {
+            alert("hi");
+            return false;
+        });
+    });
+</script>
+
+<div>Link Button</div>
+<a  data-js-my-button href="/User.aspx?id=1" class="btn-small btn-neutral" id="MyButton">My Button</a><br /><br />
+
+<div>Disabled Button with Tool Tip</div>
+<a  data-js-purchase title="You already own this item." class="btn-large btn-disabled-negative" id="GrayBuyButton" disabled>Buy Now</a><br /><br />
+
+<div>Button with data-js handle and click callback</div>
+<a  data-js-do-things class="btn-medium btn-primary SpecialButtonImage">Do All The Things!</a><br /><br />
+
+
+<h1>Style Examples</h1>
+<div>Small Buttons</div>
+<a  class="btn-small btn-neutral">Button Text</a>
+<a  class="btn-small btn-disabled-neutral" disabled>Button Text</a><br />
+
+<a  class="btn-small btn-primary">Button Text</a>
+<a  class="btn-small btn-disabled-primary" disabled>Button Text</a><br />
+
+<a  class="btn-small btn-negative">Button Text</a>
+<a  class="btn-small btn-disabled-negative" disabled>Button Text</a><br />
+
+<br />
+<div>Medium Buttons</div>
+<a  class="btn-medium btn-neutral">Button Text</a>
+<a  class="btn-medium btn-disabled-neutral" disabled>Button Text</a><br />
+
+<a  class="btn-medium btn-primary">Button Text</a>
+<a  class="btn-medium btn-disabled-primary" disabled>Button Text</a><br />
+
+<a  class="btn-medium btn-negative">Button Text</a>
+<a  class="btn-medium btn-disabled-negative" disabled>Button Text</a><br />
+
+<br />
+<div>Large Buttons</div>
+<a  class="btn-large btn-neutral">Button Text</a>
+<a  class="btn-large btn-disabled-neutral" disabled>Button Text</a><br />
+
+<a  class="btn-large btn-primary">Button Text</a>
+<a  class="btn-large btn-disabled-primary" disabled>Button Text</a><br />
+
+<a  class="btn-large btn-negative">Button Text</a>
+<a  class="btn-large btn-disabled-negative" disabled>Button Text</a><br />
+
+<br />
+<div>Specialty Buttons</div>
+<a  class="btn-large btn-large-green-play">Play</a>

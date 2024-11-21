@@ -1,0 +1,6 @@
+<link rel="stylesheet" href="/CSS/Base/CSS/StyleGuide.css" />
+
+<h1>Random Examples</h1>
+
+<div>Random Buttons</div>
+<a  class="btn-medium btn-primary">Build New  &#9662;<span class="btn-text">Build New  &#9662;</span></a>

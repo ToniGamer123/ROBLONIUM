@@ -1,0 +1,28 @@
+<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/global_functions.php';
+function Redirect($url, $permanent = false) {
+    header('Location: ' . $url, true, $permanent ? 301 : 302);
+
+    exit();
+}
+header('Content-Type: application/json');
+$id = $_GET["assetId"];
+$nameOnly = $_GET["nameOnly"];
+$creatorOnly = $_GET["creatorOnly"];
+$typeOnly = $_GET["typeOnly"];
+if ($id == "" or $id == null){die();};
+$asset = $itemApi->GetAssetInfo($id);
+if (!($asset === FALSE)) {
+	if (isset($nameOnly)) {
+		echo $asset["Name"];
+	} else if (isset($creatorOnly)) {
+		echo $asset["Creator"]["Id"];
+	} else if (isset($typeOnly)) {
+		echo $asset["AssetTypeId"];
+	} else {
+		echo json_encode($asset, JSON_NUMERIC_CHECK);
+	}
+}else {
+	Redirect("http://api.roblox.com/marketplace/productinfo?assetId=".$id);
+}
+?>

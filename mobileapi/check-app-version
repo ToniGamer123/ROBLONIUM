@@ -1,0 +1,25 @@
+<?php
+header('Content-Type: application/json; charset=UTF-8; X-Robots-Tag: noindex');
+/*
+	enum UpgradeStatus
+	{
+		UnKnown,
+		Recommended,
+		Required,
+		NotRequired
+	}
+*/
+$UpgradeStatus = [
+	"UnKnown" 		=> "UnKnown",
+	"Recommended" 	=> "Recommended",
+	"Required" 		=> "Required",
+	"NotRequired"	=> "NotRequired"
+];
+
+$UpgradeAction = $UpgradeStatus["UnKnown"];
+
+if ($_GET["appVersion"] == "AppAndroidV1.0") {
+	$UpgradeAction = $UpgradeStatus["NotRequired"];
+}
+die(json_encode(["data" => ["UpgradeAction" => $UpgradeAction]]));
+?>

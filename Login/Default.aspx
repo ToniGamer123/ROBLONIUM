@@ -1,0 +1,1 @@
+<?php header("Location: /newlogin".explode('x',$_SERVER['REQUEST_URI'])[1]);

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+	<head id="Head1"><title>
+	Authenticating
+</title></head>
+	<body style="background: white;">	
+		<div  id="newLogin" style="font-size: 12px;font-family: Arial, sans-serif; font-weight: bold;margin-top:50px;margin-left:90px;">
+			Signing in...
+		</div>
+
+		<script type="text/javascript">
+		    var topUrl = window.parent.location.href;
+		    //Fixes an issue with infinite redirecting onto this page when accessed directly 9/20/2012
+		    
+		    if (topUrl.indexOf('#') != -1) //Prevent the postMessage plugin # from appending on the URL on ie7
+		        topUrl = window.parent.location.href.split('#')[0];
+		    if (topUrl.indexOf('?') == -1)
+		        topUrl += "?nl=true";
+		    else if (topUrl.indexOf('nl=true') == -1)
+		        topUrl += "&nl=true";
+
+		    if (topUrl.toLowerCase().indexOf('loginredirect.aspx') >= 0) {
+		        topUrl = "/";
+		    }
+		    window.parent.location = topUrl;
+		</script>
+	</body>
+</html>

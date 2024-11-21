@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Color Palette</title>
+    <link rel="stylesheet" href="/CSS/Base/CSS/StyleGuide.css" >
+    <script type="text/javascript" src="/js/jquery/jquery-1.7.2.min.js"></script> 
+	<script src="http://code.highcharts.com/highcharts.js"></script>
+	<script src="http://code.highcharts.com/modules/exporting.js"></script>
+	<style type="text/css" rel="stylesheet">
+		.color-square-container,
+		.color-sliver-container	{
+			float:left;
+			height: 140px;
+			margin-right:18px;
+		}
+		.color-sliver-container {
+			height: 40px;
+		}
+		.color-square {
+			width:120px;
+			height:120px;
+		}
+		.color-sliver {
+			width:120px;
+			height:15px;
+		}
+		.color-label {
+		    font-weight: 600;
+		}
+		.color-doc-section {
+			clear:both;
+			padding-bottom: 40px;
+		}
+		.color-btn-one {
+			width: 0; height: 0;
+			border: 60px solid transparent;
+			border-top-color: #4278D2;
+			border-left-color: #4278D2;
+			border-right-color: #FFFFFF;
+			border-bottom-color: #FFFFFF;
+		}
+		.color-btn-two {
+			width: 0; height: 0;
+			border: 60px solid transparent;
+			border-top-color: #00B255;
+			border-left-color: #00B255;
+			border-right-color: #008B41;
+			border-bottom-color: #008B41;
+		}
+		#buttons {
+			height: 170px;
+		}
+	</style>
+</head>
+<body>
+	<div style="position:relative;margin:0 auto;padding-left: 20px">
+		<h1>Color Palette</h1>
+		<div style="position:relative;top:0px;float:left">
+			<h2>Ratio</h2>
+			<div id="colorWheel" style="min-width:750px; height:625px;"></div>
+		</div>
+		<div style="width:700px;position:relative;top:0px;float:left;">
+			<div id="coreColors" class="color-doc-section" style="height:190px;">
+				<h2>Core Colors</h2>
+				<h3 style="float:left;margin: 1px;">Gamer</h3>
+				<h3 style="float:right;margin: 1px;">Developer</h3>
+				<hr style="clear:both"/>
+				<div class="color-square-container">
+					<div class="color-square" style="background-color:#0055B3;border:1px solid #0044A2;"></div>
+					<span class="color-label">#0055B3</span>
+				</div>
+				<div class="color-square-container">
+					<div class="color-square" style="background-color:#FFFFFF;border:1px solid #EEEEEE;"></div>
+					<span class="color-label">#FFFFFF</span>
+				</div>
+				<div class="color-square-container">
+					<div class="color-square" style="background-color:#EFEFEF;border:1px solid #DEDEDE;"></div>
+					<span class="color-label">#EFEFEF</span>
+				</div>
+				<div class="color-square-container">
+					<div class="color-square" style="background-color:#4C4C4C;border:1px solid #3B3B3B;"></div>
+					<span class="color-label">#4C4C4C</span>
+				</div>
+				<div class="color-square-container">
+					<div class="color-square" style="background-color:#343434;border:1px solid #232323;"></div>
+					<span class="color-label">#343434</span>
+				</div>
+			</div>
+			<div id="buttons" class="color-doc-section">
+				<h2>Buttons</h2>
+				<div class="color-square-container">
+					<div style="border:1px solid #EEEEEE;">
+						<div class="color-square color-btn-one"></div>
+					</div>
+					<span class="color-label">#4278D2</span> / <span class="color-label">#FFFFFF</span> 
+				</div>
+				<div class="color-square-container">
+                    <div style="border:1px solid #007A30;">
+                        <div class="color-square color-btn-two"></div>
+                    </div>
+					<span class="color-label">#00B255</span> / <span class="color-label">#008B41</span> 
+				</div>
+				
+			</div>
+			<div id="auxillary" class="color-doc-section">
+				<h2>Auxillary</h2>
+				<div class="color-sliver-container">
+					<div class="color-sliver" style="background-color:#008B41;border:1px solid #007A30;"></div>
+					<span class="color-label">#008B41</span>
+				</div>
+				<div class="color-sliver-container">
+					<div class="color-sliver" style="background-color:#E04A32;border:1px solid #D03921;"></div>
+					<span class="color-label">#E04A32</span>
+				</div>
+				<div class="color-sliver-container">
+					<div class="color-sliver" style="background-color:#E27520;border:1px solid #D16410;"></div>
+					<span class="color-label">#E27520</span>
+				</div>
+				<div class="color-sliver-container">
+					<div class="color-sliver" style="background-color:#F5B400;border:1px solid #E4A300;"></div>
+					<span class="color-label">#F5B400</span>
+				</div>
+				<div class="color-sliver-container">
+					<div class="color-sliver" style="background-color:#00A1DA;border:1px solid #0090C9;"></div>
+					<span class="color-label">#00A1DA</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+
+	    $(function () {
+	        Highcharts.setOptions({
+	            colors: [
+				'#FFFFFF', // 90
+				'#4278D2', // 45
+				'#0055B3', // 45
+				'#00A1DA',  // 7.5
+				'#008B41',  // 7.5
+				'#F5B400',  // 7.5
+				'#E27520',  // 7.5
+				'#E04A32', // 15
+				'#EFEFEF', // 15
+				'#989898', // 15
+				'#4C4C4C',  // 30
+				'#343434',  // 30
+				'#00B255'	// 45
+			]
+	        });
+	        $('#colorWheel').highcharts({
+	            chart: {
+	                plotBackgroundColor: null,
+	                plotBorderWidth: null,
+	                plotShadow: false
+	            },
+	            credits: {
+	                enabled: false
+	            },
+	            exporting: { enabled: false },
+	            title: {
+	                text: null
+	            },
+	            tooltip: {
+	                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	            },
+	            plotOptions: {
+	                pie: {
+	                    allowPointSelect: true,
+	                    cursor: 'pointer',
+	                    dataLabels: {
+	                        enabled: true,
+	                        color: '#000000',
+	                        connectorColor: '#000000',
+	                        format: '<b>{point.color}</b>'
+	                    },
+	                    startAngle: 180
+	                }
+	            },
+	            series: [{
+	                type: 'pie',
+	                name: 'Color Ratio',
+	                data: [
+					['#FFFFFF', 90],
+					['#4278D2', 45],
+					['#0055B3', 45],
+					['#00A1DA', 7.5],
+					['#008B41', 7.5],
+					['#F5B400', 7.5],
+					['#E27520', 7.5],
+					['#E04A32', 15],
+					['#EFEFEF', 15],
+					['#989898', 15],
+					['#4C4C4C', 30],
+					['#343434', 30],
+					['#00B255', 45]
+				]
+	            }]
+	        });
+	    });
+	</script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Style Guide</title>
+    <script type="text/javascript" src="/js/jquery/jquery-1.7.2.min.js"></script> 
+    <link rel="stylesheet" href="/CSS/Base/CSS/StyleGuide.css" > 
+    <script type="text/javascript" src="/js/roblox.js"></script>
+    <style type="text/css">
+        /* TODO: This should be extracted into an external file */
+        body {
+            margin:0 auto;
+            position:relative;
+            width:970px;
+        }
+        pre, code {
+            font-family: Consolas, "Courier New", monospace;
+            background-color: #eee;
+        }
+        code.html .tag {
+            color: #2f6f9f;
+        }
+        code.html .attr-key {
+            color: #4f9fcf;
+        }
+        code.html .attr-value {
+            color: #d44950;
+        }
+        #undocumented-rules-container
+        {
+            display: none;
+            position: absolute;
+            right: -300px;
+            width: 250px;
+        }
+        #table-of-contents {
+            background-color: #eee;
+            border-radius: 5px;
+            list-style: none;
+            padding: 20px;
+            position: fixed;
+        }
+        #table-of-contents a {
+            color: #343434;
+        }
+        .table-of-contents-heading {
+            font-weight: 600;
+        }
+        #table-of-contents a:hover {
+            color: #aaa;
+        }
+        #table-of-contents ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        #table-of-contents-container {
+            left: -250px;
+            position: absolute;
+            width: 250px;
+        }
+        .roblox-reference-block { /* Empty rule to mute Resharper warnings */ }
+        .doc-section {
+            border:1px solid #999;
+            padding:10px;
+            border-radius:5px;
+        }
+    </style>
+    <script type="text/javascript">
+        /* TODO: This should be extracted into an external file */
+        buildDocumentationHTML = (function () {
+
+            function addNode(type, className, text, parent) {
+                var node;
+                if (type === "") {
+                    node = parent.append(document.createTextNode(text));
+                } else {
+                    node = document.createElement(type);
+                    node.className = className;
+                    node.textContent = text;
+                    parent.append(node);
+                }
+
+                return $(node);
+            }
+
+            function addAttributeNodes(attrKey, attrValue, parent) {
+                addNode("span", "attr-key", " " + attrKey + "=", parent);
+                addNode("span", "attr-value", "\"" + attrValue + "\"", parent);
+            }
+
+            function buildHeaders(parent) {
+                addNode("hr", "", "", parent);
+                addNode("div", "hint-text", "Code", parent);
+                var node = addNode("pre", "", "", parent);
+                return addNode("code", "html", "", node);
+            }
+
+            function buildBodyContent(selector, parent, depth) {
+
+                var container = $(parent);
+                var node = $(selector);
+                var tagName = node[0].tagName.toLowerCase();
+                var attributes = node[0].attributes;
+
+                // Select only the text node for the current element and strip extra whitespace
+                var text = $(selector).clone().children().remove().end().text().replace(/[ \t\r\n]+/g, " ");
+                if (text === " ") {
+                    text = "";
+                } else if (text.length > 80) {
+                    text = text.slice(0, 80) + "...";
+                }
+
+                var indent = "";
+                for (var i = 1; i < depth; i++) {
+                    indent += "  ";
+                }
+
+                // Opening Tag
+                addNode("", "", indent, container);
+                addNode("span", "tag", "<" + tagName, container);
+
+                // Attributes
+                $.each(attributes, function (index, attr) {
+                    addAttributeNodes(attr.name, attr.value, container);
+                });
+
+                // Close opening tag
+                if (tagName == "img" || tagName == "br" || tagName == "input" || tagName == "hr") {
+                    addNode("span", "tag", " />", container);
+                    addNode("br", "", "", container);
+                    return;
+                } else {
+                    addNode("span", "tag", ">", container);
+                }
+
+                // Text
+                addNode("", "", text, container);
+
+                if (node.children().length > 0) {
+                    addNode("br", "", "", container);
+                }
+
+                // Child Nodes
+                node.children().each(function (index, elem) {
+                    buildBodyContent(elem, container, depth + 1);
+                });
+
+                // Closing Tag
+                if (node.children().length > 0) {
+                    addNode("", "", indent, container);
+                }
+                addNode("span", "tag", "</" + tagName + ">", container);
+                addNode("br", "", "", container);
+            }
+
+            function buildDocumentSection(selector) {
+                var node = $(selector);
+                if (node.length == 0) {
+                    return;
+                }
+
+                var children = node.children();
+                var headers = buildHeaders(node);
+                children.each(function (index, elem) {
+                    buildBodyContent(elem, headers, 1);
+                });
+            };
+
+            return function () {
+                $(".roblox-reference-block").each(function () {
+                    buildDocumentSection(this);
+                });
+            };
+        })();
+        function buildTableOfContents() {
+            var container;
+            $(".doc-heading").each(function (index, el) {
+                if (!$(el).parent().hasClass("roblox-reference-block")) {
+                    var id = $(this).text().toLowerCase().replace( / /g , "-");
+                    $(this).attr('id', id); 
+                    if (el.tagName === "H2") {
+                        container = $("#table-of-contents");
+                        var elem = $("<li class='table-of-contents-heading'><a href='#" + id + "'>" + $(this).text() + "</a></li>");
+                        var newContainer = $("<ul></ul>");
+                        container.append(elem);
+                        container.append(newContainer);
+                        container = newContainer;
+                    } else {
+                        container.append("<li><a href='#" + id + "'>" + $(this).text() + "</a></li>");
+                    }
+                }
+            });
+        }
+        function listUnappliedRules() {
+            var rules = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+            var unappliedRules = [];
+            for (var x = 0; x < rules.length; x++) {
+                var rule = rules[x];
+                if (typeof rule.selectorText !== "undefined" && $(rule.selectorText).length == 0) {
+                    if (rule.selectorText.indexOf(":hover") == -1 && rule.selectorText.indexOf(":active") == -1 && rule.selectorText.indexOf(":focus") == -1) {
+                        //console.log(rule.selectorText);
+                        unappliedRules.push(rule.selectorText);
+                    }
+                }
+            }
+            return unappliedRules;
+        }
+        function buildUndocumentedRules() {
+            var rules = listUnappliedRules();
+            console.log(rules);
+            if (rules.length > 0) {
+                $("#undocumented-rules-container").show();
+                for (var i = 0; i < rules.length; i++) {
+                    $("#undocumented-rules").append("<div>" + rules[i] + "</div>");
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            buildDocumentationHTML();
+            buildUndocumentedRules();
+            buildTableOfContents();
+            
+        });
+    </script>
+</head>
+    <body>
+        <h1>Roblox Styleguide Reference</h1><br />
+        <div id="table-of-contents-container">
+            <ul id="table-of-contents"></ul>
+        </div>
+        <div id="undocumented-rules-container">
+            <h3>Undocumented Rules:</h3>
+            <div id="undocumented-rules"></div>
+        </div>        
+
+        <!-- Text Styles -->
+        <h2 class="doc-heading">Typography</h2><br />
+        <h3 class="doc-heading">Headings</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <h1>Roblox Heading h1</h1><br />  
+                <h2>Roblox Heading h2</h2><br />   
+                <h2 class="light">Roblox Heading h2 Light</h2><br />
+                <h3>Standard Roblox Heading h3</h3><br />
+            </div>
+        </div>
+    
+        <h3 class="doc-heading">Body Copy</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div class="text">
+                    <p>Standard  Text Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec ut eros vel mi posuere laoreet vitae et lectus.</p>
+                    <p>Quisque in mauris vulputate dolor adipiscing viverra vel at tellus. Sed massa nulla, tristique vel tristique in, bibendum eu erat. </p>
+                    <p>Cras id tellus ac purus pharetra malesuada. Integer non nunc nec magna aliquam sagittis at id diam. Mauris est leo, dapibus sed ultricies iaculis, facilisis ac tellus. Maecenas ultricies tempor orci, ac pretium ipsum pharetra sed. Nullam nulla ipsum, commodo eu lobortis sed, lobortis vitae urna. Donec libero nisl, placerat eget fermentum in, molestie id elit. Donec scelerisque tempor nunc id feugiat. Sed ultrices, est nec tristique laoreet, velit urna fringilla nibh, sed bibendum enim nulla nec tortor.</p>            
+                    <p><a class="text-link">Text Link</a></p>
+                    <p><a disabled>Disabled link</a></p>
+                </div>
+            </div>
+        </div>       
+        
+        <h3 class="doc-heading">Specialized Text</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div class="footnote">Footnote text</div>
+                <div>Search <span class="search-match">match</span></div>
+                <div class="hint-text">Hint text, such as is used in search bars and the comments text area</div>
+                <span class="robux">9,999</span><br />
+                <span class="tickets">9,999</span><br />
+                <div class="robux-text">Robux text</div>
+                <div class="online-player">Players Online Text</div>
+            </div>
+        </div>
+
+        <h3 class="doc-heading">Messaging Text</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div class="tool-tip"><img src="/images/UI/img-tail-left.png" class="right"/>tool-tip left.<div>Multiline!</div><div>Amazing!</div></div><br />
+                <div class="tool-tip"><img src="/images/UI/img-tail-left.png" class="left"/>tool-tip left.<div>Multiline!</div><div>Amazing!</div></div> 
+                <p>Tooltip with Info Icon<span class="info-tool-tip tooltip" title="This is an informational tooltip using tipsy." /></p>
+                <p><span class="status-confirm">Confirmation message span.</span></p>
+                <p><span class="status-error">Error message span.</span></p>
+            </div>
+        </div>
+            
+        <h2 class="doc-heading">Forms</h2><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div style="min-height: 30px;">
+                    <span class="form-label" style="float:left;padding-top:2px;margin-right:5px;">Form Label</span>   
+                    <div style="float: left; width: 183px; text-align:left;">
+                        <select class="form-select">
+                            <option value="Anixamenes">Anixamenes</option>
+                            <option value="Pythagoras">Pythagoras</option>
+                            <option value="Thales">Thales</option>
+                            <option value="Anaximander">Anaximander</option>
+                        </select> 
+                    </div>
+                </div>
+                
+                <div style="min-height: 30px;">
+                    <span class="form-label" style="float:left;padding-top:5px;margin-right:5px;">Form Label</span>   
+                    <div style="float: left; width: 183px; text-align:left;">
+                        <input type="text"class="text-box text-box-small" value="Small Text Box" style="width:183px;"/>
+                    </div>
+                </div>
+                <div style="min-height: 45px;">
+                    <span class="form-label" style="float:left;padding-top:5px;margin-right:5px;">Form Label</span>   
+                    <div style="float: left; width: 183px; text-align:left;">
+                        <input type="text"class="text-box text-box-medium" value="Medium Text Box" style="width:183px;"/>
+                        <span class="tip-text">(Form) Tip Text</span>
+                    </div>
+                </div>
+                <div style="min-height: 30px;">
+                    <span class="form-label" style="float:left;padding-top:5px;margin-right:5px;">Form Label</span>   
+                    <div style="float: left; width: 183px; text-align:left;">
+                        <input type="text" class="text-box text-box-large" value="Large Text Box" style="width:183px;"/>
+                    </div>
+                    <div style="float:left;margin-left:5px;">
+                        <div class="validator-checkmark" style="display:block;position:relative;top:5px;"></div>
+                    </div>
+                </div> 
+                <label for="textbox">Text Box:</label>
+                <textarea class="text-box text-area-medium" cols="80" id="textbox" name="textbox" rows="6">
+</textarea>
+            </div>
+        </div>     
+                    
+        <h2 class="doc-heading">Layout</h2><br />
+        <h3 class="doc-heading">Tables</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <table class="table"  cellpadding="0" cellspacing="0" border="0">
+                    <tr class="table-header">
+                        <th class="first">first header</th>
+                        <th >header</th>
+                        <th >header</th>
+                        <th >header</th>
+                    </tr>
+                    <tr>
+                        <td>Builders Club Stipend</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                    </tr>
+                    <tr>
+                        <td>Builders Club Stipend Bonus</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                    </tr>
+                    <tr>
+                        <td>Sale of Goods</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                    </tr>
+                    <tr>
+                        <td>Currency Purchase</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                        <td>Standard Table Row</td>
+                    </tr>               
+                </table>
+            </div>
+        </div>
+                
+
+        <h3 class="doc-heading">Dividers</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div class="divider-top" style="margin:15px;">Divider Top</div>
+                <div class="divider-right" style="margin:15px;">Divider Right</div>
+                <div class="divider-bottom" style="margin:15px;">Divider Bottom</div>
+                <div class="divider-left" style="margin:15px;">Divider Left</div>
+                <div class="blank-box" style="margin:15px;">Blank Box</div>
+                <div class="dark-box" style="margin:15px;">Dark Box</div>
+            </div>
+        </div>
+
+        <h3 class="doc-heading">Tabs</h3><br />
+        <div class="doc-section">                
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div class="tab-container">
+                    <div>Tab A</div>
+                    <div class="tab-active">Tab B</div>
+                    <div>Tab C</div>
+                </div>
+                <div>
+                    <div>Tab A</div>
+                    <div class="tab-active">Tab B</div>
+                    <div>Tab C</div>
+                </div>
+                <script type="text/javascript" src="/js/widgets/tabs.js" data-readme="Can go at end of file."></script>
+            </div>
+        </div>
+
+        <h3 class="doc-heading">Vertical Tabs</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div style="width:300px;">
+                    <div class="verticaltab">
+                        <a href="#">vertical tab 1</a>
+                    </div>
+                    <div class="verticaltab selected">
+                        <a href="#">vertical tab 2</a>
+                    </div>
+                    <div class="verticaltab">
+                        <a href="#">vertical tab 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dropdowns -->
+        <h2 class="doc-heading">Navigation Widgets</h2><br />
+        <h3 class="doc-heading">Dropdown Containers</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div id="text-dropdown" class="dropdown">
+                    <div class="button">Text Label</div>
+                    <ul class="dropdown-list">
+                        <li>
+                            <a >Widgets Page</a>
+                        </li>
+                        <li>
+                            <a>Reference Page</a>
+                        </li>
+                    </ul>
+                </div>
+                <br />
+                <br />
+                <div id="gear-dropdown" class="dropdown">
+                    <div class="button gear"></div>
+                    <ul class="dropdown-list">
+                        <li>
+                            <a>Widgets Page</a>
+                        </li>
+                        <li>
+                            <a>Buttons Reference Page</a>
+                        </li>
+                    </ul>
+                </div> 
+                <br />
+                <br />
+            </div>
+            <script type="text/javascript">
+                Roblox.require('Widgets.DropdownMenu', function (dropdown) {
+                    dropdown.InitializeDropdown();
+                });
+            </script>
+        </div>
+
+
+        <div style="clear:both"></div>
+                
+                
+        <h3 class="doc-heading">Pillboxes</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="">Item 1</a></li>
+                    <li><a href="">Item 2</a></li>
+                    <li><a href="">Item 3</a></li>
+                    <li><a href="">Item 4</a></li>
+                    <li><a href="">Item 5</a></li>
+                </ul>
+            </div>
+            <script type="text/javascript">
+                $(function () {
+
+                    $("ul.nav-pills li").click(function () {
+                        $(".nav-pills li.active").removeClass("active");
+                        $(this).addClass("active");
+                        return false;
+                    });
+                });
+            </script>
+        </div>
+
+
+        <h2 class="doc-heading">Buttons</h2><br />
+        <h3 class="doc-heading">Control Buttons</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <p>
+                    <span  class="btn-control btn-control-small">Small Active Control</span>
+                    <span  class="btn-control btn-control-small disabled" disabled>Small Disabled Control</span>
+                </p>
+                <p>
+                    <span  class="btn-control btn-control-medium">Medium Active Control</span>
+                    <span  class="btn-control btn-control-medium disabled" disabled>Medium Disabled Control</span> 
+                </p>
+                <p>
+                    <span  class="btn-control btn-control-large">Large Active Control</span>
+                    <span  class="btn-control btn-control-large disabled" disabled>Large Disabled Control</span>
+                </p>
+            </div>
+        </div>
+        <h3 class="doc-heading">Small Buttons</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <a  class="btn-small btn-primary">Primary</a>
+                <a  class="btn-small btn-disabled-primary" disabled>Disabled</a>
+
+                <a  class="btn-small btn-neutral">Neutral</a>
+                <a  class="btn-small btn-disabled-neutral" disabled>Disabled</a>
+                    
+                <a  class="btn-small btn-negative">Negative</a>
+                <a  class="btn-small btn-disabled-negative" disabled>Disabled</a>
+            </div>
+        </div>
+        
+        <h3 class="doc-heading">Medium Buttons</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <a  class="btn-medium btn-primary">Primary</a>
+                <a  class="btn-medium btn-disabled-primary" disabled>Disabled</a>
+
+                <a  class="btn-medium btn-neutral">Neutral</a>
+                <a  class="btn-medium btn-disabled-neutral" disabled>Disabled</a>
+
+                <a  class="btn-medium btn-negative">Negative</a>
+                <a  class="btn-medium btn-disabled-negative" disabled>Disabled</a>
+            </div>
+        </div>
+        
+        <h3 class="doc-heading">Large Buttons</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <a  class="btn-large btn-primary">Primary</a>
+                <a  class="btn-large btn-disabled-primary" disabled>Disabled</a>
+
+                <a  class="btn-large btn-neutral">Neutral</a>
+                <a  class="btn-large btn-disabled-neutral" disabled>Disabled</a>
+
+                <a  class="btn-large btn-negative">Negative</a>
+                <a  class="btn-large btn-disabled-negative" disabled>Disabled</a>
+            </div>
+        </div>
+        
+        <h3 class="doc-heading">Specialty Buttons</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <a  class="btn-large btn-large-green-play" id="Play">Play</a>
+            </div>
+        </div>
+
+        <h3 class="doc-heading">Paging</h3><br />
+        <div class="doc-section">
+            <div class="hint-text">Example</div><hr />
+            <div class="roblox-reference-block">
+                <div class="pager first"></div>
+                <span class="pager previous"></span>
+                <span class="pager previous disabled"></span>
+                <span class="page text">Page Num</span> 
+                <span class="pager next disabled"></span>
+                <span class="pager next"></span>
+                <div class="pager last"></div> 
+                <br />
+                <div class="arrow left"></div>
+                <span class="arrow left disabled"></span>
+                <span class="arrow right disabled"></span>
+                <div class="arrow right"></div>
+            </div>
+        </div>
+    </body>
+</html>
