@@ -1,0 +1,141 @@
+#partycontainer 
+{
+    bottom: 110px;
+    right: 10px;
+}
+
+.partyWindow {
+	color: #666;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 11px;
+	width: 250px;
+}
+
+.partyWindow .title {
+	float:left;
+	background:url("/images/chat/tab_blue21h_l.png") no-repeat left top;
+	padding:0 0 0 2px;
+}
+
+.partyWindow .title strong {
+	display:block;
+	padding:2px 15px 4px 6px;
+	background:url("/images/chat/tab_blue21h_r.png") no-repeat right top;
+	color: #fff;
+	width: 227px;
+	font-weight: bold;
+}
+
+.partyWindow .closeparty {
+	background:url("/images/chat/tab_x_white21h.png") no-repeat left top;
+	width:10px;
+	height:9px;
+	/*float:right;*/
+	margin: 5px 9px 0 0;
+	cursor:pointer;
+	position:absolute;
+    right:0;
+    top:0;
+}
+
+.partyWindow .main {
+	clear: both;
+	width: 248px;
+	height: auto;
+	margin: 0;
+	/*padding: 10px;*/
+	background: #f2f2f2;
+	border: 1px solid #a6a6a6;
+	border-top: 0px none;
+}
+
+.partyWindow .kickuser 
+{
+    float: right;
+    padding-right: 5px;
+    color: Red;
+    cursor: pointer;
+}
+#new_party p {
+	text-align:center;
+	padding: 40px 0 0 0;
+}
+
+#party_none .main .btn_green21h {
+	margin: 15px 0 0 77px;
+}
+
+.clear {
+	clear:both;
+}
+
+.main #new_party_clear {
+	padding: 40px 0 0 0;
+}
+
+
+
+/* Buttons using sliding doors */
+
+.btn_green21h {
+	float:left;
+	background:url("/images/chat/btn_green21h_l.png") no-repeat left top;
+	padding:0 0 0 2px;
+}
+.btn_green21h a {
+	display:block;
+	padding:2px 14px 4px 10px;
+	background:url("/images/chat/btn_green21h_r.png") no-repeat right top;
+	color: White;
+	font: verdana;
+	font-weight: bold;
+	text-decoration: none;
+}
+.btn_green21h:hover {
+	background:url("/images/chat/btn_green21h_over_l.png") no-repeat left top;
+}
+.btn_green21h:hover a {
+	background:url("/images/chat/btn_green21h_over_r.png") no-repeat right top;
+}
+.btn_red21h {
+	float:left;
+	background:url("/images/chat/btn_red21h_l.png") no-repeat left top;
+	padding:0 0 0 2px;
+}
+.btn_red21h a {
+	display:block;
+	padding:2px 14px 4px 10px;
+	background:url("/images/chat/btn_red21h_r.png") no-repeat right top;
+	color: White;
+	font: verdana;
+	font-weight: bold;
+	text-decoration: none;
+}
+.btn_red21h:hover {
+	background:url("/images/chat/btn_red21h_over_l.png") no-repeat left top;
+}
+.btn_red21h:hover a {
+	background:url("/images/chat/btn_red21h_over_r.png") no-repeat right top;
+}
+
+.btn_black21h {
+	float:left;
+	background:url("/images/chat/btn_black21h_l.png") no-repeat left top;
+	padding:0 0 0 2px;
+	color: White;
+}
+.btn_black21h a {
+	display:block;
+	padding:2px 14px 4px 10px;
+	background:url("/images/chat/btn_black21h_r.png") no-repeat right top;
+	color: #FFF;
+	font: verdana;
+	font-weight: bold;
+	text-decoration: none;
+}
+.btn_black21h:hover {
+	background:url("/images/chat/btn_black21h_over_l.png") no-repeat left top;
+}
+.btn_black21h:hover a {
+	background:url("/images/chat/btn_black21h_over_r.png") no-repeat right top;
+}
