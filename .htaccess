@@ -1,0 +1,16 @@
+ErrorDocument 403 /RobloniumDefaultErrorPage.aspx?code=403
+ErrorDocument 404 /RobloniumDefaultErrorPage.aspx?code=404
+ErrorDocument 500 /RobloniumDefaultErrorPage.aspx?code=500
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME}.php -f
+
+<FilesMatch Friends>
+	RewriteEngine Off
+	SetHandler application/x-httpd-php
+</FilesMatch>
+
+RewriteRule (.*) $1.php [L]
+
+RewriteRule ^(.*?(\b-place\b)[^$]*) PlaceItem.aspx
+RewriteRule ^(.*?(\b-item\b)[^$]*) Item.aspx

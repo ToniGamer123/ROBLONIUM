@@ -1,0 +1,13 @@
+.FeaturedGameButton {
+    background: url(https://web.archive.org/web/20140122072522im_/http://www.roblox.com/images/buttons/btn-playnow_big2.png) no-repeat;
+        background-position-x: 0%;
+        background-position-y: 0%;
+    height: 214px;
+    width: 214px;
+    height: 214px;
+    overflow: hidden;
+}
+
+.FeaturedGameButton:hover {
+    background-position: 0 -214px;
+}

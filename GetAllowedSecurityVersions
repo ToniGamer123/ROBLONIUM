@@ -1,0 +1,9 @@
+<?php
+header('Content-Type:application/json');
+if ($_GET['apiKey'] == '2b4ba7fc-5843-44cf-b107-ba22d3319dcd') {
+echo('{"data":["0.131.0pcplayer","0.132.0pcplayer","0.152.0pcplayer","0.158.0pcplayer","0.177.0pcplayer","0.194.0pcplayer","INTERNALiosapp","140ec393f9f7b112ffbfda47fe9fdbbd","b92f3a3011654d30f09b0fb66791dfb8","0de62c5b2f8c9ccbdb8bd7f4914a31c1","7e8b47f9a4289774a89caa81c1f0fa58","e4de31039dc3ad3d7fe0c17b8ce9434b","d80ca6dfb9ad7dce2ed773fe2e88cdc8","25a20b109dcd2621682069d3a5ad3ebf","1d219b3439c0a6e610661919c2683ab5"]}');
+}
+// All mobile clients are like this. idk why this is dumb as shit
+// INTERNALiosappaskljfLUZF
+// 2e427f51c4dab762fe9e3471c6cfa1650841723b
+?>

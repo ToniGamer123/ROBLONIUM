@@ -1,0 +1,81 @@
+<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/core_functions.php';
+$request_type = explode("/", $_SERVER["REQUEST_URI"])[2] ?? null;
+
+requireLogin();
+
+if($_SERVER['REQUEST_METHOD'] != 'POST'){ redirectToErrorPage(405); }
+
+// Variables that're consistently used.
+switch ($request_type) {
+	default:
+		if(!isset($_POST['targetUserID'])){ echo "No target user ID set"; die(header("HTTP/1.1 400 Bad Request")); }
+		if(!isset($_POST['displayedUserID'])){ echo "No displayed user ID set"; die(header("HTTP/1.1 400 Bad Request")); }
+		if(!isset($_POST['pageNum'])){ echo "No page number set"; die(header("HTTP/1.1 400 Bad Request")); }
+		if(!isset($_POST['view'])){ echo "No view set"; die(header("HTTP/1.1 400 Bad Request")); }
+		if(!isset($_POST['invitationID'])){ echo "No invitation ID set"; die(header("HTTP/1.1 400 Bad Request")); }
+		if($_POST['displayedUserID'] != SESSION["userid"]){ echo "Failed to verify data"; die(header("HTTP/1.1 400 Bad Request")); }
+		$userid = SESSION["userid"];
+		$friendid = $_POST['targetUserID'];
+		$pagenum = $_POST['pageNum'];
+		$view = $_POST['view'];
+		$invitationid = $_POST['invitationID'];
+		break;
+	case "friends":
+		if(!isset($_GET['DisplayedUserID'])){ die("Could not fetch friends"); }
+		if(!isset($_GET['PageNum'])){ $page = 1; }
+		$userid = $_GET['DisplayedUserID'];
+		$pagenum = $_GET['PageNum'];
+		break;
+}
+
+$request_type = explode("/", $_SERVER["REQUEST_URI"])[2] ?? null;
+switch ($request_type) {
+	case null: // the API intended for this document
+		die(header("HTTP/1.1 501 Not Implemented"));
+		break;
+	case "acceptallfriendrequests":
+		$incomingFRs = $pdo->prepare("SELECT * FROM friends WHERE receiverid = :id AND status = 0");
+		$incomingFRs->bindParam(":id", $userid, PDO::PARAM_INT);
+		$incomingFRs->execute();
+
+		if(!$incomingFRs->rowCount()){ die(); }
+
+		while ($row = $incomingFRs->fetch(PDO::FETCH_OBJ)) {
+			$friends = $pdo->prepare("UPDATE friends SET status = 1 WHERE requesterId = :friendid AND receiverId = :id");
+			$friends->bindParam(":friendid", $row->requesterId, PDO::PARAM_INT);
+			$friends->bindParam(":id", $userid, PDO::PARAM_INT);
+			$friends->execute();
+		}
+		break;
+	case "acceptfriendrequest":
+		$friends = $pdo->prepare("UPDATE friends SET status = 1 WHERE Id = :invitationid ");
+		$friends->bindParam(":invitationid", $invitationid, PDO::PARAM_INT);
+		$friends->execute();
+		break;
+	case "declineallfriendrequests":
+		$incomingFRs = $pdo->prepare("SELECT * FROM friends WHERE receiverid = :id AND status = 0");
+		$incomingFRs->bindParam(":id", $userid, PDO::PARAM_INT);
+		$incomingFRs->execute();
+
+		if(!$incomingFRs->rowCount()){ die(); }
+
+		while ($row = $incomingFRs->fetch(PDO::FETCH_OBJ)) {
+			Unfriend($userid, $row->requesterId);
+		}
+		break;
+	case "declinefriendrequest":
+		BreakFriendship($invitationid);
+		break;
+	case "friends":
+		$view = "Friends";
+		break;
+	case "removefriend":
+		Unfriend($userid, $friendid);
+		break;
+	default:
+		die(header("HTTP/1.1 405 Bad Request"));
+		break;
+}
+loadFriendPage($userid, $pagenum, $view);
+?>

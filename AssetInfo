@@ -1,0 +1,11 @@
+<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/global_functions.php';
+header('Content-Type: application/json');
+$id = $_GET["id"];
+$rbxAsset = (isset($_GET['rbxAsset']) ? $_GET['rbxAsset'] : 0);
+if ($id == "" or $id == null){die("Error: Invalid request.");};
+if ($rbxAsset == "" or $rbxAsset == null){$rbxAsset = 0;};
+
+echo($itemApi->GetAssetInfo($id, true, ($rbxAsset == 1 ? true : false)));
+
+?>
