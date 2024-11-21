@@ -1,0 +1,40 @@
+<?php
+include_once $_SERVER["DOCUMENT_ROOT"] . '/global.php';
+?>
+<html>
+	<head>
+		<title>Oh Noes!</title>
+		<link rel="stylesheet" type="text/css" href="../loading.css?3" />
+		<script type="text/javascript" src="../jquery-1.7.1.min.js"></script>
+	</head>
+	<body>
+	
+		<table id="wrapper">
+		<tr>
+		<td><img src="http://sitetest1.roblonium.com/images/ROBLONIUM.png" alt="" class="RobloniumLogo" />
+		<center>
+				<br />
+				<div id = "loadtext" class ="loading_text">gaming</div>
+			</center>
+		</td>
+		</tr>
+		</table>
+		
+
+		<script type="text/javascript">
+
+			$(window).resize(function(){
+
+				$('.className').css({
+					position:'absolute',
+					left: ($(window).width() - $('.className').outerWidth())/2,
+					top: ($(window).height() - $('.className').outerHeight())/2
+				});
+	
+				});
+
+				// To initially run the function:
+				$(window).resize();
+		</script
+	</body>
+</html>
