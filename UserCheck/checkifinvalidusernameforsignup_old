@@ -1,0 +1,34 @@
+<?php
+header("content-type:text/plain");
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/private/database.php';
+class check extends db {
+	public $username;
+	
+	public function usernamecheck () {
+	$player = $this->findRow("users", ["username" => $this->username], ["password","id"]);
+	if($this->playerExists($this->username)->rowCount() > 0)
+	{
+		return true;
+	}
+	else {
+		return false;
+	}
+	}
+}
+
+$login = new check;
+if (isset($_GET["username"])){
+	if ($_GET["username"] == "BrentDaMage") {
+		$login->username = "Brent Da Mage";
+	}else {
+		$login->username = $_GET["username"];
+	}
+	$account = $login->usernamecheck();
+}
+if ($account == true) {
+	die('{"success":true}');
+}else {
+	die('{"success":false}');
+}
+echo json_encode($success);
+?>

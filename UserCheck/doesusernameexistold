@@ -1,0 +1,19 @@
+<?php
+$username = $_GET["username"];
+$userexists = false;
+if ($username !== null and $username !== ""){
+$dir = new DirectoryIterator('../Users');
+foreach ($dir as $file) {
+    $content = file_get_contents($file->getPathname());
+    if ($username == json_decode($content,true)["Name"]) {
+        // User exists
+		$userexists = true;
+    }
+}
+}
+if ($userexists == true) {
+	echo file_get_contents("./success");
+}else {
+	echo file_get_contents("./failure");
+}
+?>

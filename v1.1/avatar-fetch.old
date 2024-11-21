@@ -1,0 +1,64 @@
+<?php
+require $_SERVER["DOCUMENT_ROOT"] . '/Hexine/api/private/database.php';
+header('Content-Type: text/plain');
+function verify_json($json, $kill) {
+	if (json_decode($json) == null) {
+		if ($kill == true) {
+		die("Error: Failed to parse JSON");
+		}
+		return false;
+	} else{
+		return true;
+	}
+}
+
+if ($_GET['userId'] == null) {
+	die("Error: Invalid request");
+}
+
+$userId = $_GET['userId'];
+//One could consider this efficient
+//If anything else needs to load from the database //nvm the db api already has this
+$user = $database->findRow("public_users", ["Id" => $userId], ["Id", "Name", "CharacterAppearance"]);
+if ($user && $user->rowCount() > 0){$user = $user->fetch(PDO::FETCH_OBJ);}
+
+else {
+	die("Error: User does not exist");
+
+}
+if ($user->CharacterAppearance == null or $user->CharacterAppearance == "" or verify_json($user->CharacterAppearance, false) == false or (int)$userId < 0)
+{
+	$userId = 53; //This account contains the character appearance that every new user will be given
+	//die('Error: User "' . $user->Name . '" has no character appearance');
+	$default = $database->findRow("public_users", ["Id" => $userId], ["CharacterAppearance"]);
+	if ($default && $default->rowCount() > 0){$default = $default->fetch(PDO::FETCH_OBJ);}
+	$charapp = $default->CharacterAppearance;
+} else{
+	$charapp = $user->CharacterAppearance;
+}
+verify_json($charapp, true);
+$charapp = json_decode($charapp, false);
+if (!isset($_GET['raw']) or $_GET['raw'] == 'false' or $_GET['raw'] == '0' or $_GET['raw'] == '') {
+	//why???
+	/*if (isset($charapp->equippedGearIds))
+	{
+		unset($charapp->equippedGearIds);
+	}*/
+	if (isset($charapp->backpackGearIds[0])) {
+		$charapp->equippedGearIds = array(
+			$charapp->backpackGearIds[0]
+		);
+	}
+	unset($charapp->bodyColors);
+	$charapp->bodyColorsUrl = "http://" . $_SERVER['SERVER_NAME'] . "/Asset/BodyColors.ashx?userId=" . $userId;
+}
+if (isset($_GET['cPage']) and ($_GET['cPage'] !== 'false' and $_GET['cPage'] !== '0' and $_GET['cPage'] !== ''))
+{
+	$charapp->allEquippedAssets = $charapp->accessoryIds;
+	$count = count($charapp->backpackGearIds);
+	for($i = 0; $i < $count; ++$i) { //Number of gears the user has equipped (even though they should only ever have one)
+		array_push($charapp->allEquippedAssets, $charapp->backpackGearIds[$i]);
+	}
+}
+die(json_encode($charapp, JSON_UNESCAPED_SLASHES));
+?>

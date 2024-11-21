@@ -1,0 +1,9 @@
+.recommendedTab {
+	line-height: 26px;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: 240px 240px 240px 240px;
+	grid-gap: 10px;
+}

@@ -1,0 +1,12 @@
+<?php
+require_once $_SERVER['DOCUMENT_ROOT']."/Hexine/api/core_functions.php";
+header("content-type: application/json; charset=utf-8");
+$data = 0;
+if (empty($_GET["username"]) or !ctype_alnum($_GET["username"]) or (strlen($_GET["username"]) < 3 || strlen($_GET["username"]) > 20)) {
+	$data = 2;
+}
+if (getUserInfoFromName($_GET["username"])) {
+	$data = 1;
+}
+die(json_encode(["data" => $data]));
+?>

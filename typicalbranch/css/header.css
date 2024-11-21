@@ -1,0 +1,31 @@
+.headerTop {
+	height: 36px;
+	background: #f00;
+	padding-left: 275px;
+}
+
+.header {
+	color: white;
+	background: #f00;
+	padding: 30px;
+	font-weight: lighter;
+}
+
+.headerTop a { 
+	color: white; 
+	letter-spacing: 0.03em;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-decoration: none;
+}
+
+.headerTop img { 
+	padding-right: 30px;
+}
+
+input[type="email"], [type="password"] {
+    padding: 10px;
+    width: 50%;
+    margin: 10px 0 0 45%;
+    font-size: 120%;
+}
